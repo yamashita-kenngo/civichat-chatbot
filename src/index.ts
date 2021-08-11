@@ -1,5 +1,3 @@
-function hello(name: string): string {
-  return `Hello, ${name}!`;
-}
-
-console.log(hello("TypeScript"));
+import { sayHello } from "./greetings/hello";
+const myName = "John";
+sayHello(myName);

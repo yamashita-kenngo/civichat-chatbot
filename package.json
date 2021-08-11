@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "ts-node": "ts-node src/index.ts"
+    "build":"node ./scripts/build.js",
+    "lint": "eslint src/**/*.ts",
+    "lintfix": "eslint:fix src/**/*.ts",
+    "format": "prettier --write 'src/**/*.{js,ts,json}'"
   },
   "dependencies": {
     "ts-node": "^10.2.0"
