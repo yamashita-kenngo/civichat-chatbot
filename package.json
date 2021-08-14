@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "build": "node ./scripts/build.js",
     "lint": "eslint src/**/*.ts",
     "lintfix": "eslint:fix src/**/*.ts",
     "format": "prettier --write 'src/**/*.{js,ts,json}'",
-    "dev": "nodemon  --exec ts-node src/index.ts"
+    "build": "esbuild --bundle --minify --outfile=dist/index.js --platform=node src/index.ts",
+    "build:dev":"npm run build -- --watch"
   },
   "dependencies": {
     "express": "^4.17.1",
