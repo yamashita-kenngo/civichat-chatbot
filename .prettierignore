@@ -1,0 +1,8 @@
+# prettierの対象外となるファイルを指定する
+# Ignore artifacts:
+/dist
+node_modules
+package.json
+package-lock.json
+tsconfig.json
+tsconfig.eslint.json
