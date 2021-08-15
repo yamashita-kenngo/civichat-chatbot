@@ -1,4 +1,5 @@
 import express from 'express';
+const PORT = Number(process.env.PORT) || 3000;
 
 const app = express();
 
@@ -6,4 +7,4 @@ app.get('/', (_, res) => {
   res.send('Hello world');
 });
 
-app.listen(3001, () => console.log('Server is running'));
+app.listen(PORT, () => console.log('Server is running'));
