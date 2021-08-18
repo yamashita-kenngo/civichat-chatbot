@@ -40,7 +40,7 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
             action: {
               type: "uri",
               label: "全ての制度を見る",
-              uri: "http://linecorp.com/",
+              uri: `${process.env.LIFF_URL}/others=${resultId}`,
             },
             style: "primary",
           },
@@ -99,7 +99,7 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
             action: {
               type: "uri",
               label: "詳細を見る",
-              uri: `https://localhost:5000/others=${resultId}`,
+              uri: `${process.env.LIFF_URL}/info/${item.detail_url}`,
             },
             style: "secondary",
           },
