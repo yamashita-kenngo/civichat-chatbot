@@ -28,6 +28,10 @@ export type syst = {
   [index: string]: boolean;
 };
 
+export type Sessions = {
+  [index: string]: Session;
+};
+
 class Answer {
   id: string;
   answerText: string;
@@ -67,7 +71,7 @@ class Question {
 class ChatState {
   systems: Array<string>;
   questions: Question[];
-  
+
   constructor(systems: Array<string>, questions: Array<Question>) {
     this.systems = systems;
     this.questions = questions;
@@ -177,7 +181,3 @@ class Session {
     return this.beforeQuestionId;
   }
 }
-
-export type Sessions = {
-  [index: string]: Session;
-};
