@@ -99,7 +99,7 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
             action: {
               type: "uri",
               label: "詳細を見る",
-              uri: `${process.env.LIFF_URL}/info/${item.detail_url}`,
+              uri: item["詳細参照先"],
             },
             style: "secondary",
           },
