@@ -39,6 +39,5 @@ app.get("/", (req, res) => {
   res.send("Hello! Civichat for Atami is now working!");
 });
 
-
 app.listen(PORT);
 console.log(`Server running at ${PORT}`);

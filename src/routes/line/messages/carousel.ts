@@ -107,7 +107,6 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
       },
     });
   }
-  console.log(carouselContents);
   const returnMessage: types.Message = {
     type: "flex",
     altText: "検索結果",

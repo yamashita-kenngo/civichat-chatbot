@@ -126,7 +126,6 @@ class ChatState {
       });
   }
   maintenanceQuestions() {
-    console.log(this.questions);
     this.questions = this.questions
       .map((question: Question) => {
         let trues = 0;
