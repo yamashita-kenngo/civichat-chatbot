@@ -1,5 +1,3 @@
-export {};
-
 import { Response, Request } from "express";
 
 const getQueryResult = require("../../../db/index").getQueryResult;
