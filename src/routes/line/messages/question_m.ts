@@ -4,7 +4,6 @@ import * as types from "@line/bot-sdk/lib/types";
 import { Question } from "../../../classes";
 
 module.exports = async (item: Question) => {
-  console.log(item);
   const answerContents: types.FlexComponent[] = [];
   item.answers.forEach((answer, i) => {
     answerContents.push({

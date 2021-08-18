@@ -3,12 +3,9 @@ import * as types from "@line/bot-sdk/lib/types";
 import { SystemProperty } from "../../../classes";
 
 module.exports = async function carouselTemplate(items: SystemProperty[], resultId: string) {
-  console.log('carousel',resultId)
   if (items.length === 0) {
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
   }
-
-  console.log(`https://localhost:5000/others/resultId=${resultId}`);
   const carouselContents = [
     {
       type: "bubble",
@@ -52,9 +49,6 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
     },
   ] as types.FlexBubble[];
   for (const item of items) {
-    console.log(item["タグ（テーマ）"]);
-    console.log(item["タイトル（制度名）"]);
-
     carouselContents.push({
       type: "bubble",
       header: {
