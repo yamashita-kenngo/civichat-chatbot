@@ -1,6 +1,4 @@
-export {};
 // DB操作まわりの関数をまとめて提供します
-
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 const { Client } = require("pg");
 const { uuid } = require("uuidv4");
@@ -56,8 +54,6 @@ pg.connect();
 exports.getServiceDetail = async (serviceId: string) => {
   // 制度IDから制度詳細を返します
   // 旧get_systems
-  // userId : String
-
   const res = await pg.query({
     text: "SELECT * FROM users WHERE service_id=$1;",
     values: [String(serviceId)],
