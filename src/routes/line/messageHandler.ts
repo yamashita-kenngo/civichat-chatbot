@@ -92,7 +92,6 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
         } else {
           // ユーザーのセッション取得
           const userSession: Session = sessions[event.source.userId];
-          console.log(userSession);
           if (userSession) {
             const cs = userSession.getState();
             cs.selectAnswerByText(
@@ -109,15 +108,10 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     return systemD["PSID"] === system;
                   })[0];
                 });
-                console.log("##############################")
-                console.log(cs.getSystems())
-                console.log("##############################")
                 const resultId = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId
                 );
-                console.log(resultId)
-                console.log("========================")
                 returnMessage = await carouselTemplate(
                   results.slice(0, 9),
                   resultId
