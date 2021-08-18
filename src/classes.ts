@@ -5,14 +5,14 @@ export type Qna = {
   answers: Array<answer>;
 };
 
+type system = {
+  system_id: string;
+  system_answer: string;
+};
+
 export type answer = {
   answer_id: string;
   systems: Array<system>;
-};
-
-export type system = {
-  system_id: string;
-  system_answer: string;
 };
 
 export type SystemProperty = {
@@ -26,10 +26,6 @@ export type System = {
 
 export type syst = {
   [index: string]: boolean;
-};
-
-export type AnswerSystems = {
-  systems: Array<System>;
 };
 
 class Answer {
@@ -71,7 +67,7 @@ class Question {
 class ChatState {
   systems: Array<string>;
   questions: Question[];
-
+  
   constructor(systems: Array<string>, questions: Array<Question>) {
     this.systems = systems;
     this.questions = questions;
@@ -145,7 +141,7 @@ class ChatState {
   }
 
   selectQuestionFromPriority() {
-    return this.questions[0] as Question;
+    return this.questions[0];
   }
 
   isEnded() {
