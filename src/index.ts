@@ -29,13 +29,15 @@ app.post("/line", line.middleware(config), function (req, res) {
 app.post("/user", function (req, res) {
   require("./routes/user/post");
 });
+
 app.get("/others", function (req, res) {
-  require("./routes/others/get");
+  const others = require("./routes/others/get")
+  others(req,res)
 });
 
 // Health
 app.get("/", (req, res) => {
-  res.send("Hello! Civichat for Atami is now working!");
+  res.send("Hello! Civichat-chatbot is now working!");
 });
 
 app.listen(PORT);
