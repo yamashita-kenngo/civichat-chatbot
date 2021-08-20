@@ -49,7 +49,9 @@ const pgConfig: pgConfig = {
 console.log(pgConfig);
 const pg = new Client(pgConfig);
 
-pg.connect();
+pg.connect()
+  .then(() => console.log("pg Connected successfuly"))
+  .catch(() => console.log("err"));
 
 exports.getServiceDetail = async (serviceId: string) => {
   // 制度IDから制度詳細を返します
@@ -110,14 +112,14 @@ exports.isLoggedIn = async (lineId: string) => {
 };
 
 export type resultSaveData = {
-  result: Array<{title: string, overview: string, detailUrl: string}>;
-  resultId :string
+  result: Array<{ title: string; overview: string; detailUrl: string }>;
+  resultId: string;
 };
 
 exports.queryServices = async (systemIds: Array<string>, lineId: string) => {
-  const resultId:string = uuid();
+  const resultId: string = uuid();
 
-  const resultSaveData:resultSaveData = {
+  const resultSaveData: resultSaveData = {
     result: [],
     resultId: resultId,
   };
