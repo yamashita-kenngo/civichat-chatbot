@@ -40,7 +40,7 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
             action: {
               type: "uri",
               label: "全ての制度を見る",
-              uri: `${process.env.LIFF_URL}/others=${resultId}`,
+              uri: `${process.env.LIFF_URL}/others/${resultId}`,
             },
             style: "primary",
           },
