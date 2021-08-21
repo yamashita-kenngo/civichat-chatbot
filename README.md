@@ -14,7 +14,7 @@
 ## 技術スタック
 （このセクションは暫定的です。また、この構成の実際の構築はこのファイルを作成するコミット以降にあります。)
 
-- Typescript
+- TypeScript
 - AWS Elastic Beanstalk
 
 ## ブランチルール
@@ -23,9 +23,9 @@
   - [A successful Git branching model » nvie.com](https://nvie.com/posts/a-successful-git-branching-model/)
   - [日本語訳 A successful Git branching model - Qiita](https://qiita.com/homhom44/items/9f13c646fa2619ae63d0])
 
-- ただし、`release`ブランチは原則使わない方向で考えています(@yuseiito　が)
-  - これは、すでに元記事が公開されてから10年以上経過しているGit-flowは継続的デリバリーを前提としておらず(発案者もそれ言及しています)、今となってはただ複雑にしている道具になっているからです
-  - リリースは、`develop`から`main`へのマージと`main`上でのtagによって表現することができます。
+- ただし、`release`ブランチは原則使わない方向で考えています（@yuseiito）
+  - これは、すでに元記事が公開されてから10年以上経過しているGit-flowは継続的デリバリーを前提としておらず（発案者もそれ言及しています）、今となってはただ複雑にしている道具になっているからです
+  - リリースは、`develop`から`main`へのマージと`main`上でのtagによって表現できます。
 
 - 新機能の開発を進めるときは、`develop`から新しいブランチ`feature/#[issue_number]-some-descriptive-name`を生やしてください。
   - **ケバブケース**にしてください
@@ -35,5 +35,42 @@
        - とても短い、小規模な変更等に限って使うのがいいです
 
 - 開発が終わったら、`develop`に対してPull Requestしてください。
-  - Pull Requestは、**エンジニア1人以上のコードレビュー**を受けてmergeすることができます。
- 
+  - Pull Requestは、**エンジニア1人以上のコードレビュー**を受けてmergeできます。
+
+## 環境構築
+
+・mac
+
+- env 
+`.env.sample`を参考に作成する
+
+- LINEBot
+ngrokを使い、ローカルでLINEBotを作成します
+
+```
+npm install 
+```
+
+```
+npm run deploy:dev
+```
+
+別タブ
+
+```
+node dist/index.js
+```
+
+別タブ
+
+```
+ngrok http 5000
+```
+- db
+
+```
+docker-compose up
+```
+
+
+
