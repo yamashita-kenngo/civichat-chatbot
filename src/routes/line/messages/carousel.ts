@@ -31,21 +31,6 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
         ],
         justifyContent: "center",
       },
-      footer: {
-        type: "box",
-        layout: "vertical",
-        contents: [
-          {
-            type: "button",
-            action: {
-              type: "uri",
-              label: "全ての制度を見る",
-              uri: `${process.env.LIFF_URL}/others/${resultId}`,
-            },
-            style: "primary",
-          },
-        ],
-      },
     },
   ] as types.FlexBubble[];
   for (const item of items) {
@@ -113,6 +98,18 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
     contents: {
       type: "carousel",
       contents: carouselContents,
+    },
+    quickReply: {
+      items: [
+        {
+          type: "action",
+          action: {
+            type: "uri",
+            label: `利用できる${items.length}個の制度を見る`,
+            uri: `${process.env.LIFF_URL}/others/${resultId}`,
+          },
+        },
+      ],
     },
   };
   return returnMessage;
