@@ -23,7 +23,7 @@ const client = new line.Client(config);
 
 const carouselTemplate = require("./messages/carousel");
 
-const questionTemplate= require("./messages/question_m");
+const questionTemplate = require("./messages/question_m");
 
 import jsonAnswers from "../../../datas/answers.json";
 import jsonQuestions from "../../../datas/questions.json";
@@ -68,7 +68,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
     throw Error("userId is undefined");
   }
   let returnMessage: types.Message = { type: "text", text: "hello world!" };
-  
+
   switch (event.type) {
     case "message":
       if (event.message.type === "text") {
@@ -106,12 +106,14 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     return systemD["PSID"] === system;
                   })[0];
                 });
+                const systemsCount = results.length;
                 const resultId = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId
                 );
                 returnMessage = await carouselTemplate(
                   results.slice(0, 9),
+                  systemsCount,
                   resultId
                 );
               } else {
@@ -121,11 +123,16 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     return systemD["PSID"] === system;
                   })[0];
                 });
+                const systemsCount = results.length;
                 const resultId = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId
                 );
-                returnMessage = await carouselTemplate(results, resultId);
+                returnMessage = await carouselTemplate(
+                  results,
+                  systemsCount,
+                  resultId
+                );
               }
             } else {
               sessions = {
