@@ -1,8 +1,11 @@
-
 import * as types from "@line/bot-sdk/lib/types";
 import { SystemProperty } from "../../../classes";
 
-module.exports = async function carouselTemplate(items: SystemProperty[], resultId: string) {
+module.exports = async function carouselTemplate(
+  items: SystemProperty[],
+  systemsCount: number,
+  resultId: string
+) {
   if (items.length === 0) {
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
   }
@@ -15,7 +18,7 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
         contents: [
           {
             type: "text",
-            text: String(items.length),
+            text: String(systemsCount),
             align: "center",
             gravity: "center",
             size: "5xl",
@@ -30,21 +33,6 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
           },
         ],
         justifyContent: "center",
-      },
-      footer: {
-        type: "box",
-        layout: "vertical",
-        contents: [
-          {
-            type: "button",
-            action: {
-              type: "uri",
-              label: "全ての制度を見る",
-              uri: `${process.env.LIFF_URL}/others=${resultId}`,
-            },
-            style: "primary",
-          },
-        ],
       },
     },
   ] as types.FlexBubble[];
@@ -113,6 +101,18 @@ module.exports = async function carouselTemplate(items: SystemProperty[], result
     contents: {
       type: "carousel",
       contents: carouselContents,
+    },
+    quickReply: {
+      items: [
+        {
+          type: "action",
+          action: {
+            type: "uri",
+            label: `利用できる${systemsCount}個の制度を見る`,
+            uri: `${process.env.LIFF_URL}/others/${resultId}`,
+          },
+        },
+      ],
     },
   };
   return returnMessage;
