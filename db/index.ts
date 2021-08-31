@@ -167,10 +167,11 @@ exports.saveInitialDatafromJson = async () => {
   for (const item of systemsData.systemsData) {
     const date = new Date(0);
     await pg.query({
-      text: "INSERT INTO shibuya (service_id,name,content_url,theme) VALUES ($1,$2,$3,$4) ;",
+      text: "INSERT INTO shibuya (service_id,name,content_abstract,content_url,theme) VALUES ($1,$2,$3,$4,$5) ;",
       values: [
         item["PSID"],
         item["タイトル（制度名）"],
+        item["概要"],
         item["詳細参照先"],
         item["タグ（テーマ）"],
       ],
@@ -181,10 +182,11 @@ exports.saveInitialDatafromJson = async () => {
   for (const item of systemsDataKumamoto.systemsData) {
     const date = new Date(0);
     await pg.query({
-      text: "INSERT INTO kumamoto (service_id,name,content_url,theme) VALUES ($1,$2,$3,$4) ;",
+      text: "INSERT INTO kumamoto (service_id,name,content_abstract,content_url,theme) VALUES ($1,$2,$3,$4,$5) ;",
       values: [
         item["PSID"],
         item["タイトル（制度名）"],
+        item["概要"],
         item["詳細参照先"],
         item["タグ（テーマ）"],
       ],

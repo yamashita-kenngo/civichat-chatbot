@@ -155,7 +155,6 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
             case 1:
                 if (!(_i < systemIds_1.length)) return [3 /*break*/, 4];
                 systemId = systemIds_1[_i];
-                console.log('String(systemId)', [String(systemId)]);
                 return [4 /*yield*/, pg.query({
                         text: "SELECT * FROM " + seido + " WHERE service_id=$1;",
                         values: [String(systemId)]
@@ -163,7 +162,6 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
             case 2:
                 res = _a.sent();
                 //検索結果を配列に格納
-                console.log('res', res.rows[0].name);
                 resultSaveData.result.push({
                     title: res.rows[0].name,
                     overview: res.rows[0].content_abstract,
@@ -221,10 +219,11 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                 item = _a[_i];
                 date = new Date(0);
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO shibuya (service_id,name,content_url,theme) VALUES ($1,$2,$3,$4) ;",
+                        text: "INSERT INTO shibuya (service_id,name,content_abstract,content_url,theme) VALUES ($1,$2,$3,$4,$5) ;",
                         values: [
                             item["PSID"],
                             item["タイトル（制度名）"],
+                            item["概要"],
                             item["詳細参照先"],
                             item["タグ（テーマ）"],
                         ]
@@ -244,10 +243,11 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                 item = _c[_b];
                 date = new Date(0);
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO kumamoto (service_id,name,content_url,theme) VALUES ($1,$2,$3,$4) ;",
+                        text: "INSERT INTO kumamoto (service_id,name,content_abstract,content_url,theme) VALUES ($1,$2,$3,$4,$5) ;",
                         values: [
                             item["PSID"],
                             item["タイトル（制度名）"],
+                            item["概要"],
                             item["詳細参照先"],
                             item["タグ（テーマ）"],
                         ]
