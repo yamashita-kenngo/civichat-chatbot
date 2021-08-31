@@ -166,7 +166,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
     case "follow":
       returnMessage = {
         type: "text",
-        text: "お友だち登録ありがとうございます！\\n「制度を探す」と送信してみなさんにぴったりの制度を見つけてください！\\n ━━━━━━━━━━━━ \\n 現在は「渋谷区に在住」していて「20歳未満の子どもを養育している方」に向けて制度のおすすめをしています（他の市区町村に在住の方はもうしばらくお待ちください...） \\n ━━━━━━━━━━━━ \\n このアカウントは「株式会社Civichat」が運営しています。 \\n  https://civichat.jp/ \\n LINE（株）が提供、または新たに取得される情報の取り扱いについては以下をご確認ください。 \\n https://terms.line.me/OA_privacy?lang=ja",
+        text: "お友だち登録ありがとうございます！\n「制度を探す」と送信してみなさんにぴったりの制度を見つけてください！\n ━━━━━━━━━━━━ \n 現在は「渋谷区に在住」していて「20歳未満の子どもを養育している方」に向けて制度のおすすめをしています（他の市区町村に在住の方はもうしばらくお待ちください...） \n ━━━━━━━━━━━━ \n このアカウントは「株式会社Civichat」が運営しています。 \n  https://civichat.jp/ \n LINE（株）が提供、または新たに取得される情報の取り扱いについては以下をご確認ください。 \n https://terms.line.me/OA_privacy?lang=ja",
       };
       break;
     case "postback":
