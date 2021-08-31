@@ -9,4 +9,3 @@ module.exports = async (req: Request, res: Response) => {
   res.header("Access-Control-Allow-Methods", "GET");
   res.json(ans);
 };
-
