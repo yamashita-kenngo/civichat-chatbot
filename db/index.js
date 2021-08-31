@@ -140,7 +140,7 @@ exports.isLoggedIn = function (lineId) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); };
-exports.queryServices = function (systemIds, lineId) { return __awaiter(void 0, void 0, void 0, function () {
+exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(void 0, void 0, void 0, function () {
     var resultId, resultSaveData, _i, systemIds_1, systemId, res, saveString;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -155,13 +155,15 @@ exports.queryServices = function (systemIds, lineId) { return __awaiter(void 0, 
             case 1:
                 if (!(_i < systemIds_1.length)) return [3 /*break*/, 4];
                 systemId = systemIds_1[_i];
+                console.log('String(systemId)', [String(systemId)]);
                 return [4 /*yield*/, pg.query({
-                        text: "SELECT * FROM services WHERE service_id=$1;",
+                        text: "SELECT * FROM " + seido + " WHERE service_id=$1;",
                         values: [String(systemId)]
                     })];
             case 2:
                 res = _a.sent();
                 //検索結果を配列に格納
+                console.log('res', res.rows[0].name);
                 resultSaveData.result.push({
                     title: res.rows[0].name,
                     overview: res.rows[0].content_abstract,
@@ -207,55 +209,56 @@ exports.getQueryResult = function (resultId) { return __awaiter(void 0, void 0, 
 }); };
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var systemsData, _i, _a, item, date;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var systemsData, _i, _a, item, date, systemsDataKumamoto, _b, _c, item, date;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
             case 0:
-                systemsData = require("../datas/systemsdata.json");
+                systemsData = require("../datas/shibuya/systemsdata.json");
                 _i = 0, _a = systemsData.systemsData;
-                _b.label = 1;
+                _d.label = 1;
             case 1:
                 if (!(_i < _a.length)) return [3 /*break*/, 4];
                 item = _a[_i];
                 date = new Date(0);
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO services (uri,service_id,service_number,origin_id,alteration_flag,provider,provider_prefecture_id,provider_city_id,name,content_abstract,content_provisions,content_target,content_how_to_apply,content_application_start_date,content_application_close_date,content_url,content_contact,content_information_release_date,tags ,theme,tags_category,tags_person_type,tags_entity_type,tags_keyword_type,tags_issue_type,tags_provider) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26) ;",
+                        text: "INSERT INTO shibuya (service_id,name,content_url,theme) VALUES ($1,$2,$3,$4) ;",
                         values: [
-                            item["URI"],
                             item["PSID"],
-                            item["制度番号"],
-                            item["元制度番号"],
-                            item["制度変更区分"],
-                            item["制度所管組織"],
-                            item["都道府県"],
-                            item["市町村"],
                             item["タイトル（制度名）"],
-                            item["概要"],
-                            item["支援内容"],
-                            item["対象者"],
-                            item["利用・申請方法"],
-                            date,
-                            date,
                             item["詳細参照先"],
-                            item["お問い合わせ先"],
-                            date,
-                            item["タグ"],
-                            item["テーマ"],
-                            item["タグ（カテゴリー）"],
-                            item["タグ（対象者）"],
-                            item["タグ（事業者分類）"],
-                            item["タグ（キーワード）"],
                             item["タグ（テーマ）"],
-                            item["タグ（所管組織）"],
                         ]
                     })];
             case 2:
-                _b.sent();
-                _b.label = 3;
+                _d.sent();
+                _d.label = 3;
             case 3:
                 _i++;
                 return [3 /*break*/, 1];
-            case 4: return [2 /*return*/];
+            case 4:
+                systemsDataKumamoto = require("../datas/kumamoto/systemsdata.json");
+                _b = 0, _c = systemsDataKumamoto.systemsData;
+                _d.label = 5;
+            case 5:
+                if (!(_b < _c.length)) return [3 /*break*/, 8];
+                item = _c[_b];
+                date = new Date(0);
+                return [4 /*yield*/, pg.query({
+                        text: "INSERT INTO kumamoto (service_id,name,content_url,theme) VALUES ($1,$2,$3,$4) ;",
+                        values: [
+                            item["PSID"],
+                            item["タイトル（制度名）"],
+                            item["詳細参照先"],
+                            item["タグ（テーマ）"],
+                        ]
+                    })];
+            case 6:
+                _d.sent();
+                _d.label = 7;
+            case 7:
+                _b++;
+                return [3 /*break*/, 5];
+            case 8: return [2 /*return*/];
         }
     });
 }); };

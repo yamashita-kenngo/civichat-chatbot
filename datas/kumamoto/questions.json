@@ -1,0 +1,250 @@
+{
+  "questions": [
+    {
+      "question_id": "3025cfb6-6893-4da7-869a-222fe4097c6a",
+      "question_text": "罹災証明書は？",
+      "answers": [
+        {
+          "answer_id": "a94f9167-928c-44f4-a742-fcb307ea97b3",
+          "answer_text": "持っている（あり）"
+        },
+        {
+          "answer_id": "3354c1eb-85f7-4992-90ea-4cca4ac7fd39",
+          "answer_text": "持っていない"
+        }
+      ]
+    },
+    {
+      "question_id": "219daa12-1294-4a3b-a758-495cc2afaa13",
+      "question_text": "罹災証明書の被害区分は？",
+      "answers": [
+        {
+          "answer_id": "7e09af17-fd6a-4dd4-a4b4-2f52d5b867cb",
+          "answer_text": "全壊"
+        },
+        {
+          "answer_id": "38a46fb5-15a6-4a4e-9f0b-76aa0755de05",
+          "answer_text": "大規模半壊"
+        },
+        {
+          "answer_id": "c5fb6c07-cb7f-4c96-b159-37eb65ab1182",
+          "answer_text": "半壊"
+        },
+        {
+          "answer_id": "ca17d3b3-8094-4f50-a3a9-82d2086e53ee",
+          "answer_text": "一部損壊"
+        }
+      ]
+    },
+    {
+      "question_id": "8702b3d4-6c5b-494a-a88e-000b720cad87",
+      "question_text": "罹災証明書上の世帯の人数は？",
+      "answers": [
+        {
+          "answer_id": "865b5b63-d74e-4272-b47c-f8fc049c58d7",
+          "answer_text": "単身"
+        },
+        {
+          "answer_id": "202d190b-771a-4828-ae35-1683315c6f8e",
+          "answer_text": "2人以上の世帯"
+        }
+      ]
+    },
+    {
+      "question_id": "2c027b93-9ad1-419c-817c-c94f84f4e932",
+      "question_text": "自分又は世帯の中に該当者がいるか？",
+      "answers": [
+        {
+          "answer_id": "3264f137-13f6-4604-bf14-7012def81d43",
+          "answer_text": "高齢者"
+        },
+        {
+          "answer_id": "1174406e-8bcf-4da5-a8d3-fb15bb8fcce0",
+          "answer_text": "障がい者"
+        },
+        {
+          "answer_id": "7965cead-7cac-4cf1-b671-98df19138a20",
+          "answer_text": "両方"
+        },
+        {
+          "answer_id": "f6e3a78d-1a37-41f2-add4-bd5327d1dbc7",
+          "answer_text": "ない"
+        }
+      ]
+    },
+    {
+      "question_id": "160660b5-e96d-421a-871e-9e908cf7f401",
+      "question_text": "ひとり親世帯に該当するか？",
+      "answers": [
+        {
+          "answer_id": "d65ba54f-bab3-40c7-b729-60038ce94792",
+          "answer_text": "ひとり親世帯"
+        },
+        {
+          "answer_id": "a43ee937-729f-43a6-9639-0e7ca8df8ce7",
+          "answer_text": "ひとり親世帯ではない"
+        }
+      ]
+    },
+    {
+      "question_id": "275e6a5a-c640-4bf0-a25e-a8ff850b53e8",
+      "question_text": "災害後、生計維持者の収入は？",
+      "answers": [
+        {
+          "answer_id": "63c9a6d5-cacd-41cd-a6be-744c8d6e26c5",
+          "answer_text": "収入が減った"
+        },
+        {
+          "answer_id": "be378d35-49b7-4b77-9cff-29d6f794090e",
+          "answer_text": "変わらない（増えた）"
+        }
+      ]
+    },
+    {
+      "question_id": "ae45a4ca-bf4d-4272-8846-186cd6325000",
+      "question_text": "被災住宅の所有は？",
+      "answers": [
+        {
+          "answer_id": "683a562f-1374-4c99-b9fa-5fcabf4d092b",
+          "answer_text": "持ち家"
+        },
+        {
+          "answer_id": "47a09ca3-2a06-4557-a8a7-89901b91c2b5",
+          "answer_text": "賃貸"
+        }
+      ]
+    },
+    {
+      "question_id": "df7c761e-b26a-4cfa-a6b0-0bc755ced94f",
+      "question_text": "宅地に被害があったか？",
+      "answers": [
+        {
+          "answer_id": "760fa9df-c5c5-47d2-b791-3665ba46bb8b",
+          "answer_text": "宅地被害あり"
+        },
+        {
+          "answer_id": "31e3f778-4e1b-4293-b081-864eb26af5d4",
+          "answer_text": "ない"
+        }
+      ]
+    },
+    {
+      "question_id": "932f3f20-1fc5-430e-acb5-2948e49a1a2b",
+      "question_text": "被災住宅を解体するか？（賃貸オーナーが解体する場合含む）",
+      "answers": [
+        {
+          "answer_id": "d58c8244-d3e5-41bc-8f97-53159134d56a",
+          "answer_text": "解体する"
+        },
+        {
+          "answer_id": "fa55d8d8-24bd-4d02-8716-9699f269387e",
+          "answer_text": "しない"
+        }
+      ]
+    },
+    {
+      "question_id": "c27f37b2-a4d3-44f6-a684-8a783f1b0028",
+      "question_text": "住まいの再建場所は熊本県内か？",
+      "answers": [
+        {
+          "answer_id": "cdf382a9-e6fc-4920-b023-131b2e7b7d47",
+          "answer_text": "県内"
+        },
+        {
+          "answer_id": "2f72163d-877e-409d-a3b8-63b3a973557a",
+          "answer_text": "県外"
+        }
+      ]
+    },
+    {
+      "question_id": "888a1290-0469-43a2-a38c-3d707275501b",
+      "question_text": "住まいの再建方法は？",
+      "answers": [
+        {
+          "answer_id": "283410ec-30df-4c10-b367-67d2755c12b3",
+          "answer_text": "新築または購入"
+        },
+        {
+          "answer_id": "7e4bb22e-91b4-4314-b8bb-8b84656bc0a1",
+          "answer_text": "補修"
+        },
+        {
+          "answer_id": "6a699503-a81c-409b-a560-64ffd5e46346",
+          "answer_text": "賃貸"
+        },
+        {
+          "answer_id": "0a3919c0-0913-408e-a45d-5f9bfae83b50",
+          "answer_text": "公営住宅"
+        },
+        {
+          "answer_id": "7c6d5acf-bd40-43d9-b34d-3efb48ce8d14",
+          "answer_text": "その他"
+        }
+      ]
+    },
+    {
+      "question_id": "cb0cbff4-1bc9-4a33-ace4-966dd3cf613b",
+      "question_text": "再建先となる住まいへ転居が必要？",
+      "answers": [
+        {
+          "answer_id": "8caaf8c8-e094-4aaa-b812-ba32ff892642",
+          "answer_text": "転居が必要"
+        },
+        {
+          "answer_id": "ebb64294-120c-4a12-855e-796ef76d0605",
+          "answer_text": "ない"
+        }
+      ]
+    },
+    {
+      "question_id": "85979ebd-682a-40d3-8c49-8574aad4a564",
+      "question_text": "新築・購入、補修にあたり住宅ローンを組むか？",
+      "answers": [
+        {
+          "answer_id": "4f4274ac-512a-4e19-be26-4fa20d0e67eb",
+          "answer_text": "住宅ローン（自分又は２親等以内）"
+        },
+        {
+          "answer_id": "6524884c-950a-417c-91d3-6f77ca794cd9",
+          "answer_text": "リバースモーゲージ型融資"
+        },
+        {
+          "answer_id": "93170c19-55b9-49f4-a702-aa620764371f",
+          "answer_text": "未定（予定）"
+        },
+        {
+          "answer_id": "18d3ed4e-4e98-4047-9c36-5d7198c81aff",
+          "answer_text": "組まない・該当しない"
+        }
+      ]
+    },
+    {
+      "question_id": "cd7a236f-3656-41fd-bfd4-c934489dc136",
+      "question_text": "被災住宅にローンが残っているか？",
+      "answers": [
+        {
+          "answer_id": "44cc2d6b-5b48-406d-833c-ae6cbb5f22ac",
+          "answer_text": "住宅ローンあり"
+        },
+        {
+          "answer_id": "05f8bd5b-464f-474c-a7bc-dfc4d4f61026",
+          "answer_text": "残っていない、ない"
+        }
+      ]
+    },
+    {
+      "question_id": "43e3a71a-e763-4805-8a6b-178ad4aa9d5d",
+      "question_text": "プレハブ・みなし仮設住宅の利用は？",
+      "answers": [
+        {
+          "answer_id": "b087c1be-8a12-461d-9136-54314468ce12",
+          "answer_text": "利用あり"
+        },
+        {
+          "answer_id": "591ea1c2-73d5-4b5a-b6c7-6bb885fd9b69",
+          "answer_text": "利用なし"
+        }
+      ]
+    }
+  ]
+}

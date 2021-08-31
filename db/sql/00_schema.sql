@@ -24,7 +24,36 @@ CREATE TABLE "related_system" (
   PRIMARY KEY ("subject_service_id", "object_service_id")
 );
 
-CREATE TABLE "services" (
+CREATE TABLE "shibuya" (
+  "uri" text,
+  "service_id" uuid PRIMARY KEY,
+  "service_number" text,
+  "origin_id" text,
+  "alteration_flag" text,
+  "provider" text,
+  "provider_prefecture_id" text,
+  "provider_city_id" text,
+  "name" text,
+  "content_abstract" text,
+  "content_provisions" text,
+  "content_target" text,
+  "content_how_to_apply" text,
+  "content_application_start_date" timestamp,
+  "content_application_close_date" timestamp,
+  "content_url" text,
+  "content_contact" text,
+  "content_information_release_date" timestamp,
+  "tags" text,
+  "theme" text,
+  "tags_category" text,
+  "tags_person_type" text,
+  "tags_entity_type" text,
+  "tags_keyword_type" text,
+  "tags_issue_type" text,
+  "tags_provider" text
+);
+
+CREATE TABLE "kumamoto" (
   "uri" text,
   "service_id" uuid PRIMARY KEY,
   "service_number" text,
@@ -65,12 +94,23 @@ CREATE TABLE "results" (
   "created_at" timestamp
 );
 
-ALTER TABLE "apply_locations" ADD FOREIGN KEY ("service_id") REFERENCES "services" ("service_id");
+ALTER TABLE "apply_locations" ADD FOREIGN KEY ("service_id") REFERENCES "shibuya" ("service_id");
 
-ALTER TABLE "apply_postal_address" ADD FOREIGN KEY ("service_id") REFERENCES "services" ("service_id");
+ALTER TABLE "apply_postal_address" ADD FOREIGN KEY ("service_id") REFERENCES "shibuya" ("service_id");
 
-ALTER TABLE "documents" ADD FOREIGN KEY ("service_id_id") REFERENCES "services" ("service_id");
+ALTER TABLE "documents" ADD FOREIGN KEY ("service_id_id") REFERENCES "shibuya" ("service_id");
 
-ALTER TABLE "related_system" ADD FOREIGN KEY ("subject_service_id") REFERENCES "services" ("service_id");
+ALTER TABLE "related_system" ADD FOREIGN KEY ("subject_service_id") REFERENCES "shibuya" ("service_id");
 
-ALTER TABLE "related_system" ADD FOREIGN KEY ("object_service_id") REFERENCES "services" ("service_id");
+ALTER TABLE "related_system" ADD FOREIGN KEY ("object_service_id") REFERENCES "shibuya" ("service_id");
+
+
+ALTER TABLE "apply_locations" ADD FOREIGN KEY ("service_id") REFERENCES "kumamoto" ("service_id");
+
+ALTER TABLE "apply_postal_address" ADD FOREIGN KEY ("service_id") REFERENCES "kumamoto" ("service_id");
+
+ALTER TABLE "documents" ADD FOREIGN KEY ("service_id_id") REFERENCES "kumamoto" ("service_id");
+
+ALTER TABLE "related_system" ADD FOREIGN KEY ("subject_service_id") REFERENCES "kumamoto" ("service_id");
+
+ALTER TABLE "related_system" ADD FOREIGN KEY ("object_service_id") REFERENCES "kumamoto" ("service_id");
