@@ -25,42 +25,7 @@ const carouselTemplate = require("./messages/carousel");
 
 const questionTemplate = require("./messages/question_m");
 
-import jsonAnswers from "../../../datas/answers.json";
-import jsonQuestions from "../../../datas/questions.json";
-import systems from "../../../datas/systems.json";
-import systemsData from "../../../datas/systemsdata.json";
-
-const questions: Array<Question> = [];
 let sessions: Sessions = {};
-
-jsonAnswers["qnas"].forEach((question: Qna, i: number) => {
-  const answers: Array<Answer> = [];
-  question.answers.forEach((answer: answer, j: number) => {
-    let syst: syst = {};
-
-    systems["systems"].forEach((system: string, k: number) => {
-      syst = {
-        ...syst,
-        [system]: answer.systems[k].system_answer === "1",
-      };
-    });
-
-    answers.push(
-      new Answer(
-        jsonQuestions.questions[i].answers[j].answer_id,
-        jsonQuestions.questions[i].answers[j].answer_text,
-        syst
-      )
-    );
-  });
-  questions.push(
-    new Question(
-      jsonQuestions.questions[i].question_id,
-      jsonQuestions.questions[i].question_text,
-      answers
-    )
-  );
-});
 
 module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
   console.log(event);
@@ -73,25 +38,63 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
     case "message":
       if (event.message.type === "text") {
         if (event.message.text === "制度を探す") {
-          // 初期ChatStateの生成
-          const cs = new ChatState(systems["systems"], questions);
-          // Sessionに前回のデータが残ってたら除去
-          if (sessions[event.source.userId]) {
-            delete sessions[event.source.userId];
-          }
-          sessions = {
-            ...sessions,
-            [event.source.userId]: new Session(
-              cs,
-              cs.selectQuestionFromPriority().id
-            ),
+          returnMessage = {
+            type: "flex",
+            altText: "どのCivichatを利用しますか",
+            contents: {
+              type: "bubble",
+              direction: "ltr",
+              header: {
+                type: "box",
+                layout: "vertical",
+                contents: [
+                  {
+                    type: "text",
+                    text: "どのCivichatを利用しますか？",
+                    weight: "bold",
+                    align: "center",
+                    contents: [],
+                  },
+                ],
+              },
+              body: {
+                type: "box",
+                layout: "vertical",
+                spacing: "md",
+                contents: [
+                  {
+                    type: "button",
+                    action: {
+                      type: "postback",
+                      label: "熊本震災Ver.",
+                      data: "start-kumamoto",
+                    },
+                    style: "primary",
+                  },
+                  {
+                    type: "button",
+                    action: {
+                      type: "postback",
+                      label: "渋谷子育てVer.",
+                      data: "start-shibuya",
+                    },
+                    style: "primary",
+                  },
+                ],
+              },
+            }
           };
-          returnMessage = await questionTemplate(cs.questionMessageItem());
         } else {
           // ユーザーのセッション取得
           const userSession: Session = sessions[event.source.userId];
           if (userSession) {
             const cs = userSession.getState();
+            if(cs.getSeido() === "kumamoto") {
+              systemsData = require(`../../../datas/kumamoto/systemsdata.json`);
+            } else if(cs.getSeido() === "shibuya") {
+              systemsData = require(`../../../datas/shibuya/systemsdata.json`);
+            }
+            console.log(cs.getSeido())
             cs.selectAnswerByText(
               userSession.getBeforeQuestionId(),
               event.message.text
@@ -109,7 +112,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                 const systemsCount = results.length;
                 const resultId = await db.queryServices(
                   cs.getSystems(),
-                  event.source.userId
+                  event.source.userId,
+                  cs.getSeido()
                 );
                 returnMessage = await carouselTemplate(
                   results.slice(0, 9),
@@ -126,7 +130,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                 const systemsCount = results.length;
                 const resultId = await db.queryServices(
                   cs.getSystems(),
-                  event.source.userId
+                  event.source.userId,
+                  cs.getSeido()
                 );
                 returnMessage = await carouselTemplate(
                   results,
@@ -161,8 +166,74 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
     case "follow":
       returnMessage = {
         type: "text",
-        text: "お友だち登録ありがとうございます！\n「制度を探す」と送信してみなさんにぴったりの制度を見つけてください！\n ━━━━━━━━━━━━ \n 現在は「渋谷区に在住」していて「20歳未満の子どもを養育している方」に向けて制度のおすすめをしています（他の市区町村に在住の方はもうしばらくお待ちください...） \n ━━━━━━━━━━━━ \n このアカウントは「株式会社Civichat」が運営しています。 \n  https://civichat.jp/ \n LINE（株）が提供、または新たに取得される情報の取り扱いについては以下をご確認ください。 \n https://terms.line.me/OA_privacy?lang=ja",
+        text: "お友だち登録ありがとうございます！\\n「制度を探す」と送信してみなさんにぴったりの制度を見つけてください！\\n ━━━━━━━━━━━━ \\n 現在は「渋谷区に在住」していて「20歳未満の子どもを養育している方」に向けて制度のおすすめをしています（他の市区町村に在住の方はもうしばらくお待ちください...） \\n ━━━━━━━━━━━━ \\n このアカウントは「株式会社Civichat」が運営しています。 \\n  https://civichat.jp/ \\n LINE（株）が提供、または新たに取得される情報の取り扱いについては以下をご確認ください。 \\n https://terms.line.me/OA_privacy?lang=ja",
       };
+      break;
+    case "postback":
+      if (event.postback.data === "start-kumamoto" || event.postback.data === "start-shibuya") {
+        const selected = event.postback.data.split("-")[1];
+        console.log('selected', selected);
+
+        // 上でやってた初期化をここでやる
+        let jsonAnswers, jsonQuestions, systems, systemsData;
+        if(selected === "kumamoto") {
+          jsonAnswers = require(`../../../datas/kumamoto/answers.json`);
+          jsonQuestions = require(`../../../datas/kumamoto/questions.json`);
+          systems = require(`../../../datas/kumamoto/systems.json`);
+        } else if(selected === "shibuya") {
+          jsonAnswers = require(`../../../datas/shibuya/answers.json`);
+          jsonQuestions = require(`../../../datas/shibuya/questions.json`);
+          systems = require(`../../../datas/shibuya/systems.json`);
+        }
+        const questions: Array<Question> = [];
+
+        jsonAnswers["qnas"].forEach((question: Qna, i: number) => {
+          const answers: Array<Answer> = [];
+          question.answers.forEach((answer: answer, j: number) => {
+            let syst: syst = {};
+
+            systems["systems"].forEach((system: string, k: number) => {
+              syst = {
+                ...syst,
+                [system]: answer.systems[k].system_answer === "1",
+              };
+            });
+
+            answers.push(
+              new Answer(
+                jsonQuestions.questions[i].answers[j].answer_id,
+                jsonQuestions.questions[i].answers[j].answer_text,
+                syst
+              )
+            );
+          });
+          questions.push(
+            new Question(
+              jsonQuestions.questions[i].question_id,
+              jsonQuestions.questions[i].question_text,
+              answers
+            )
+          );
+        });
+
+        // 初期ChatStateの生成
+        const cs = new ChatState(systems["systems"], questions, selected);
+        // Sessionに前回のデータが残ってたら除去
+        console.log("cs",cs)
+        console.log('session', sessions[event.source.userId])
+        if (sessions[event.source.userId]) {
+          delete sessions[event.source.userId];
+        }
+        sessions = {
+          ...sessions,
+          [event.source.userId]: new Session(
+            cs,
+            cs.selectQuestionFromPriority().id
+          ),
+        };
+        console.log("cs.questionMessageItem()",cs.questionMessageItem())
+        returnMessage = await questionTemplate(cs.questionMessageItem());
+      }
       break;
   }
   client.replyMessage(event.replyToken, returnMessage);
