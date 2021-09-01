@@ -82,7 +82,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   },
                 ],
               },
-            }
+            },
           };
         } else {
           // ユーザーのセッション取得
@@ -90,12 +90,11 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           let systemsData;
           if (userSession) {
             const cs = userSession.getState();
-            if(cs.getSeido() === "kumamoto") {
+            if (cs.getSeido() === "kumamoto") {
               systemsData = require(`../../../datas/kumamoto/systemsdata.json`);
-            } else if(cs.getSeido() === "shibuya") {
+            } else if (cs.getSeido() === "shibuya") {
               systemsData = require(`../../../datas/shibuya/systemsdata.json`);
             }
-            console.log(cs.getSeido())
             cs.selectAnswerByText(
               userSession.getBeforeQuestionId(),
               event.message.text
@@ -171,17 +170,19 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
       };
       break;
     case "postback":
-      if (event.postback.data === "start-kumamoto" || event.postback.data === "start-shibuya") {
+      if (
+        event.postback.data === "start-kumamoto" ||
+        event.postback.data === "start-shibuya"
+      ) {
         const selected = event.postback.data.split("-")[1];
-        console.log('selected', selected);
 
         // 上でやってた初期化をここでやる
-        let jsonAnswers, jsonQuestions, systems, systemsData;
-        if(selected === "kumamoto") {
+        let jsonAnswers, jsonQuestions, systems;
+        if (selected === "kumamoto") {
           jsonAnswers = require(`../../../datas/kumamoto/answers.json`);
           jsonQuestions = require(`../../../datas/kumamoto/questions.json`);
           systems = require(`../../../datas/kumamoto/systems.json`);
-        } else if(selected === "shibuya") {
+        } else if (selected === "shibuya") {
           jsonAnswers = require(`../../../datas/shibuya/answers.json`);
           jsonQuestions = require(`../../../datas/shibuya/questions.json`);
           systems = require(`../../../datas/shibuya/systems.json`);
@@ -220,8 +221,6 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
         // 初期ChatStateの生成
         const cs = new ChatState(systems["systems"], questions, selected);
         // Sessionに前回のデータが残ってたら除去
-        console.log("cs",cs)
-        console.log('session', sessions[event.source.userId])
         if (sessions[event.source.userId]) {
           delete sessions[event.source.userId];
         }
@@ -232,7 +231,6 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
             cs.selectQuestionFromPriority().id
           ),
         };
-        console.log("cs.questionMessageItem()",cs.questionMessageItem())
         returnMessage = await questionTemplate(cs.questionMessageItem());
       }
       break;
