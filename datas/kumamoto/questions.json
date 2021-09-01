@@ -1,247 +1,247 @@
 {
   "questions": [
     {
-      "question_id": "4cd5fe57-ab4b-41a9-8916-ba4c4c1c7e80",
+      "question_id": "2317dd3d-f4a6-4d92-9340-4df51751988a",
       "question_text": "罹災証明書は？",
       "answers": [
         {
-          "answer_id": "00740e43-4208-40ec-95a6-0622db756683",
+          "answer_id": "7a4ddcfd-4051-4bce-998b-d43fe6d6ea2b",
           "answer_text": "持っている（あり）"
         },
         {
-          "answer_id": "1df9ef6a-0842-4690-b0c5-4a284d211e30",
+          "answer_id": "0735f882-8fa4-404e-be7d-705049a2c0bd",
           "answer_text": "持っていない"
         }
       ]
     },
     {
-      "question_id": "bd8eded2-8eec-4095-b6b6-df9d89a18c9f",
+      "question_id": "683440c6-7f8d-46d1-9089-958f45015130",
       "question_text": "罹災証明書の被害区分は？",
       "answers": [
         {
-          "answer_id": "67058cac-d906-48b7-9cf0-e9e5bc5b53fd",
+          "answer_id": "4c523d55-c39c-464b-8017-1d28049e4f68",
           "answer_text": "全壊"
         },
         {
-          "answer_id": "3c69aa38-c8d2-49d1-821a-dd284fc34177",
+          "answer_id": "4acdc440-a0a4-4b63-b397-729fb31f7823",
           "answer_text": "大規模半壊"
         },
         {
-          "answer_id": "079cfd28-fca2-4f54-a2cf-4a213330bcf4",
+          "answer_id": "3cc4785d-7fcc-4966-8397-5d777b65ec48",
           "answer_text": "半壊"
         },
         {
-          "answer_id": "c9e56403-258d-4627-aed7-c62881b12bae",
+          "answer_id": "c6489177-2747-4cd9-a5b5-71041e93f557",
           "answer_text": "一部損壊"
         }
       ]
     },
     {
-      "question_id": "a04c8d2c-7495-41bc-b0a0-c75bdd86b220",
+      "question_id": "c6ed41c7-0123-4f99-bd6b-b9734dec61eb",
       "question_text": "罹災証明書上の世帯の人数は？",
       "answers": [
         {
-          "answer_id": "5c3cca0b-effe-4095-851f-4a197c57399b",
+          "answer_id": "8b21ad19-ba0a-4428-812a-b37249bfc804",
           "answer_text": "単身"
         },
         {
-          "answer_id": "28539a01-5f9c-4845-9944-a6ae9ddfa55b",
+          "answer_id": "ec718090-4451-49a6-b010-8c1284c6c3c4",
           "answer_text": "２人以上"
         }
       ]
     },
     {
-      "question_id": "ddf438a1-43c7-49bb-8d4b-a064f3f15f36",
+      "question_id": "7eed19e8-4332-4d64-b99a-4acda5ff3ef5",
       "question_text": "自分又は世帯の中に該当者がいるか？",
       "answers": [
         {
-          "answer_id": "129938bc-5f7f-4345-b95c-bdd2c0577fcd",
+          "answer_id": "18826f7f-407f-4c05-b877-ccff62f945ea",
           "answer_text": "高齢者"
         },
         {
-          "answer_id": "3c432e48-7df9-446b-84d1-e13f1e8b556d",
+          "answer_id": "76a10a7c-97d2-47de-af1d-1c6c4058f10a",
           "answer_text": "障がい者"
         },
         {
-          "answer_id": "cc45e3a5-ef88-4db9-8c3b-923ffb8e60fe",
+          "answer_id": "b500b837-3f58-4a51-9a3a-6f902c9ca414",
           "answer_text": "両方"
         },
         {
-          "answer_id": "e39efc9c-95e2-4aa4-a662-3792f34014e1",
+          "answer_id": "09e47e5d-871b-445f-9f6f-de1654ab8c4d",
           "answer_text": "ない"
         }
       ]
     },
     {
-      "question_id": "5eae5dbf-8ff7-4b69-9279-5aefb1e1c679",
+      "question_id": "45a94dd9-358e-4a1a-9fdc-2c63d2b9f2ec",
       "question_text": "ひとり親世帯に該当するか？",
       "answers": [
         {
-          "answer_id": "d527c3c7-4bd6-4508-82dc-260e6c886ea9",
+          "answer_id": "32b01340-b4f1-4646-afba-2375fbb3f058",
           "answer_text": "ひとり親世帯"
         },
         {
-          "answer_id": "0ad57049-5c51-46fd-a8de-cbe49087dd60",
+          "answer_id": "50003322-a55b-468f-ba70-f54d92e2e261",
           "answer_text": "ひとり親世帯ではない"
         }
       ]
     },
     {
-      "question_id": "c3f8a286-21fe-44f1-80cb-b71b9fd0ea37",
+      "question_id": "83692ebd-eacc-47cd-b354-8153e110d316",
       "question_text": "災害後、生計維持者の収入は？",
       "answers": [
         {
-          "answer_id": "57165413-c256-4934-8734-77766148ace9",
+          "answer_id": "b99da8db-c670-4fca-99b8-ae19c1f30305",
           "answer_text": "収入が減った"
         },
         {
-          "answer_id": "3c518d92-1ac2-4bd0-9412-684fcaa11ded",
+          "answer_id": "ba5ebfe8-2c99-4983-8360-26ebb7ff249a",
           "answer_text": "変わらない（増えた）"
         }
       ]
     },
     {
-      "question_id": "137c7fd0-e689-4386-acf5-6c9f36dc5f10",
+      "question_id": "d0dc812b-36f9-412c-8f55-56ed07f45d34",
       "question_text": "被災住宅の所有は？",
       "answers": [
         {
-          "answer_id": "aa78c237-60a4-43f5-b276-ead54a0f800a",
+          "answer_id": "5d2f1778-dea4-48d1-b7ea-07fd84e8d5e4",
           "answer_text": "持ち家"
         },
         {
-          "answer_id": "3b33728d-3ad5-4ef1-837e-c87f6cfdfa39",
+          "answer_id": "4c89ee39-d768-44a2-b438-f4d98cbd634f",
           "answer_text": "賃貸"
         }
       ]
     },
     {
-      "question_id": "e3a680b1-a56d-4739-9d7f-4ca0921a8bd8",
+      "question_id": "c3016804-eee3-4c90-9751-75726a9b77ab",
       "question_text": "宅地に被害があったか？",
       "answers": [
         {
-          "answer_id": "9f00778e-d58e-4006-9af2-9f7e1c7db86f",
+          "answer_id": "21ee9efe-340a-4d5e-a379-2d0b258428e3",
           "answer_text": "宅地被害あり"
         },
         {
-          "answer_id": "20ad6674-4dcc-41aa-9f3d-c62b1f84cb01",
+          "answer_id": "ca716e78-3b1a-4e4c-8fd0-8389ca372b71",
           "answer_text": "ない"
         }
       ]
     },
     {
-      "question_id": "75ec935f-eca2-4d29-9c75-c94e19bf6777",
+      "question_id": "d26c92b6-f49d-4117-b0c9-e97c12c3f248",
       "question_text": "被災住宅を解体するか？（賃貸オーナーが解体する場合含む）",
       "answers": [
         {
-          "answer_id": "31b45dc1-4606-47ef-bc17-0a5cb1ba40b5",
+          "answer_id": "5ec5a36e-2546-4025-977b-ca2aaad5ad1c",
           "answer_text": "解体する"
         },
         {
-          "answer_id": "a49c8132-b951-4c15-b42c-f2e6dbece870",
+          "answer_id": "4ab4df12-4947-4cda-bf8f-922b0d91b2bf",
           "answer_text": "しない"
         }
       ]
     },
     {
-      "question_id": "80845491-dc96-4b63-9b28-1d5eddf10779",
+      "question_id": "2bab4d6c-bcd8-46cd-aba7-3caba51b7708",
       "question_text": "住まいの再建場所は熊本県内か？",
       "answers": [
         {
-          "answer_id": "38d641b0-9b28-417b-ba03-81e030a26960",
+          "answer_id": "96a783a2-0bca-463c-9ad1-c99e5c4ef5f2",
           "answer_text": "県内"
         },
         {
-          "answer_id": "67440a7a-2d32-458a-b9df-cb94304c6ea0",
+          "answer_id": "7777c0df-c860-4518-b873-f89ed916a7b8",
           "answer_text": "県外"
         }
       ]
     },
     {
-      "question_id": "87a9813c-e0cc-46e8-882c-e8ad49b6093a",
+      "question_id": "855e230d-1a7b-4f1b-90f9-3e7ecafb5fea",
       "question_text": "住まいの再建方法は？",
       "answers": [
         {
-          "answer_id": "4f51eb2e-7dac-43f0-990f-ad77b8081821",
+          "answer_id": "6756a7bb-2b3a-4377-8afe-125a2840c0b6",
           "answer_text": "新築または購入"
         },
         {
-          "answer_id": "73814808-d3a6-42da-b04f-69155cdd97e0",
+          "answer_id": "556b3d06-66a1-44cb-abaf-1ddcee3e7e00",
           "answer_text": "補修"
         },
         {
-          "answer_id": "b5a3d689-0cb8-4867-87c8-657e34d21418",
+          "answer_id": "0565be13-e770-44c8-918b-0bc835865a71",
           "answer_text": "賃貸"
         },
         {
-          "answer_id": "077b4abc-c842-4d56-9549-a533e0d5a11a",
+          "answer_id": "7c378b1b-ba55-4b06-9e9c-3f79d77956ff",
           "answer_text": "公営住宅"
         },
         {
-          "answer_id": "78380425-771e-4417-8b64-8b540eeb555b",
+          "answer_id": "607d4447-80bb-4116-9a97-8b89799e8ff4",
           "answer_text": "その他"
         }
       ]
     },
     {
-      "question_id": "f8dc8f24-d40c-466f-b1f1-c325729d0338",
+      "question_id": "244fbb1f-1b6a-4d83-83e3-611994c68500",
       "question_text": "再建先となる住まいへ転居が必要？",
       "answers": [
         {
-          "answer_id": "70f4ae4a-96a7-468a-8b7a-5e480131a367",
+          "answer_id": "389b13ed-67cd-49b5-ab6d-18c98aa42505",
           "answer_text": "転居が必要"
         },
         {
-          "answer_id": "752c7c1c-703a-41ec-8730-2290e7b028ba",
+          "answer_id": "681e02ab-1dc8-4340-8efa-5c2997ed6fe2",
           "answer_text": "ない"
         }
       ]
     },
     {
-      "question_id": "f631bace-93c0-40ce-847c-bfef5c981b7f",
+      "question_id": "0ef7c5ec-cf0d-47c9-ba07-fcc1c8963358",
       "question_text": "新築・購入、補修にあたり住宅ローンを組むか？",
       "answers": [
         {
-          "answer_id": "b86913b4-dfbd-43ce-b5f9-a8f5f78b929e",
+          "answer_id": "01005450-58e5-4dcf-84d1-1e1aaf461829",
           "answer_text": "住宅ローン（自分又は２親等以内）"
         },
         {
-          "answer_id": "7820b45e-9535-4241-84e7-656ee4843231",
+          "answer_id": "a97616c9-db30-4b7b-9e7f-bc4c0e0fcc09",
           "answer_text": "リバースモーゲージ型融資"
         },
         {
-          "answer_id": "a72465d7-e8ba-4ff2-8fc5-16c857532876",
+          "answer_id": "2c1ca5a7-6866-4a4a-9261-5f27343fdb28",
           "answer_text": "未定（予定）"
         },
         {
-          "answer_id": "2da8e83b-74c1-4041-929d-42381466b99f",
+          "answer_id": "4401b62a-17de-403e-a094-8c21e19428ea",
           "answer_text": "組まない・該当しない"
         }
       ]
     },
     {
-      "question_id": "f1a56d11-a964-4373-9ebf-10a97f69c360",
+      "question_id": "3f25d8db-c1be-4127-8b5f-5f6fb8e573a8",
       "question_text": "被災住宅にローンが残っているか？",
       "answers": [
         {
-          "answer_id": "6b59acbb-39f6-4847-9aaa-7b7ab50eed74",
+          "answer_id": "2ad6fc3b-0a17-40ac-9998-2b2ea70f4e08",
           "answer_text": "住宅ローンあり"
         },
         {
-          "answer_id": "3e4b5336-f643-4447-92ca-ba42dc4f9019",
+          "answer_id": "b2c3607c-a825-409f-a2ca-600f071d612e",
           "answer_text": "残っていない、ない"
         }
       ]
     },
     {
-      "question_id": "18744fc4-bedc-4c24-9a4a-d9b8e5081bdc",
+      "question_id": "d601bb35-0409-4f58-8d50-19c78e913c77",
       "question_text": "プレハブ・みなし仮設住宅の利用は？",
       "answers": [
         {
-          "answer_id": "4653c99c-cca7-451a-9d01-43eda9bb7a09",
+          "answer_id": "ad15a62a-1f0c-4e7d-b58c-53cd412ed347",
           "answer_text": "利用あり"
         },
         {
-          "answer_id": "9bc79b16-3350-48c9-a9ac-67a9d92a8891",
+          "answer_id": "5e27e3d6-65a4-48c0-a907-b542cf51cae7",
           "answer_text": "利用なし"
         }
       ]
