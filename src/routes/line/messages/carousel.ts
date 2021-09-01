@@ -1,7 +1,7 @@
 import * as types from "@line/bot-sdk/lib/types";
 import { SystemProperty } from "../../../classes";
 
-module.exports = async function carouselTemplate(
+module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
   resultId: string

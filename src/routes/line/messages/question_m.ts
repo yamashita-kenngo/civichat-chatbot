@@ -3,7 +3,7 @@ import * as types from "@line/bot-sdk/lib/types";
 
 import { Question } from "../../../classes";
 
-module.exports = async (item: Question) => {
+module.exports = (item: Question) => {
   const answerContents: types.FlexComponent[] = [];
   item.answers.forEach((answer, i) => {
     answerContents.push({
