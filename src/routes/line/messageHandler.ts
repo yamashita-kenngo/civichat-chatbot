@@ -87,6 +87,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
         } else {
           // ユーザーのセッション取得
           const userSession: Session = sessions[event.source.userId];
+          let systemsData;
           if (userSession) {
             const cs = userSession.getState();
             if(cs.getSeido() === "kumamoto") {
