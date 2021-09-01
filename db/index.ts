@@ -163,9 +163,8 @@ exports.getQueryResult = async (resultId: string) => {
 
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = async () => {
-  const systemsData = require("../datas/shibuya/systemsdata.json");
-  for (const item of systemsData.systemsData) {
-    const date = new Date(0);
+  const systemsDataShibuya = require("../datas/shibuya/systemsdata.json");
+  for (const item of systemsDataShibuya.systemsData) {
     await pg.query({
       text: "INSERT INTO shibuya (service_id,name,content_abstract,content_url,theme) VALUES ($1,$2,$3,$4,$5) ;",
       values: [
@@ -180,7 +179,6 @@ exports.saveInitialDatafromJson = async () => {
 
   const systemsDataKumamoto = require("../datas/kumamoto/systemsdata.json");
   for (const item of systemsDataKumamoto.systemsData) {
-    const date = new Date(0);
     await pg.query({
       text: "INSERT INTO kumamoto (service_id,name,content_abstract,content_url,theme) VALUES ($1,$2,$3,$4,$5) ;",
       values: [
