@@ -198,7 +198,7 @@
     },
     {
       "question_id": "e4ab621b-1164-4fe8-bd48-fb0260cd3ba2",
-      "question_text": "新築・購入、補修にあたり住宅ローンを組むか？",
+      "question_text": "新築•購入、補修にあたり住宅ローンを組むか？",
       "answers": [
         {
           "answer_id": "e9e8416f-47e4-4a4e-bc07-d04d6951ef35",
@@ -214,7 +214,7 @@
         },
         {
           "answer_id": "1c432fe4-1e4a-4918-94b5-54cf59ee2302",
-          "answer_text": "組まない・該当しない"
+          "answer_text": "組まない•該当しない"
         }
       ]
     },
@@ -234,7 +234,7 @@
     },
     {
       "question_id": "fbb13a20-0dda-47da-896a-b1743ee25e5d",
-      "question_text": "プレハブ・みなし仮設住宅の利用は？",
+      "question_text": "プレハブ•みなし仮設住宅の利用は？",
       "answers": [
         {
           "answer_id": "e6388321-e42f-4290-b0a0-49fe64b03121",
