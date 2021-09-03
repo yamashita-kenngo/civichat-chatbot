@@ -9,8 +9,6 @@ module.exports = function carouselTemplate(
   if (items.length === 0) {
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
   }
-  console.log(items)
-  // とど：プロパティーがあってもなくても柔軟に対応できるようにする
   const carouselContents = [
     {
       type: "bubble",
@@ -97,8 +95,6 @@ module.exports = function carouselTemplate(
       },
     });
   }
-  console.log(`利用できる${systemsCount}個の制度を見る`);
-  console.log(`${process.env.LIFF_URL}/others/${resultId}`);
   const returnMessage: types.Message = {
     type: "flex",
     altText: "検索結果",
