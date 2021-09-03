@@ -80,6 +80,15 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     },
                     style: "primary",
                   },
+                  {
+                    type: "button",
+                    action: {
+                      type: "postback",
+                      label: "渋谷幼稚・保育園Ver.",
+                      data: "start-shibuyaKindergarten",
+                    },
+                    style: "primary",
+                  },
                 ],
               },
             },
@@ -94,6 +103,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
               systemsData = require(`../../../datas/kumamoto/systemsdata.json`);
             } else if (cs.getSeido() === "shibuya") {
               systemsData = require(`../../../datas/shibuya/systemsdata.json`);
+            }else if (cs.getSeido() === "shibuyaKindergarten") {
+              systemsData = require(`../../../datas/shibuyaKindergarten/systemsdata.json`);
             }
             cs.selectAnswerByText(
               userSession.getBeforeQuestionId(),
@@ -101,7 +112,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
             );
             cs.maintenanceQuestions();
             if (cs.isEnded()) {
-              console.log("制度推薦終了");
+              console.log(`制度推薦終了,${cs.getSystems().length}個の制度`);
               //カルーセルが9枚より上
               if (cs.getSystems().length > 9) {
                 const results = cs.getSystems().map((system: string) => {
@@ -172,7 +183,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
     case "postback":
       if (
         event.postback.data === "start-kumamoto" ||
-        event.postback.data === "start-shibuya"
+        event.postback.data === "start-shibuya" ||
+        event.postback.data === "start-shibuyaKindergarten" 
       ) {
         const selected = event.postback.data.split("-")[1];
 
@@ -186,6 +198,10 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           jsonAnswers = require(`../../../datas/shibuya/answers.json`);
           jsonQuestions = require(`../../../datas/shibuya/questions.json`);
           systems = require(`../../../datas/shibuya/systems.json`);
+        } else if (selected === "shibuyaKindergarten") {
+          jsonAnswers = require(`../../../datas/shibuyaKindergarten/answers.json`);
+          jsonQuestions = require(`../../../datas/shibuyaKindergarten/questions.json`);
+          systems = require(`../../../datas/shibuyaKindergarten/systems.json`);
         }
         const questions: Array<Question> = [];
 

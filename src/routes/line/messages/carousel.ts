@@ -4,11 +4,13 @@ import { SystemProperty } from "../../../classes";
 module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
-  resultId: string
+  resultId: string,
 ) {
   if (items.length === 0) {
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
   }
+  console.log(items)
+  // とど：プロパティーがあってもなくても柔軟に対応できるようにする
   const carouselContents = [
     {
       type: "bubble",
@@ -49,7 +51,7 @@ module.exports = function carouselTemplate(
             contents: [
               {
                 type: "text",
-                text: item["タグ（テーマ）"],
+                text: item["タグ（テーマ）"] || item["行政サービス分類"] || item["エリア"] || "結果",
                 wrap: true,
                 align: "end",
                 color: "#8e8989",
@@ -71,7 +73,7 @@ module.exports = function carouselTemplate(
         contents: [
           {
             type: "text",
-            text: item["タイトル（制度名）"],
+            text: item["タイトル（制度名）"] || item["制度名"] || item["幼稚園•保育園のタイトル"] || 'タイトル',
             weight: "bold",
             size: "xl",
             wrap: true,
@@ -87,7 +89,7 @@ module.exports = function carouselTemplate(
             action: {
               type: "uri",
               label: "詳細を見る",
-              uri: item["詳細参照先"],
+              uri: item["詳細参照先"] || "https://google.com",
             },
             style: "secondary",
           },
@@ -95,6 +97,8 @@ module.exports = function carouselTemplate(
       },
     });
   }
+  console.log(`利用できる${systemsCount}個の制度を見る`);
+  console.log(`${process.env.LIFF_URL}/others/${resultId}`);
   const returnMessage: types.Message = {
     type: "flex",
     altText: "検索結果",

@@ -130,17 +130,15 @@ exports.queryServices = async (
 
   for (const systemId of systemIds) {
     const res = await pg.query({
-      text: `SELECT * FROM ${seido} WHERE service_id=$1;`,
+      text: `SELECT * FROM ${seido} WHERE psid=$1;`,
       values: [String(systemId)],
     });
     //検索結果を配列に格納
     resultSaveData.result.push({
-      title: res.rows[0].name,
-      overview: res.rows[0].content_abstract,
-      detailUrl: res.rows[0].content_url,
+      ...res.rows[0]
     });
+    
   }
-
   const saveString = JSON.stringify(resultSaveData);
 
   //保存する
