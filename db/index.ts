@@ -51,7 +51,7 @@ const pg = new Client(pgConfig);
 
 pg.connect()
   .then(() => console.log("pg Connected successfuly"))
-  .catch(() => console.log("err"));
+  .catch(() => console.log("pr err"));
 
 exports.getServiceDetail = async (serviceId: string) => {
   // 制度IDから制度詳細を返します
