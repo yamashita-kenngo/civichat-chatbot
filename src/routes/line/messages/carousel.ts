@@ -4,7 +4,7 @@ import { SystemProperty } from "../../../classes";
 module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
-  resultId: string,
+  resultId: string
 ) {
   if (items.length === 0) {
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
@@ -49,7 +49,11 @@ module.exports = function carouselTemplate(
             contents: [
               {
                 type: "text",
-                text: item["タグ（テーマ）"] || item["行政サービス分類"] || item["エリア"] || "結果",
+                text:
+                  item["タグ（テーマ）"] ||
+                  item["行政サービス分類"] ||
+                  item["エリア"] ||
+                  "結果",
                 wrap: true,
                 align: "end",
                 color: "#8e8989",
@@ -71,7 +75,11 @@ module.exports = function carouselTemplate(
         contents: [
           {
             type: "text",
-            text: item["タイトル（制度名）"] || item["制度名"] || item["幼稚園•保育園のタイトル"] || 'タイトル',
+            text:
+              item["タイトル（制度名）"] ||
+              item["制度名"] ||
+              item["幼稚園•保育園のタイトル"] ||
+              "タイトル",
             weight: "bold",
             size: "xl",
             wrap: true,

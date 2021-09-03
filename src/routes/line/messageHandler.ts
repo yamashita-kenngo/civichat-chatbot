@@ -103,7 +103,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
               systemsData = require(`../../../datas/kumamoto/systemsdata.json`);
             } else if (cs.getSeido() === "shibuya") {
               systemsData = require(`../../../datas/shibuya/systemsdata.json`);
-            }else if (cs.getSeido() === "shibuyaKindergarten") {
+            } else if (cs.getSeido() === "shibuyaKindergarten") {
               systemsData = require(`../../../datas/shibuyaKindergarten/systemsdata.json`);
             }
             cs.selectAnswerByText(
@@ -184,7 +184,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
       if (
         event.postback.data === "start-kumamoto" ||
         event.postback.data === "start-shibuya" ||
-        event.postback.data === "start-shibuyaKindergarten" 
+        event.postback.data === "start-shibuyaKindergarten"
       ) {
         const selected = event.postback.data.split("-")[1];
 
