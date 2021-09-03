@@ -116,7 +116,11 @@ export type resultSaveData = {
   resultId: string;
 };
 
-exports.queryServices = async (systemIds: Array<string>, lineId: string, seido: string) => {
+exports.queryServices = async (
+  systemIds: Array<string>,
+  lineId: string,
+  seido: string
+) => {
   const resultId: string = uuid();
 
   const resultSaveData: resultSaveData = {
@@ -166,27 +170,112 @@ exports.saveInitialDatafromJson = async () => {
   const systemsDataShibuya = require("../datas/shibuya/systemsdata.json");
   for (const item of systemsDataShibuya.systemsData) {
     await pg.query({
-      text: "INSERT INTO shibuya (service_id,name,content_abstract,content_url,theme) VALUES ($1,$2,$3,$4,$5) ;",
+      text: "INSERT INTO shibuya (psid,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,url,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
       values: [
         item["PSID"],
+        item["制度番号"],
+        item["元制度番号"],
+        item["制度変更区分"],
+        item["制度所管組織"],
+        item["都道府県"],
+        item["市町村"],
         item["タイトル（制度名）"],
         item["概要"],
+        item["支援内容"],
+        item["対象者"],
+        item["利用・申請方法"],
+        item["受付開始日"],
+        item["受付終了日"],
         item["詳細参照先"],
+        item["お問い合わせ先"],
+        item["公開日"],
+        item["タグ"],
+        item["テーマ"],
+        item["タグ（カテゴリー）"],
+        item["タグ（事業者分類）"],
+        item["タグ（事業者分類）"],
+        item["タグ（キーワード）"],
         item["タグ（テーマ）"],
       ],
     });
+  
   }
 
   const systemsDataKumamoto = require("../datas/kumamoto/systemsdata.json");
   for (const item of systemsDataKumamoto.systemsData) {
     await pg.query({
-      text: "INSERT INTO kumamoto (service_id,name,content_abstract,content_url,theme) VALUES ($1,$2,$3,$4,$5) ;",
+      text: "INSERT INTO kumamoto (psid,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
       values: [
         item["PSID"],
-        item["タイトル（制度名）"],
-        item["概要"],
+        item["制度管理番号"],
+        item["制度名"],
+        item["対象者"],
+        item["サブタイトル"],
+        item["表示優先度"],
+        item["公開日程"],
+        item["申請期限（公開終了日）"],
+        item["公開・非公開（チェックで公開）"],
+        item["制度概要"],
+        item["制度所管組織"],
+        item["親制度"],
+        item["親制度との関係性"],
+        item["条件"],
+        item["用途・対象物"],
+        item["対象地域"],
+        item["支援内容"],
+        item["留意事項"],
+        item["手続き等"],
+        item["必要なもの"],
+        item["必要書類のURL"],
+        item["申請窓口"],
+        item["受付可能日時（受付日）"],
+        item["受付可能日時（受付時間）"],
+        item["申請可能URL"],
+        item["受付開始日"],
+        item["受付終了日"],
+        item["お問い合わせ先"],
         item["詳細参照先"],
-        item["タグ（テーマ）"],
+        item["行政サービス分類"],
+        item["ライフステージ分類"],
+        item["お困りごと分類"],
+      ],
+    });
+  }
+
+  const systemsDataShibuyaKindergarten = require("../datas/shibuyaKindergarten/systemsdata.json");
+  for (const item of systemsDataShibuyaKindergarten.systemsData) {
+    await pg.query({
+      text: "INSERT INTO shibuyakindergarten (psid,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,url,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29) ;",
+      values: [
+        item["PSID"],
+        item["都道府県"],
+        item["市町村"],
+        item["エリア"],
+        item["幼稚園・保育園のタイトル"],
+        item["対象年齢"],
+        item["施設のカテゴリ"],
+        item["施設の運営者"],
+        item["休園日"],
+        item["園庭"],
+        item["タオルの持ち込み"],
+        item["オムツの持ち帰り"],
+        item["駐輪場"],
+        item["給食・離乳食"],
+        item["見学"],
+        item["延長保育の対応時間"],
+        item["アレルギー対応"],
+        item["入園可能"],
+        item["申し込み受付先"],
+        item["詳細参照先"],
+        item["お問い合わせ先"],
+        item["公開日"],
+        item["保育施設の空き状況（0さい）"],
+        item["保育施設の空き状況（1さい）"],
+        item["保育施設の空き状況（2さい）"],
+        item["保育施設の空き状況（3さい）"],
+        item["保育施設の空き状況（4さい）"],
+        item["保育施設の空き状況（5さい）"],
+        item["住所"],
       ],
     });
   }
