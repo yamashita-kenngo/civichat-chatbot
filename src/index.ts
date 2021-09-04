@@ -30,6 +30,11 @@ app.post("/user", function (req, res) {
   require("./routes/user/post");
 });
 
+app.get("/info/:serviceId", function (req, res) {
+  const info = require("./routes/info/get");
+  info(req, res);
+});
+
 app.get("/others", function (req, res) {
   const others = require("./routes/others/get");
   others(req, res);
