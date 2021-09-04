@@ -100,11 +100,11 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           if (userSession) {
             const cs = userSession.getState();
             if (cs.getSeido() === "kumamoto_earthquake") {
-              systemsData = require('../../../datas/kumamotoEarthquake/systemsdata.json');
+              systemsData = require("../../../datas/kumamotoEarthquake/systemsdata.json");
             } else if (cs.getSeido() === "shibuya_parenting") {
-              systemsData = require('../../../datas/shibuyaParenting/systemsdata.json');
+              systemsData = require("../../../datas/shibuyaParenting/systemsdata.json");
             } else if (cs.getSeido() === "shibuya_preschool") {
-              systemsData = require('../../../datas/shibuyaPreschool/systemsdata.json');
+              systemsData = require("../../../datas/shibuyaPreschool/systemsdata.json");
             }
             cs.selectAnswerByText(
               userSession.getBeforeQuestionId(),

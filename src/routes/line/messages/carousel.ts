@@ -49,7 +49,11 @@ module.exports = function carouselTemplate(
             contents: [
               {
                 type: "text",
-                text: item["タグ（テーマ）"] || item["行政サービス分類"] || item["エリア"] || "結果",
+                text:
+                  item["タグ（テーマ）"] ||
+                  item["行政サービス分類"] ||
+                  item["エリア"] ||
+                  "結果",
                 wrap: true,
                 align: "end",
                 color: "#8e8989",
