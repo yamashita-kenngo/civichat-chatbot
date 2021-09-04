@@ -1,0 +1,108 @@
+{
+  "questions": [
+    {
+      "question_id": "c225f7af-62b5-4d3d-9382-9d9c7f88dffa",
+      "question_text": "ひとり親世帯に該当しているか",
+      "answers": [
+        {
+          "answer_id": "d5147c0d-a323-483b-a654-964da5672b53",
+          "answer_text": "している"
+        },
+        {
+          "answer_id": "64a295ca-51f3-4f0d-ac5c-1be14a76e9d4",
+          "answer_text": "していない"
+        }
+      ]
+    },
+    {
+      "question_id": "14d0e0bb-ce6b-4449-9234-70f2f70f176c",
+      "question_text": "扶養している子供の年齢",
+      "answers": [
+        {
+          "answer_id": "9ef0f989-0c00-4b6e-8192-cfd7610187aa",
+          "answer_text": "生後4ヶ月未満"
+        },
+        {
+          "answer_id": "df761cac-f5dc-4138-924d-9f5017e4e781",
+          "answer_text": "2歳未満"
+        },
+        {
+          "answer_id": "3e15db5a-ef39-4e9a-94a4-ba39839a242d",
+          "answer_text": "小学校就学前（6歳以下）"
+        },
+        {
+          "answer_id": "2471685e-87cd-4b2b-bca0-6a84ed423d41",
+          "answer_text": "中学生以下（15歳以下）"
+        },
+        {
+          "answer_id": "03e613e2-3ad7-4542-95ff-9c3e82024dd9",
+          "answer_text": "18歳以下"
+        },
+        {
+          "answer_id": "f73f1c92-75f1-42ce-93ea-202f62ed7b90",
+          "answer_text": "20歳未満"
+        },
+        {
+          "answer_id": "808426a5-a164-4d06-864f-563cfe3a24f1",
+          "answer_text": "それ以上"
+        }
+      ]
+    },
+    {
+      "question_id": "b99c5cc4-2ca2-4b3f-9632-baa6bf2a3d9d",
+      "question_text": "児童扶養手当の支給を受けている",
+      "answers": [
+        {
+          "answer_id": "2e138415-4e3f-4657-a26e-f5dcdf1f10f5",
+          "answer_text": "はい"
+        },
+        {
+          "answer_id": "9f860977-a6e5-4819-95bb-ac15530125e8",
+          "answer_text": "いいえ"
+        }
+      ]
+    },
+    {
+      "question_id": "6bbf2ea4-621e-4a6c-913b-2bda90897a88",
+      "question_text": "身体・精神に一定の障害があり、日常生活に制限を受ける",
+      "answers": [
+        {
+          "answer_id": "16d6d6b8-e2a4-46d2-8283-92e1e1ef6fd2",
+          "answer_text": "はい"
+        },
+        {
+          "answer_id": "d723c679-69d7-4206-b74c-f3c547e9523a",
+          "answer_text": "いいえ"
+        }
+      ]
+    },
+    {
+      "question_id": "b1d76e3b-958d-4af7-a4a2-af95443ab451",
+      "question_text": "妊娠12週を超えて出産した",
+      "answers": [
+        {
+          "answer_id": "70fc6839-eb08-469a-a551-b18d58fa17ce",
+          "answer_text": "はい"
+        },
+        {
+          "answer_id": "d4fb9637-7919-44fb-ba00-9b10f13efac5",
+          "answer_text": "いいえ"
+        }
+      ]
+    },
+    {
+      "question_id": "995dab60-7a83-40b4-aeea-a3450e1233c3",
+      "question_text": "高校生年代（18歳以下）である",
+      "answers": [
+        {
+          "answer_id": "816dd830-f7cf-4311-90a4-72af8a45400e",
+          "answer_text": "はい"
+        },
+        {
+          "answer_id": "57d29991-2f68-4304-bc4e-690d1a4d079b",
+          "answer_text": "いいえ"
+        }
+      ]
+    }
+  ]
+}

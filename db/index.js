@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -70,43 +81,24 @@ var pgConfig = {
 console.log(pgConfig);
 var pg = new Client(pgConfig);
 pg.connect()
-    .then(function () { return console.log("pg Connected successfuly"); })["catch"](function () { return console.log("err"); });
+    .then(function () { return console.log("pg Connected successfuly"); })["catch"](function () { return console.log("pr err"); });
 exports.getServiceDetail = function (serviceId) { return __awaiter(void 0, void 0, void 0, function () {
-    var res, service;
+    var tableName, res, service;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, pg.query({
-                    text: "SELECT * FROM users WHERE service_id=$1;",
-                    values: [String(serviceId)]
-                })];
+            case 0:
+                tableName = serviceId.split('-')[0];
+                return [4 /*yield*/, pg.query({
+                        text: "SELECT * FROM " + tableName + " WHERE service_id=$1;",
+                        values: [String(serviceId)]
+                    })];
             case 1:
                 res = _a.sent();
                 if (res.rows.length < 1) {
                     throw new Error("Not found");
                 }
                 service = res.rows[0];
-                return [2 /*return*/, {
-                        serviceId: service.service_id,
-                        title: service.service_title,
-                        subtitle: service.subtitle,
-                        detailUrl: service.detail_url,
-                        applyUrl: service.apply_url,
-                        overview: service.overview,
-                        administrativeServiceCategory: service.administrative_service_category,
-                        organization: service.organization,
-                        area: service.area,
-                        target: service.target,
-                        image_url: "https://static.civichat.jp/thumbnail-image/deferment.png",
-                        priority: service.priority,
-                        supportContent: service.service_content,
-                        uri: liffUrl + "/info/" + serviceId,
-                        lastUpdated: service.last_updated_at,
-                        qualification: service.qualification,
-                        acceptableDates: service.acceptable_dates,
-                        acceptableTimes: service.acceptable_times,
-                        needs: service.needs,
-                        howToUse: service.howToUse
-                    }];
+                return [2 /*return*/, __assign(__assign({}, service), { image_url: "https://static.civichat.jp/thumbnail-image/deferment.png", uri: liffUrl + "/info/" + serviceId })];
         }
     });
 }); };
@@ -140,7 +132,7 @@ exports.isLoggedIn = function (lineId) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); };
-exports.queryServices = function (systemIds, lineId) { return __awaiter(void 0, void 0, void 0, function () {
+exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(void 0, void 0, void 0, function () {
     var resultId, resultSaveData, _i, systemIds_1, systemId, res, saveString;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -156,17 +148,13 @@ exports.queryServices = function (systemIds, lineId) { return __awaiter(void 0, 
                 if (!(_i < systemIds_1.length)) return [3 /*break*/, 4];
                 systemId = systemIds_1[_i];
                 return [4 /*yield*/, pg.query({
-                        text: "SELECT * FROM services WHERE service_id=$1;",
+                        text: "SELECT * FROM " + seido + " WHERE service_id=$1;",
                         values: [String(systemId)]
                     })];
             case 2:
                 res = _a.sent();
                 //検索結果を配列に格納
-                resultSaveData.result.push({
-                    title: res.rows[0].name,
-                    overview: res.rows[0].content_abstract,
-                    detailUrl: res.rows[0].content_url
-                });
+                resultSaveData.result.push(__assign({}, res.rows[0]));
                 _a.label = 3;
             case 3:
                 _i++;
@@ -175,8 +163,8 @@ exports.queryServices = function (systemIds, lineId) { return __awaiter(void 0, 
                 saveString = JSON.stringify(resultSaveData);
                 //保存する
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO  results(result_id,result_body,line_id,created_at) VALUES ($1,$2,$3,current_timestamp)",
-                        values: [resultId, saveString, lineId]
+                        text: "INSERT INTO  results(result_id,result_body,line_id,src_table,created_at) VALUES ($1,$2,$3,$4,current_timestamp)",
+                        values: [resultId, saveString, lineId, seido]
                     })];
             case 5:
                 //保存する
@@ -207,22 +195,20 @@ exports.getQueryResult = function (resultId) { return __awaiter(void 0, void 0, 
 }); };
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var systemsData, _i, _a, item, date;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var systemsDataShibuya, _i, _a, item, systemsDataKumamoto, _b, _c, item, systemsDataShibuyaKindergarten, _d, _e, item;
+    return __generator(this, function (_f) {
+        switch (_f.label) {
             case 0:
-                systemsData = require("../datas/systemsdata.json");
-                _i = 0, _a = systemsData.systemsData;
-                _b.label = 1;
+                systemsDataShibuya = require("../datas/shibuyaParenting/systemsdata.json");
+                _i = 0, _a = systemsDataShibuya.systemsData;
+                _f.label = 1;
             case 1:
                 if (!(_i < _a.length)) return [3 /*break*/, 4];
                 item = _a[_i];
-                date = new Date(0);
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO services (uri,service_id,service_number,origin_id,alteration_flag,provider,provider_prefecture_id,provider_city_id,name,content_abstract,content_provisions,content_target,content_how_to_apply,content_application_start_date,content_application_close_date,content_url,content_contact,content_information_release_date,tags ,theme,tags_category,tags_person_type,tags_entity_type,tags_keyword_type,tags_issue_type,tags_provider) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26) ;",
+                        text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,url,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
                         values: [
-                            item["URI"],
-                            item["PSID"],
+                            item["サービスID"],
                             item["制度番号"],
                             item["元制度番号"],
                             item["制度変更区分"],
@@ -234,28 +220,124 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                             item["支援内容"],
                             item["対象者"],
                             item["利用・申請方法"],
-                            date,
-                            date,
+                            item["受付開始日"],
+                            item["受付終了日"],
                             item["詳細参照先"],
                             item["お問い合わせ先"],
-                            date,
+                            item["公開日"],
                             item["タグ"],
                             item["テーマ"],
                             item["タグ（カテゴリー）"],
-                            item["タグ（対象者）"],
+                            item["タグ（事業者分類）"],
                             item["タグ（事業者分類）"],
                             item["タグ（キーワード）"],
                             item["タグ（テーマ）"],
-                            item["タグ（所管組織）"],
                         ]
                     })];
             case 2:
-                _b.sent();
-                _b.label = 3;
+                _f.sent();
+                _f.label = 3;
             case 3:
                 _i++;
                 return [3 /*break*/, 1];
-            case 4: return [2 /*return*/];
+            case 4:
+                systemsDataKumamoto = require("../datas/kumamotoEarthquake/systemsdata.json");
+                _b = 0, _c = systemsDataKumamoto.systemsData;
+                _f.label = 5;
+            case 5:
+                if (!(_b < _c.length)) return [3 /*break*/, 8];
+                item = _c[_b];
+                return [4 /*yield*/, pg.query({
+                        text: "INSERT INTO kumamoto_earthquake (service_id,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
+                        values: [
+                            item["サービスID"],
+                            item["制度管理番号"],
+                            item["制度名"],
+                            item["対象者"],
+                            item["サブタイトル"],
+                            item["表示優先度"],
+                            item["公開日程"],
+                            item["申請期限（公開終了日）"],
+                            item["公開・非公開（チェックで公開）"],
+                            item["制度概要"],
+                            item["制度所管組織"],
+                            item["親制度"],
+                            item["親制度との関係性"],
+                            item["条件"],
+                            item["用途・対象物"],
+                            item["対象地域"],
+                            item["支援内容"],
+                            item["留意事項"],
+                            item["手続き等"],
+                            item["必要なもの"],
+                            item["必要書類のURL"],
+                            item["申請窓口"],
+                            item["受付可能日時（受付日）"],
+                            item["受付可能日時（受付時間）"],
+                            item["申請可能URL"],
+                            item["受付開始日"],
+                            item["受付終了日"],
+                            item["お問い合わせ先"],
+                            item["詳細参照先"],
+                            item["行政サービス分類"],
+                            item["ライフステージ分類"],
+                            item["お困りごと分類"],
+                        ]
+                    })];
+            case 6:
+                _f.sent();
+                _f.label = 7;
+            case 7:
+                _b++;
+                return [3 /*break*/, 5];
+            case 8:
+                systemsDataShibuyaKindergarten = require("../datas/shibuyaPreschool/systemsdata.json");
+                _d = 0, _e = systemsDataShibuyaKindergarten.systemsData;
+                _f.label = 9;
+            case 9:
+                if (!(_d < _e.length)) return [3 /*break*/, 12];
+                item = _e[_d];
+                return [4 /*yield*/, pg.query({
+                        text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,url,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29) ;",
+                        values: [
+                            item["サービスID"],
+                            item["都道府県"],
+                            item["市町村"],
+                            item["エリア"],
+                            item["幼稚園・保育園のタイトル"],
+                            item["対象年齢"],
+                            item["施設のカテゴリ"],
+                            item["施設の運営者"],
+                            item["休園日"],
+                            item["園庭"],
+                            item["タオルの持ち込み"],
+                            item["オムツの持ち帰り"],
+                            item["駐輪場"],
+                            item["給食・離乳食"],
+                            item["見学"],
+                            item["延長保育の対応時間"],
+                            item["アレルギー対応"],
+                            item["入園可能"],
+                            item["申し込み受付先"],
+                            item["詳細参照先"],
+                            item["お問い合わせ先"],
+                            item["公開日"],
+                            item["保育施設の空き状況（0さい）"],
+                            item["保育施設の空き状況（1さい）"],
+                            item["保育施設の空き状況（2さい）"],
+                            item["保育施設の空き状況（3さい）"],
+                            item["保育施設の空き状況（4さい）"],
+                            item["保育施設の空き状況（5さい）"],
+                            item["住所"],
+                        ]
+                    })];
+            case 10:
+                _f.sent();
+                _f.label = 11;
+            case 11:
+                _d++;
+                return [3 /*break*/, 9];
+            case 12: return [2 /*return*/, 'ok'];
         }
     });
 }); };

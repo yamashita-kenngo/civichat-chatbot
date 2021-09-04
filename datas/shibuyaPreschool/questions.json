@@ -1,0 +1,220 @@
+{
+  "questions": [
+    {
+      "question_id": "2d737d1e-55d1-4336-b269-c47767cd50d1",
+      "question_text": "お住まいのエリアはどこですか？",
+      "answers": [
+        {
+          "answer_id": "bc802a3e-6ccd-4dc0-bafa-be00381d892b",
+          "answer_text": "A"
+        },
+        {
+          "answer_id": "748d0064-b8c5-4400-a6f2-fe7fc3bf6d87",
+          "answer_text": "B"
+        },
+        {
+          "answer_id": "8e94689b-7b5f-4cdb-8a01-30a01cb60432",
+          "answer_text": "C"
+        },
+        {
+          "answer_id": "8778438a-3e51-4471-ab4c-f34b935332df",
+          "answer_text": "D"
+        },
+        {
+          "answer_id": "75991d43-c3c4-4063-bebb-691f27640415",
+          "answer_text": "E"
+        }
+      ]
+    },
+    {
+      "question_id": "38fdeaf7-1961-4c83-b35b-9080359dc923",
+      "question_text": "お子さんの年齢は何歳ですか？",
+      "answers": [
+        {
+          "answer_id": "64a591f4-8044-4cc5-b140-2fc09f7c0c60",
+          "answer_text": "0"
+        },
+        {
+          "answer_id": "1788a426-2772-4a8e-82dd-7e965d70530f",
+          "answer_text": "1"
+        },
+        {
+          "answer_id": "6e13d664-dc6a-4f37-a424-e9baffc0968c",
+          "answer_text": "2"
+        },
+        {
+          "answer_id": "5776a674-aa44-474a-b508-b4ceba2b471f",
+          "answer_text": "3"
+        },
+        {
+          "answer_id": "355ac211-7780-4443-8721-4d68aa1e30dd",
+          "answer_text": "4"
+        },
+        {
+          "answer_id": "683e5329-3425-4a3a-b5f2-b6b6a39511ba",
+          "answer_text": "5"
+        }
+      ]
+    },
+    {
+      "question_id": "1214922d-86b3-4171-901d-6feb373e4fcc",
+      "question_text": "施設のカテゴリーはどれがいいですか？",
+      "answers": [
+        {
+          "answer_id": "3ec92ecd-c124-4cae-b830-1729c26a2691",
+          "answer_text": "保育園"
+        },
+        {
+          "answer_id": "2d1f50a1-b0c1-4cb1-bab8-ff9e4d7fa11d",
+          "answer_text": "幼稚園"
+        },
+        {
+          "answer_id": "d2d79e5a-f5e9-42dd-a034-9c7c10aab8d2",
+          "answer_text": "幼保一元化"
+        },
+        {
+          "answer_id": "beece3e3-f2b5-4a18-b854-0fc75f78144b",
+          "answer_text": "小規模保育施設"
+        },
+        {
+          "answer_id": "02e93a7f-1019-4b1a-b384-425ac2c6b8ac",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "2bbaed25-732e-4c3c-b4ec-411404a800d7",
+      "question_text": "施設の運営者はどちらがいいですか？",
+      "answers": [
+        {
+          "answer_id": "6494fb88-56e6-4b47-adaa-42b68b4f05b1",
+          "answer_text": "区立"
+        },
+        {
+          "answer_id": "81033363-6b4e-4eaf-9323-f5bf8f1d1de2",
+          "answer_text": "私立"
+        },
+        {
+          "answer_id": "3e3186ae-a7a7-4b53-b405-e6ea36018345",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "767db314-a3d3-464f-b5f3-e24c5a28fbe8",
+      "question_text": "休園日はどれがいいですか？",
+      "answers": [
+        {
+          "answer_id": "f93d6d20-5765-4058-9b78-fe84e5fa37d4",
+          "answer_text": "土日祝"
+        },
+        {
+          "answer_id": "1fa40da3-2b03-4eee-b11a-ddc480041fe3",
+          "answer_text": "日祝のみ"
+        },
+        {
+          "answer_id": "6cfc33e8-b1e0-4b31-8fe8-18b6c82755b5",
+          "answer_text": "祝のみ"
+        },
+        {
+          "answer_id": "8dac13b8-8275-4541-940c-7acc6809bcc0",
+          "answer_text": "無し（年末年始は除く）"
+        },
+        {
+          "answer_id": "8de5a4ec-c8dd-488a-bd23-b9d7b772dc0c",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "42e28751-9b17-4daa-9d2b-d6ccdc8338b3",
+      "question_text": "施設内に園庭は欲しいですか？",
+      "answers": [
+        {
+          "answer_id": "2b002106-c5d8-457b-be00-de2270549a7e",
+          "answer_text": "はい"
+        },
+        {
+          "answer_id": "008e135f-b6a7-4d1a-b03d-035de88335d1",
+          "answer_text": "いいえ"
+        },
+        {
+          "answer_id": "186ddcdc-0a74-4c8f-97da-e69fa4371e17",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "5be281d3-f5df-4ca1-97ba-ff1c983ff075",
+      "question_text": "延長保育は何時までがいいですか？",
+      "answers": [
+        {
+          "answer_id": "407da301-98d7-4600-865a-c9afc78ff7d7",
+          "answer_text": "16時30分まで"
+        },
+        {
+          "answer_id": "5d803d68-f01d-42e1-bb3e-13917312e0ae",
+          "answer_text": "17時まで"
+        },
+        {
+          "answer_id": "b722d779-6309-4781-9678-835d8e4f30c4",
+          "answer_text": "17時30分まで"
+        },
+        {
+          "answer_id": "6a86a30b-0d5d-4737-8098-832f36bfebd6",
+          "answer_text": "18時まで"
+        },
+        {
+          "answer_id": "f39a1d52-bb26-4d10-a2d7-9529c33343fc",
+          "answer_text": "19時まで"
+        },
+        {
+          "answer_id": "7685f9c4-8772-4b6d-8b42-3fe1ce6ff785",
+          "answer_text": "19時15分まで"
+        },
+        {
+          "answer_id": "0c062449-17a3-4daa-a43e-aec1c2df6160",
+          "answer_text": "19時30分まで"
+        },
+        {
+          "answer_id": "82cc9b0a-9010-44e1-9747-f9dae1fc39d6",
+          "answer_text": "20時15分まで"
+        },
+        {
+          "answer_id": "be6733be-8741-4093-8915-cf751ce0bba0",
+          "answer_text": "20時30分まで"
+        },
+        {
+          "answer_id": "318ddeb0-033f-47f9-87ab-6ff16a744b2c",
+          "answer_text": "21時30分まで"
+        },
+        {
+          "answer_id": "9d3e1363-e9b8-4019-8498-a9a2bc2a90bc",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "72dd16f5-27e5-4db8-ab46-932b6a14a7bc",
+      "question_text": "見学が可能か？",
+      "answers": [
+        {
+          "answer_id": "5b16b882-91bb-4066-bdfa-3cfd7c80e802",
+          "answer_text": "可能"
+        },
+        {
+          "answer_id": "602a8aec-2bc9-43de-acd8-d5428c2a091c",
+          "answer_text": "可能（緊急事態宣言明けから）"
+        },
+        {
+          "answer_id": "e1a9b89d-3f2d-46cb-93e9-8c4c77908fdf",
+          "answer_text": "不可"
+        },
+        {
+          "answer_id": "775f01f4-f25c-49f1-8c84-dd52db76c94a",
+          "answer_text": "気にしていない"
+        }
+      ]
+    }
+  ]
+}

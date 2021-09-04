@@ -1,7 +1,7 @@
 import * as types from "@line/bot-sdk/lib/types";
 import { SystemProperty } from "../../../classes";
 
-module.exports = async function carouselTemplate(
+module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
   resultId: string
@@ -49,7 +49,11 @@ module.exports = async function carouselTemplate(
             contents: [
               {
                 type: "text",
-                text: item["タグ（テーマ）"],
+                text:
+                  item["タグ（テーマ）"] ||
+                  item["行政サービス分類"] ||
+                  item["エリア"] ||
+                  "結果",
                 wrap: true,
                 align: "end",
                 color: "#8e8989",
@@ -71,7 +75,11 @@ module.exports = async function carouselTemplate(
         contents: [
           {
             type: "text",
-            text: item["タイトル（制度名）"],
+            text:
+              item["タイトル（制度名）"] ||
+              item["制度名"] ||
+              item["幼稚園•保育園のタイトル"] ||
+              "タイトル",
             weight: "bold",
             size: "xl",
             wrap: true,
@@ -87,7 +95,7 @@ module.exports = async function carouselTemplate(
             action: {
               type: "uri",
               label: "詳細を見る",
-              uri: item["詳細参照先"],
+              uri: item["詳細参照先"] || "https://google.com",
             },
             style: "secondary",
           },

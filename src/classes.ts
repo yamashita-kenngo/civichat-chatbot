@@ -71,11 +71,22 @@ class Question {
 class ChatState {
   systems: Array<string>;
   questions: Question[];
+  seido: string;
 
-  constructor(systems: Array<string>, questions: Array<Question>) {
+  constructor(
+    systems: Array<string>,
+    questions: Array<Question>,
+    seido: string
+  ) {
     this.systems = systems;
     this.questions = questions;
+    this.seido = seido;
   }
+
+  getSeido() {
+    return this.seido;
+  }
+
   getSystems() {
     return this.systems;
   }
