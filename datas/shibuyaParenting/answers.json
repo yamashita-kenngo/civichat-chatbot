@@ -1,0 +1,2295 @@
+{
+  "qnas": [
+    {
+      "question_id": "c225f7af-62b5-4d3d-9382-9d9c7f88dffa",
+      "answers": [
+        {
+          "answer_id": "d5147c0d-a323-483b-a654-964da5672b53",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "64a295ca-51f3-4f0d-ac5c-1be14a76e9d4",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "14d0e0bb-ce6b-4449-9234-70f2f70f176c",
+      "answers": [
+        {
+          "answer_id": "9ef0f989-0c00-4b6e-8192-cfd7610187aa",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "df761cac-f5dc-4138-924d-9f5017e4e781",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "3e15db5a-ef39-4e9a-94a4-ba39839a242d",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "2471685e-87cd-4b2b-bca0-6a84ed423d41",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "03e613e2-3ad7-4542-95ff-9c3e82024dd9",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "f73f1c92-75f1-42ce-93ea-202f62ed7b90",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "808426a5-a164-4d06-864f-563cfe3a24f1",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "b99c5cc4-2ca2-4b3f-9632-baa6bf2a3d9d",
+      "answers": [
+        {
+          "answer_id": "2e138415-4e3f-4657-a26e-f5dcdf1f10f5",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "9f860977-a6e5-4819-95bb-ac15530125e8",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "6bbf2ea4-621e-4a6c-913b-2bda90897a88",
+      "answers": [
+        {
+          "answer_id": "16d6d6b8-e2a4-46d2-8283-92e1e1ef6fd2",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "d723c679-69d7-4206-b74c-f3c547e9523a",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "b1d76e3b-958d-4af7-a4a2-af95443ab451",
+      "answers": [
+        {
+          "answer_id": "70fc6839-eb08-469a-a551-b18d58fa17ce",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "d4fb9637-7919-44fb-ba00-9b10f13efac5",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "0"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "995dab60-7a83-40b4-aeea-a3450e1233c3",
+      "answers": [
+        {
+          "answer_id": "816dd830-f7cf-4311-90a4-72af8a45400e",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "1"
+            }
+          ]
+        },
+        {
+          "answer_id": "57d29991-2f68-4304-bc4e-690d1a4d079b",
+          "systems": [
+            {
+              "system_id": "shibuya_parenting-b668cedc-9275-45d1-90bf-d293da873aa9",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f86aa0ca-6e38-4a7e-b9d8-9b24a36c3c12",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d808e90f-c698-4cb8-9bdb-d20ddba1f3c7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d4ee7e5-65f9-4172-9d61-bf7b65154c4b",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-85527c2d-3058-4352-ad18-2a68671dc91a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5014bf06-e848-4d30-8b0e-be9b4e65c2f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-a9418398-a5d3-4f9b-a84e-a800b7c4e522",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-762046f1-bc8c-4dd9-abbe-3220cf6b1915",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-10d6b3a2-dca0-4d7f-bbc5-4731340f41b7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-013e114f-d34a-4fe6-a29a-4420cdbfc13a",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-24abb255-ef3d-48a3-a8b8-05e3e7058566",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0730ff56-062d-48cf-8413-85258a3ee4e4",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-353d0024-104a-4a2d-b920-ee2787b4a816",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-c40250bb-08f0-4444-81e5-6cbca54ad019",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b682d26e-1636-491d-b2e7-57bf5bb3ce2e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-77c5e6f9-0485-4c35-a034-b595758a9adc",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-444df848-155c-4a50-b681-656a677b7201",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-0b9fab49-727c-4d26-8324-447d2ac3f3a7",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-9c1f6c94-ec5d-4f9c-8dd6-32c13aa98423",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-8d3c6821-26ba-45a0-91b3-487ffa0ca763",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-5dc20095-13a5-4593-a7cc-ffdc0442c5da",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-1e7770d7-23c7-4d2e-97ad-65bca4f56d4c",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4f2fce1e-bca5-486b-8bd9-383adeecfe1e",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-09577974-d098-4a44-8b1f-683294d6e7ac",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-6ba760ea-27f1-4f60-8aae-9069d916f21f",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-f9714d30-d68a-4162-a07c-1c1652d1849d",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3f191319-8a0c-4651-868e-573c5acea779",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-4887e9ca-7d23-4719-9111-20424743d7a0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-d37fbb47-7f25-4e61-b605-984af8d63f95",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-321fb291-24d9-411b-8220-7cec8756d9f0",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-b1531861-bbe6-4cbc-b0f1-2312ee901814",
+              "system_answer": "1"
+            },
+            {
+              "system_id": "shibuya_parenting-3ea8ba59-b8fd-411a-ba77-4b7fee3a83b1",
+              "system_answer": "0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
