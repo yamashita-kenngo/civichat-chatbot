@@ -1,31 +1,32 @@
 CREATE TABLE "apply_locations" (
-  "psid" uuid,
+  "service_id" text,
   "application_lcoation" text,
-  PRIMARY KEY ("psid", "application_lcoation")
+  PRIMARY KEY ("service_id", "application_lcoation")
 );
 
 CREATE TABLE "apply_postal_address" (
-  "psid" uuid,
+  "service_id" text,
   "postal_address" text,
-  PRIMARY KEY ("psid", "postal_address")
+  PRIMARY KEY ("service_id", "postal_address")
 );
 
 CREATE TABLE "documents" (
-  "psid_id" uuid,
+  "service_id" text,
   "document_name" text,
   "document_url" text,
-  PRIMARY KEY ("psid_id", "document_name")
+  PRIMARY KEY ("service_id", "document_name")
 );
 
 CREATE TABLE "related_system" (
-  "subject_psid" uuid,
-  "object_psid" uuid,
+  "subject_service_id" text,
+  "object_service_id" text,
   "relationship" text,
-  PRIMARY KEY ("subject_psid", "object_psid")
+  PRIMARY KEY ("subject_service_id", "object_service_id")
 );
 
-CREATE TABLE "shibuya" (
-  "psid" uuid PRIMARY KEY,
+CREATE TABLE "shibuya_parenting" (
+  "id" serial PRIMARY KEY,
+  "service_id" character varying(255) NOT NULL UNIQUE UNIQUE UNIQUE,
   "service_number" text,
   "origin_id" text,
   "alteration_flag" text,
@@ -51,8 +52,9 @@ CREATE TABLE "shibuya" (
   "issue_type" text
 );
 
-CREATE TABLE "kumamoto" (
-  "psid" uuid PRIMARY KEY,
+CREATE TABLE "kumamoto_earthquake" (
+  "id" serial PRIMARY KEY,
+  "service_id" character varying(255) NOT NULL UNIQUE UNIQUE UNIQUE,
   "management_id" text,
   "name" text,
   "target" text,
@@ -86,8 +88,9 @@ CREATE TABLE "kumamoto" (
   "problem_category" text
 );
 
-CREATE TABLE "shibuyakindergarten" (
-  "psid" uuid PRIMARY KEY,
+CREATE TABLE "shibuya_preschool" (
+  "id" serial PRIMARY KEY,
+  "service_id" character varying(255) NOT NULL UNIQUE UNIQUE UNIQUE,
   "prefecture_id" text,
   "city_id" text,
   "area" text,
@@ -127,51 +130,52 @@ CREATE TABLE "results" (
   "result_id" text,
   "result_body" text,
   "line_id" text,
+  "src_table" text,
   "created_at" text
 );
 
 ALTER TABLE "apply_locations"
-  ADD FOREIGN KEY ("psid") REFERENCES "shibuya" ("psid");
+  ADD FOREIGN KEY ("service_id") REFERENCES "shibuya_parenting" ("service_id");
 
 ALTER TABLE "apply_postal_address"
-  ADD FOREIGN KEY ("psid") REFERENCES "shibuya" ("psid");
+  ADD FOREIGN KEY ("service_id") REFERENCES "shibuya_parenting" ("service_id");
 
 ALTER TABLE "documents"
-  ADD FOREIGN KEY ("psid_id") REFERENCES "shibuya" ("psid");
+  ADD FOREIGN KEY ("service_id") REFERENCES "shibuya_parenting" ("service_id");
 
 ALTER TABLE "related_system"
-  ADD FOREIGN KEY ("subject_psid") REFERENCES "shibuya" ("psid");
+  ADD FOREIGN KEY ("subject_service_id") REFERENCES "shibuya_parenting" ("service_id");
 
 ALTER TABLE "related_system"
-  ADD FOREIGN KEY ("object_psid") REFERENCES "shibuya" ("psid");
+  ADD FOREIGN KEY ("object_service_id") REFERENCES "shibuya_parenting" ("service_id");
 
 ALTER TABLE "apply_locations"
-  ADD FOREIGN KEY ("psid") REFERENCES "kumamoto" ("psid");
+  ADD FOREIGN KEY ("service_id") REFERENCES "kumamoto_earthquake" ("service_id");
 
 ALTER TABLE "apply_postal_address"
-  ADD FOREIGN KEY ("psid") REFERENCES "kumamoto" ("psid");
+  ADD FOREIGN KEY ("service_id") REFERENCES "kumamoto_earthquake" ("service_id");
 
 ALTER TABLE "documents"
-  ADD FOREIGN KEY ("psid_id") REFERENCES "kumamoto" ("psid");
+  ADD FOREIGN KEY ("service_id") REFERENCES "kumamoto_earthquake" ("service_id");
 
 ALTER TABLE "related_system"
-  ADD FOREIGN KEY ("subject_psid") REFERENCES "kumamoto" ("psid");
+  ADD FOREIGN KEY ("subject_service_id") REFERENCES "kumamoto_earthquake" ("service_id");
 
 ALTER TABLE "related_system"
-  ADD FOREIGN KEY ("object_psid") REFERENCES "kumamoto" ("psid");
+  ADD FOREIGN KEY ("object_service_id") REFERENCES "kumamoto_earthquake" ("service_id");
 
 ALTER TABLE "apply_locations"
-  ADD FOREIGN KEY ("psid") REFERENCES "shibuyakindergarten" ("psid");
+  ADD FOREIGN KEY ("service_id") REFERENCES "shibuya_parenting" ("service_id");
 
 ALTER TABLE "apply_postal_address"
-  ADD FOREIGN KEY ("psid") REFERENCES "shibuyakindergarten" ("psid");
+  ADD FOREIGN KEY ("service_id") REFERENCES "shibuya_parenting" ("service_id");
 
 ALTER TABLE "documents"
-  ADD FOREIGN KEY ("psid_id") REFERENCES "shibuyakindergarten" ("psid");
+  ADD FOREIGN KEY ("service_id") REFERENCES "shibuya_parenting" ("service_id");
 
 ALTER TABLE "related_system"
-  ADD FOREIGN KEY ("subject_psid") REFERENCES "shibuyakindergarten" ("psid");
+  ADD FOREIGN KEY ("subject_service_id") REFERENCES "shibuya_parenting" ("service_id");
 
 ALTER TABLE "related_system"
-  ADD FOREIGN KEY ("object_psid") REFERENCES "shibuyakindergarten" ("psid");
+  ADD FOREIGN KEY ("object_service_id") REFERENCES "shibuya_parenting" ("service_id");
 
