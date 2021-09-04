@@ -67,7 +67,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     action: {
                       type: "postback",
                       label: "熊本震災Ver.",
-                      data: "start-kumamoto",
+                      data: "start-kumamoto_earthquake",
                     },
                     style: "primary",
                   },
@@ -76,7 +76,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     action: {
                       type: "postback",
                       label: "渋谷子育てVer.",
-                      data: "start-shibuya",
+                      data: "start-shibuya_parenting",
                     },
                     style: "primary",
                   },
@@ -85,7 +85,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     action: {
                       type: "postback",
                       label: "渋谷幼稚・保育園Ver.",
-                      data: "start-shibuyaKindergarten",
+                      data: "start-shibuya_preschool",
                     },
                     style: "primary",
                   },
@@ -99,12 +99,12 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           let systemsData;
           if (userSession) {
             const cs = userSession.getState();
-            if (cs.getSeido() === "kumamoto") {
-              systemsData = require(`../../../datas/kumamoto/systemsdata.json`);
-            } else if (cs.getSeido() === "shibuya") {
-              systemsData = require(`../../../datas/shibuya/systemsdata.json`);
-            } else if (cs.getSeido() === "shibuyaKindergarten") {
-              systemsData = require(`../../../datas/shibuyaKindergarten/systemsdata.json`);
+            if (cs.getSeido() === "kumamoto_earthquake") {
+              systemsData = require('../../../datas/kumamotoEarthquake/systemsdata.json');
+            } else if (cs.getSeido() === "shibuya_parenting") {
+              systemsData = require('../../../datas/shibuyaParenting/systemsdata.json');
+            } else if (cs.getSeido() === "shibuya_preschool") {
+              systemsData = require('../../../datas/shibuyaPreschool/systemsdata.json');
             }
             cs.selectAnswerByText(
               userSession.getBeforeQuestionId(),
@@ -117,7 +117,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
               if (cs.getSystems().length > 9) {
                 const results = cs.getSystems().map((system: string) => {
                   return systemsData["systemsData"].filter((systemD) => {
-                    return systemD["PSID"] === system;
+                    return systemD["サービスID"] === system;
                   })[0];
                 });
                 const systemsCount = results.length;
@@ -135,7 +135,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                 // 9枚以下
                 const results = cs.getSystems().map((system: string) => {
                   return systemsData["systemsData"].filter((systemD) => {
-                    return systemD["PSID"] === system;
+                    return systemD["サービスID"] === system;
                   })[0];
                 });
                 const systemsCount = results.length;
@@ -182,26 +182,26 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
       break;
     case "postback":
       if (
-        event.postback.data === "start-kumamoto" ||
-        event.postback.data === "start-shibuya" ||
-        event.postback.data === "start-shibuyaKindergarten"
+        event.postback.data === "start-kumamoto_earthquake" ||
+        event.postback.data === "start-shibuya_preschool" ||
+        event.postback.data === "start-shibuya_parenting"
       ) {
         const selected = event.postback.data.split("-")[1];
 
         // 上でやってた初期化をここでやる
         let jsonAnswers, jsonQuestions, systems;
-        if (selected === "kumamoto") {
-          jsonAnswers = require(`../../../datas/kumamoto/answers.json`);
-          jsonQuestions = require(`../../../datas/kumamoto/questions.json`);
-          systems = require(`../../../datas/kumamoto/systems.json`);
-        } else if (selected === "shibuya") {
-          jsonAnswers = require(`../../../datas/shibuya/answers.json`);
-          jsonQuestions = require(`../../../datas/shibuya/questions.json`);
-          systems = require(`../../../datas/shibuya/systems.json`);
-        } else if (selected === "shibuyaKindergarten") {
-          jsonAnswers = require(`../../../datas/shibuyaKindergarten/answers.json`);
-          jsonQuestions = require(`../../../datas/shibuyaKindergarten/questions.json`);
-          systems = require(`../../../datas/shibuyaKindergarten/systems.json`);
+        if (selected === "kumamoto_earthquake") {
+          jsonAnswers = require(`../../../datas/kumamotoEarthquake/answers.json`);
+          jsonQuestions = require(`../../../datas/kumamotoEarthquake/questions.json`);
+          systems = require(`../../../datas/kumamotoEarthquake/systems.json`);
+        } else if (selected === "shibuya_parenting") {
+          jsonAnswers = require(`../../../datas/shibuyaParenting/answers.json`);
+          jsonQuestions = require(`../../../datas/shibuyaParenting/questions.json`);
+          systems = require(`../../../datas/shibuyaParenting/systems.json`);
+        } else if (selected === "shibuya_preschool") {
+          jsonAnswers = require(`../../../datas/shibuyaPreschool/answers.json`);
+          jsonQuestions = require(`../../../datas/shibuyaPreschool/questions.json`);
+          systems = require(`../../../datas/shibuyaPreschool/systems.json`);
         }
         const questions: Array<Question> = [];
 
