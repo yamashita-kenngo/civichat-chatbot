@@ -54,10 +54,10 @@ pg.connect()
   .catch(() => console.log("pr err"));
 
 exports.getServiceDetail = async (serviceId: string) => {
-  // 制度IDから制度詳細を返します
-  // 旧get_systems
+
+  const tableName  = serviceId.split('-')[0]
   const res = await pg.query({
-    text: "SELECT * FROM users WHERE service_id=$1;",
+    text: `SELECT * FROM ${tableName} WHERE service_id=$1;`,
     values: [String(serviceId)],
   });
 
@@ -68,26 +68,9 @@ exports.getServiceDetail = async (serviceId: string) => {
   const service = res.rows[0];
 
   return {
-    serviceId: service.service_id,
-    title: service.service_title,
-    subtitle: service.subtitle,
-    detailUrl: service.detail_url,
-    applyUrl: service.apply_url,
-    overview: service.overview,
-    administrativeServiceCategory: service.administrative_service_category,
-    organization: service.organization,
-    area: service.area,
-    target: service.target,
+    ...service,
     image_url: "https://static.civichat.jp/thumbnail-image/deferment.png",
-    priority: service.priority,
-    supportContent: service.service_content,
     uri: liffUrl + "/info/" + serviceId,
-    lastUpdated: service.last_updated_at,
-    qualification: service.qualification,
-    acceptableDates: service.acceptable_dates,
-    acceptableTimes: service.acceptable_times,
-    needs: service.needs,
-    howToUse: service.howToUse,
   };
 };
 
@@ -130,21 +113,20 @@ exports.queryServices = async (
 
   for (const systemId of systemIds) {
     const res = await pg.query({
-      text: `SELECT * FROM ${seido} WHERE psid=$1;`,
+      text: `SELECT * FROM ${seido} WHERE service_id=$1;`,
       values: [String(systemId)],
     });
     //検索結果を配列に格納
     resultSaveData.result.push({
-      ...res.rows[0]
+      ...res.rows[0],
     });
-    
   }
   const saveString = JSON.stringify(resultSaveData);
 
   //保存する
   await pg.query({
-    text: "INSERT INTO  results(result_id,result_body,line_id,created_at) VALUES ($1,$2,$3,current_timestamp)",
-    values: [resultId, saveString, lineId],
+    text: "INSERT INTO  results(result_id,result_body,line_id,src_table,created_at) VALUES ($1,$2,$3,$4,current_timestamp)",
+    values: [resultId, saveString, lineId, seido],
   });
 
   return resultId;
@@ -165,12 +147,12 @@ exports.getQueryResult = async (resultId: string) => {
 
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = async () => {
-  const systemsDataShibuya = require("../datas/shibuya/systemsdata.json");
+  const systemsDataShibuya = require("../datas/shibuyaParenting/systemsdata.json");
   for (const item of systemsDataShibuya.systemsData) {
     await pg.query({
-      text: "INSERT INTO shibuya (psid,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,url,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
+      text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,url,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
       values: [
-        item["PSID"],
+        item["サービスID"],
         item["制度番号"],
         item["元制度番号"],
         item["制度変更区分"],
@@ -196,15 +178,14 @@ exports.saveInitialDatafromJson = async () => {
         item["タグ（テーマ）"],
       ],
     });
-  
   }
 
-  const systemsDataKumamoto = require("../datas/kumamoto/systemsdata.json");
+  const systemsDataKumamoto = require("../datas/kumamotoEarthquake/systemsdata.json");
   for (const item of systemsDataKumamoto.systemsData) {
     await pg.query({
-      text: "INSERT INTO kumamoto (psid,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
+      text: "INSERT INTO kumamoto_earthquake (service_id,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
       values: [
-        item["PSID"],
+        item["サービスID"],
         item["制度管理番号"],
         item["制度名"],
         item["対象者"],
@@ -240,12 +221,12 @@ exports.saveInitialDatafromJson = async () => {
     });
   }
 
-  const systemsDataShibuyaKindergarten = require("../datas/shibuyaKindergarten/systemsdata.json");
+  const systemsDataShibuyaKindergarten = require("../datas/shibuyaPreschool/systemsdata.json");
   for (const item of systemsDataShibuyaKindergarten.systemsData) {
     await pg.query({
-      text: "INSERT INTO shibuyakindergarten (psid,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,url,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29) ;",
+      text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,url,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29) ;",
       values: [
-        item["PSID"],
+        item["サービスID"],
         item["都道府県"],
         item["市町村"],
         item["エリア"],
@@ -277,4 +258,5 @@ exports.saveInitialDatafromJson = async () => {
       ],
     });
   }
+  return 'ok'
 };
