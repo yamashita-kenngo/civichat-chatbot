@@ -80,7 +80,8 @@ var pgConfig = {
 };
 console.log(pgConfig);
 var pg = new Client(pgConfig);
-pg.connect().then(function () { return console.log("pg Connected successfuly"); });
+pg.connect()
+    .then(function () { return console.log("pg Connected successfuly"); })["catch"](function () { return console.log("pr err"); });
 exports.getServiceDetail = function (serviceId) { return __awaiter(void 0, void 0, void 0, function () {
     var tableName, res, service;
     return __generator(this, function (_a) {
@@ -312,7 +313,7 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                             item["都道府県"],
                             item["市町村"],
                             item["エリア"],
-                            item["幼稚園・保育園のタイトル"],
+                            item["幼稚園•保育園のタイトル"],
                             item["対象年齢"],
                             item["施設のカテゴリ"],
                             item["施設の運営者"],
