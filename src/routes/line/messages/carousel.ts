@@ -10,7 +10,6 @@ module.exports = function carouselTemplate(
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
   }
   console.log(items[0]);
-  console.log();
   const carouselContents = [
     {
       type: "bubble",
@@ -116,7 +115,7 @@ module.exports = function carouselTemplate(
             action: {
               type: "uri",
               label: "詳細を見る",
-              uri: item["詳細参照先"] || "https://google.com",
+              uri: 'https://google.com',
             },
             style: "secondary",
           },
@@ -130,19 +129,7 @@ module.exports = function carouselTemplate(
     contents: {
       type: "carousel",
       contents: carouselContents,
-    },
-    quickReply: {
-      items: [
-        {
-          type: "action",
-          action: {
-            type: "uri",
-            label: `利用できる${systemsCount}個の制度を見る`,
-            uri: `${process.env.LIFF_URL}/others/${resultId}`,
-          },
-        },
-      ],
-    },
+    }
   };
   return returnMessage;
 };
