@@ -95,7 +95,7 @@ module.exports = function carouselTemplate(
             action: {
               type: "uri",
               label: "詳細を見る",
-              uri: 'https://google.com',
+              uri: `${process.env.LIFF_URL}/services/${item["サービスID"]}`,
             },
             style: "secondary",
           },
