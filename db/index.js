@@ -80,14 +80,13 @@ var pgConfig = {
 };
 console.log(pgConfig);
 var pg = new Client(pgConfig);
-pg.connect()
-    .then(function () { return console.log("pg Connected successfuly"); })["catch"](function () { return console.log("pr err"); });
+pg.connect().then(function () { return console.log("pg Connected successfuly"); });
 exports.getServiceDetail = function (serviceId) { return __awaiter(void 0, void 0, void 0, function () {
     var tableName, res, service;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                tableName = serviceId.split('-')[0];
+                tableName = serviceId.split("-")[0];
                 return [4 /*yield*/, pg.query({
                         text: "SELECT * FROM " + tableName + " WHERE service_id=$1;",
                         values: [String(serviceId)]
@@ -133,7 +132,7 @@ exports.isLoggedIn = function (lineId) { return __awaiter(void 0, void 0, void 0
     });
 }); };
 exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(void 0, void 0, void 0, function () {
-    var resultId, resultSaveData, _i, systemIds_1, systemId, res, saveString;
+    var resultId, resultSaveData, othersType, _i, systemIds_1, systemId, res, saveString;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -142,6 +141,15 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
                     result: [],
                     resultId: resultId
                 };
+                if (seido === "shibuya_preschool") {
+                    othersType = "施設";
+                }
+                else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake") {
+                    othersType = "制度";
+                }
+                else {
+                    othersType = "";
+                }
                 _i = 0, systemIds_1 = systemIds;
                 _a.label = 1;
             case 1:
@@ -154,7 +162,7 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
             case 2:
                 res = _a.sent();
                 //検索結果を配列に格納
-                resultSaveData.result.push(__assign({}, res.rows[0]));
+                resultSaveData.result.push(__assign(__assign({}, res.rows[0]), { othersType: othersType }));
                 _a.label = 3;
             case 3:
                 _i++;
@@ -337,7 +345,7 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
             case 11:
                 _d++;
                 return [3 /*break*/, 9];
-            case 12: return [2 /*return*/, 'ok'];
+            case 12: return [2 /*return*/, "ok"];
         }
     });
 }); };
