@@ -54,8 +54,7 @@ pg.connect()
   .catch(() => console.log("pr err"));
 
 exports.getServiceDetail = async (serviceId: string) => {
-
-  const tableName  = serviceId.split('-')[0]
+  const tableName = serviceId.split("-")[0];
   const res = await pg.query({
     text: `SELECT * FROM ${tableName} WHERE service_id=$1;`,
     values: [String(serviceId)],
@@ -111,6 +110,15 @@ exports.queryServices = async (
     resultId: resultId,
   };
 
+  let othersType: string;
+  if (seido === "shibuya_preschool") {
+    othersType = "施設";
+  } else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake") {
+    othersType = "制度";
+  } else {
+    othersType = "";
+  }
+
   for (const systemId of systemIds) {
     const res = await pg.query({
       text: `SELECT * FROM ${seido} WHERE service_id=$1;`,
@@ -119,6 +127,7 @@ exports.queryServices = async (
     //検索結果を配列に格納
     resultSaveData.result.push({
       ...res.rows[0],
+      othersType: othersType,
     });
   }
   const saveString = JSON.stringify(resultSaveData);
@@ -258,5 +267,5 @@ exports.saveInitialDatafromJson = async () => {
       ],
     });
   }
-  return 'ok'
+  return "ok";
 };
