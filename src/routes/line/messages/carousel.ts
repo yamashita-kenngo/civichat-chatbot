@@ -9,7 +9,6 @@ module.exports = function carouselTemplate(
   if (items.length === 0) {
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
   }
-  console.log(items[0]);
   const carouselContents = [
     {
       type: "bubble",
@@ -38,25 +37,6 @@ module.exports = function carouselTemplate(
     },
   ] as types.FlexBubble[];
   for (const item of items) {
-    console.log(
-      item["タグ（テーマ）"] ||
-        item["行政サービス分類"] ||
-        item["エリア"] ||
-        "結果"
-    );
-    console.log(
-      item["タイトル（制度名）"] ||
-        item["制度名"] ||
-        item["幼稚園•保育園のタイトル"] ||
-        "タイトル"
-    );
-    console.log(
-      item["タイトル（制度名）"] ||
-        item["制度名"] ||
-        item["幼稚園•保育園のタイトル"] ||
-        "タイトル"
-    );
-    console.log(item["詳細参照先"] || "https://google.com");
     carouselContents.push({
       type: "bubble",
       header: {
@@ -115,7 +95,7 @@ module.exports = function carouselTemplate(
             action: {
               type: "uri",
               label: "詳細を見る",
-              uri: 'https://google.com',
+              uri: `${process.env.LIFF_URL}/services/${item["サービスID"]}`,
             },
             style: "secondary",
           },
@@ -129,7 +109,19 @@ module.exports = function carouselTemplate(
     contents: {
       type: "carousel",
       contents: carouselContents,
-    }
+    },
+    quickReply: {
+      items: [
+        {
+          type: "action",
+          action: {
+            type: "uri",
+            label: `利用できる${systemsCount}個の制度を見る`,
+            uri: `${process.env.LIFF_URL}/others/${resultId}`,
+          },
+        },
+      ],
+    },
   };
   return returnMessage;
 };
