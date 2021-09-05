@@ -239,7 +239,7 @@ exports.saveInitialDatafromJson = async () => {
         item["都道府県"],
         item["市町村"],
         item["エリア"],
-        item["幼稚園・保育園のタイトル"],
+        item["幼稚園•保育園のタイトル"],
         item["対象年齢"],
         item["施設のカテゴリ"],
         item["施設の運営者"],
