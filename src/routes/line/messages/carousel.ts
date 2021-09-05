@@ -129,7 +129,19 @@ module.exports = function carouselTemplate(
     contents: {
       type: "carousel",
       contents: carouselContents,
-    }
+    },
+    quickReply: {
+      items: [
+        {
+          type: "action",
+          action: {
+            type: "uri",
+            label: `利用できる${systemsCount}個の制度を見る`,
+            uri: `${process.env.LIFF_URL}/others/${resultId}`,
+          },
+        },
+      ],
+    },
   };
   return returnMessage;
 };
