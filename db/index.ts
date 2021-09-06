@@ -1,4 +1,7 @@
 // DB操作まわりの関数をまとめて提供します
+
+import { idText } from "typescript";
+
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 const { Client } = require("pg");
 const { uuid } = require("uuidv4");
@@ -51,13 +54,12 @@ const pg = new Client(pgConfig);
 
 pg.connect()
   .then(() => console.log("pg Connected successfuly"))
-  .catch(() => console.log("err"));
+  .catch(() => console.log("pr err"));
 
 exports.getServiceDetail = async (serviceId: string) => {
-  // 制度IDから制度詳細を返します
-  // 旧get_systems
+  const tableName = serviceId.split("-")[0];
   const res = await pg.query({
-    text: "SELECT * FROM users WHERE service_id=$1;",
+    text: `SELECT * FROM ${tableName} WHERE service_id=$1;`,
     values: [String(serviceId)],
   });
 
@@ -65,29 +67,15 @@ exports.getServiceDetail = async (serviceId: string) => {
     throw new Error("Not found");
   }
 
+  const seidoType = serviceId.split("-")[0];
+  const img_url = getImageUrl(seidoType);
+
   const service = res.rows[0];
 
   return {
-    serviceId: service.service_id,
-    title: service.service_title,
-    subtitle: service.subtitle,
-    detailUrl: service.detail_url,
-    applyUrl: service.apply_url,
-    overview: service.overview,
-    administrativeServiceCategory: service.administrative_service_category,
-    organization: service.organization,
-    area: service.area,
-    target: service.target,
-    image_url: "https://static.civichat.jp/thumbnail-image/deferment.png",
-    priority: service.priority,
-    supportContent: service.service_content,
+    ...service,
+    image_url: img_url,
     uri: liffUrl + "/info/" + serviceId,
-    lastUpdated: service.last_updated_at,
-    qualification: service.qualification,
-    acceptableDates: service.acceptable_dates,
-    acceptableTimes: service.acceptable_times,
-    needs: service.needs,
-    howToUse: service.howToUse,
   };
 };
 
@@ -116,7 +104,11 @@ export type resultSaveData = {
   resultId: string;
 };
 
-exports.queryServices = async (systemIds: Array<string>, lineId: string) => {
+exports.queryServices = async (
+  systemIds: Array<string>,
+  lineId: string,
+  seido: string
+) => {
   const resultId: string = uuid();
 
   const resultSaveData: resultSaveData = {
@@ -124,28 +116,42 @@ exports.queryServices = async (systemIds: Array<string>, lineId: string) => {
     resultId: resultId,
   };
 
+  let othersType: string;
+  if (seido === "shibuya_preschool") {
+    othersType = "施設";
+  } else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake") {
+    othersType = "制度";
+  } else {
+    othersType = "";
+  }
+
+  let imgUrl;
+  if (seido === "shibuya_parenting" || seido === "shibuya_preschool") {
+    imgUrl =
+      "https://static.civichat.jp/thumbnail-image/babycar_woman_color.png";
+  } else {
+    imgUrl = "https://static.civichat.jp/thumbnail-image/savings.png";
+  }
   for (const systemId of systemIds) {
     const res = await pg.query({
-      text: "SELECT * FROM services WHERE service_id=$1;",
+      text: `SELECT * FROM ${seido} WHERE service_id=$1;`,
       values: [String(systemId)],
     });
     //検索結果を配列に格納
     resultSaveData.result.push({
-      title: res.rows[0].name,
-      overview: res.rows[0].content_abstract,
-      detailUrl: res.rows[0].content_url,
+      ...res.rows[0],
+      othersType: othersType,
     });
   }
-
   const saveString = JSON.stringify(resultSaveData);
 
   //保存する
   await pg.query({
-    text: "INSERT INTO  results(result_id,result_body,line_id,created_at) VALUES ($1,$2,$3,current_timestamp)",
-    values: [resultId, saveString, lineId],
+    text: "INSERT INTO  results(result_id,result_body,line_id,src_table,created_at) VALUES ($1,$2,$3,$4,current_timestamp)",
+    values: [resultId, saveString, lineId, seido],
   });
+  return [resultId,othersType,imgUrl];
 
-  return resultId;
 };
 
 exports.getQueryResult = async (resultId: string) => {
@@ -154,8 +160,15 @@ exports.getQueryResult = async (resultId: string) => {
     values: [String(resultId)],
   });
 
+  const seidoType = JSON.parse(
+    res.rows[0].result_body
+  ).result[0].service_id.split("-")[0];
+  const img_url = getImageUrl(seidoType);
   if (res.rows.length === 1) {
-    return JSON.parse(res.rows[0].result_body);
+    return {
+      result: JSON.parse(res.rows[0].result_body).result,
+      img_url: img_url,
+    };
   } else {
     return { result: [] };
   }
@@ -163,14 +176,12 @@ exports.getQueryResult = async (resultId: string) => {
 
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = async () => {
-  const systemsData = require("../datas/systemsdata.json");
-  for (const item of systemsData.systemsData) {
-    const date = new Date(0);
+  const systemsDataShibuya = require("../datas/shibuyaParenting/systemsdata.json");
+  for (const item of systemsDataShibuya.systemsData) {
     await pg.query({
-      text: "INSERT INTO services (uri,service_id,service_number,origin_id,alteration_flag,provider,provider_prefecture_id,provider_city_id,name,content_abstract,content_provisions,content_target,content_how_to_apply,content_application_start_date,content_application_close_date,content_url,content_contact,content_information_release_date,tags ,theme,tags_category,tags_person_type,tags_entity_type,tags_keyword_type,tags_issue_type,tags_provider) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26) ;",
+      text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,url,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
       values: [
-        item["URI"],
-        item["PSID"],
+        item["サービスID"],
         item["制度番号"],
         item["元制度番号"],
         item["制度変更区分"],
@@ -182,20 +193,112 @@ exports.saveInitialDatafromJson = async () => {
         item["支援内容"],
         item["対象者"],
         item["利用・申請方法"],
-        date,
-        date,
+        item["受付開始日"],
+        item["受付終了日"],
         item["詳細参照先"],
         item["お問い合わせ先"],
-        date,
+        item["公開日"],
         item["タグ"],
         item["テーマ"],
         item["タグ（カテゴリー）"],
-        item["タグ（対象者）"],
+        item["タグ（事業者分類）"],
         item["タグ（事業者分類）"],
         item["タグ（キーワード）"],
         item["タグ（テーマ）"],
-        item["タグ（所管組織）"],
       ],
     });
   }
+
+  const systemsDataKumamoto = require("../datas/kumamotoEarthquake/systemsdata.json");
+  for (const item of systemsDataKumamoto.systemsData) {
+    await pg.query({
+      text: "INSERT INTO kumamoto_earthquake (service_id,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
+      values: [
+        item["サービスID"],
+        item["制度管理番号"],
+        item["制度名"],
+        item["対象者"],
+        item["サブタイトル"],
+        item["表示優先度"],
+        item["公開日程"],
+        item["申請期限（公開終了日）"],
+        item["公開・非公開（チェックで公開）"],
+        item["制度概要"],
+        item["制度所管組織"],
+        item["親制度"],
+        item["親制度との関係性"],
+        item["条件"],
+        item["用途・対象物"],
+        item["対象地域"],
+        item["支援内容"],
+        item["留意事項"],
+        item["手続き等"],
+        item["必要なもの"],
+        item["必要書類のURL"],
+        item["申請窓口"],
+        item["受付可能日時（受付日）"],
+        item["受付可能日時（受付時間）"],
+        item["申請可能URL"],
+        item["受付開始日"],
+        item["受付終了日"],
+        item["お問い合わせ先"],
+        item["詳細参照先"],
+        item["行政サービス分類"],
+        item["ライフステージ分類"],
+        item["お困りごと分類"],
+      ],
+    });
+  }
+
+  const systemsDataShibuyaKindergarten = require("../datas/shibuyaPreschool/systemsdata.json");
+  for (const item of systemsDataShibuyaKindergarten.systemsData) {
+    await pg.query({
+      text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,url,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29) ;",
+      values: [
+        item["サービスID"],
+        item["都道府県"],
+        item["市町村"],
+        item["エリア"],
+        item["幼稚園•保育園のタイトル"],
+        item["対象年齢"],
+        item["施設のカテゴリ"],
+        item["施設の運営者"],
+        item["休園日"],
+        item["園庭"],
+        item["タオルの持ち込み"],
+        item["オムツの持ち帰り"],
+        item["駐輪場"],
+        item["給食・離乳食"],
+        item["見学"],
+        item["延長保育の対応時間"],
+        item["アレルギー対応"],
+        item["入園可能"],
+        item["申し込み受付先"],
+        item["詳細参照先"],
+        item["お問い合わせ先"],
+        item["公開日"],
+        item["保育施設の空き状況（0さい）"],
+        item["保育施設の空き状況（1さい）"],
+        item["保育施設の空き状況（2さい）"],
+        item["保育施設の空き状況（3さい）"],
+        item["保育施設の空き状況（4さい）"],
+        item["保育施設の空き状況（5さい）"],
+        item["住所"],
+      ],
+    });
+  }
+  return "ok";
 };
+
+function getImageUrl(seidoType: string) {
+  let img_url: string;
+  if (seidoType === "shibuya_preschool" || seidoType === "shibuya_parenting") {
+    img_url =
+      "https://static.civichat.jp/thumbnail-image/babycar_man_color.png";
+  } else if (seidoType === "kumamoto_earthquake") {
+    img_url = "https://static.civichat.jp/thumbnail-image/support.png";
+  } else {
+    img_url = "https://static.civichat.jp/thumbnail-image/support.png";
+  }
+  return img_url;
+}

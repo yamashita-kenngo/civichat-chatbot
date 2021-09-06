@@ -1,10 +1,12 @@
 import * as types from "@line/bot-sdk/lib/types";
 import { SystemProperty } from "../../../classes";
 
-module.exports = async function carouselTemplate(
+module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
-  resultId: string
+  resultId: string,
+  othersType: string,
+  imgUrl: string
 ) {
   if (items.length === 0) {
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
@@ -19,6 +21,7 @@ module.exports = async function carouselTemplate(
           {
             type: "text",
             text: String(systemsCount),
+            color: "#000000",
             align: "center",
             gravity: "center",
             size: "5xl",
@@ -27,7 +30,8 @@ module.exports = async function carouselTemplate(
           },
           {
             type: "text",
-            text: "種類の制度が見つかりました🎉",
+            text: `種類の${othersType}が見つかりました🎉`,
+            color: "#000000",
             weight: "bold",
             align: "center",
           },
@@ -37,33 +41,23 @@ module.exports = async function carouselTemplate(
     },
   ] as types.FlexBubble[];
   for (const item of items) {
-    carouselContents.push({
+    const content: types.FlexBubble = {
       type: "bubble",
       header: {
         type: "box",
         layout: "vertical",
         contents: [
           {
-            type: "box",
-            layout: "vertical",
-            contents: [
-              {
-                type: "text",
-                text: item["タグ（テーマ）"],
-                wrap: true,
-                align: "end",
-                color: "#8e8989",
-              },
-            ],
+            type: "filler",
           },
         ],
       },
       hero: {
         type: "image",
-        url: "https://static.civichat.jp/thumbnail-image/deferment.png",
+        url: imgUrl,
         size: "full",
         aspectRatio: "20:13",
-        aspectMode: "cover",
+        aspectMode: "fit",
       },
       body: {
         type: "box",
@@ -71,7 +65,12 @@ module.exports = async function carouselTemplate(
         contents: [
           {
             type: "text",
-            text: item["タイトル（制度名）"],
+            text:
+              item["タイトル（制度名）"] ||
+              item["制度名"] ||
+              item["幼稚園•保育園のタイトル"] ||
+              "タイトル",
+            color: "#000000",
             weight: "bold",
             size: "xl",
             wrap: true,
@@ -81,19 +80,192 @@ module.exports = async function carouselTemplate(
       footer: {
         type: "box",
         layout: "vertical",
+        margin: "xxl",
         contents: [
           {
-            type: "button",
+            type: "text",
+            text: "詳しく見る",
+            weight: "bold",
+            size: "lg",
+            color: "#177BDCFF",
+            align: "center",
+            margin: "md",
             action: {
               type: "uri",
-              label: "詳細を見る",
-              uri: item["詳細参照先"],
+              label: "詳しく見る",
+              uri: `${process.env.LIFF_URL}/services/${item["サービスID"]}`,
             },
-            style: "secondary",
+            contents: [],
+          },
+          {
+            type: "spacer",
           },
         ],
       },
-    });
+    };
+    if (item["概要"] || item["制度概要"]) {
+      content.body.contents.push({
+        type: "text",
+        text: item["概要"] || item["制度概要"],
+        color: "#000000",
+        weight: "bold",
+        margin: "md",
+        size: "sm",
+        wrap: true,
+      });
+    }
+    if (item["住所"]) {
+      const encodeAddress = encodeURI(item["住所"]);
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "住所",
+                color: "#000000",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["住所"],
+                color: "#000000",
+                wrap: true,
+                action: {
+                  type: "uri",
+                  label: "tel",
+                  uri: `https://www.google.com/maps/search/?api=1&query=${encodeAddress}`,
+                },
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item["見学"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "見学",
+                color: "#000000",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["見学"],
+                color: "#000000",
+                wrap: true,
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item["お問い合わせ先"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "お問い合わせ先",
+                color: "#000000",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["お問い合わせ先"],
+                color: "#000000",
+                wrap: true,
+                action: {
+                  type: "uri",
+                  label: "tel",
+                  uri: `tel:${item["お問い合わせ先"]}`,
+                },
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item["対象者"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "対象者",
+                color: "#000000",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["対象者"],
+                color: "#000000",
+                wrap: true,
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item["行政サービス分類"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "行政サービス分類",
+                color: "#000000",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["行政サービス分類"],
+                color: "#000000",
+                wrap: true,
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    carouselContents.push(content);
   }
   const returnMessage: types.Message = {
     type: "flex",
@@ -108,7 +280,7 @@ module.exports = async function carouselTemplate(
           type: "action",
           action: {
             type: "uri",
-            label: `利用できる${systemsCount}個の制度を見る`,
+            label: `利用できる${systemsCount}個の${othersType}を見る`,
             uri: `${process.env.LIFF_URL}/others/${resultId}`,
           },
         },

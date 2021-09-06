@@ -1,0 +1,200 @@
+{
+  "questions": [
+    {
+      "question_id": "bbad0f12-e449-4451-89b3-b6a4f4b064e3",
+      "question_text": "お住まいのエリアはどこですか？\n\n（A）笹塚・幡ヶ谷・本町\n\n（B）上原・大山町・西原・初台・元代々木町・富ヶ谷・代々木神園町・代々木\n\n（C）千駄ヶ谷・神宮前\n\n（D）神山町・神南・宇田川町・松濤・神泉町・円山町・道玄坂・南平台町・桜丘町・鉢山町・鶯谷町・猿楽町・代官山町・恵比寿西・恵比寿南\n\n（E）渋谷・東・広尾・恵比寿",
+      "answers": [
+        {
+          "answer_id": "10d30062-d22a-4c05-93fc-3c97bb8a9fdd",
+          "answer_text": "A"
+        },
+        {
+          "answer_id": "7ed8024e-da49-4d49-806d-aa986666ff1f",
+          "answer_text": "B"
+        },
+        {
+          "answer_id": "5bac0859-88fd-43a9-b45a-99da48d3e643",
+          "answer_text": "C"
+        },
+        {
+          "answer_id": "01234e33-de96-40e2-9bde-182b0597b044",
+          "answer_text": "D"
+        },
+        {
+          "answer_id": "8a28118e-5624-4906-aeac-08be19e64376",
+          "answer_text": "E"
+        }
+      ]
+    },
+    {
+      "question_id": "d0ad7d5f-951e-4381-9d8a-5dc53ca356e5",
+      "question_text": "お子さんの年齢は何歳ですか？",
+      "answers": [
+        {
+          "answer_id": "a4fa0e6e-fb21-4bef-aedd-a20d4930a3b0",
+          "answer_text": "0歳"
+        },
+        {
+          "answer_id": "6c8ad1e7-7295-49a5-b3e3-b47946fad7fc",
+          "answer_text": "1歳"
+        },
+        {
+          "answer_id": "a6ad761a-3946-4f58-9ded-90e79ed5a017",
+          "answer_text": "2歳"
+        },
+        {
+          "answer_id": "0f795929-1f08-4fbb-81fa-a5d8dda4defe",
+          "answer_text": "3歳"
+        },
+        {
+          "answer_id": "313bb4b7-eb89-484c-aa4d-657b0a5f9ac3",
+          "answer_text": "4歳"
+        },
+        {
+          "answer_id": "119e9ada-5bd6-4df6-a225-eeed2d73a2e3",
+          "answer_text": "5歳"
+        }
+      ]
+    },
+    {
+      "question_id": "50ab5208-9581-4e7e-924a-5116b800d082",
+      "question_text": "施設のカテゴリーはどれがいいですか？",
+      "answers": [
+        {
+          "answer_id": "dd3ffd30-dc6e-42c9-aaee-51fb05d7e50d",
+          "answer_text": "保育園"
+        },
+        {
+          "answer_id": "7b068093-cd6e-4387-8a76-d4899b731f9a",
+          "answer_text": "幼稚園"
+        },
+        {
+          "answer_id": "f4da4a55-247a-4341-ab02-62ebf319759b",
+          "answer_text": "幼保一元化"
+        },
+        {
+          "answer_id": "06862721-31b3-4448-96df-9ce242296869",
+          "answer_text": "小規模保育施設"
+        },
+        {
+          "answer_id": "8bc148dd-1d37-4490-a99b-e91576024efe",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "2692b908-eaf7-4677-91c9-d93a03d9bb88",
+      "question_text": "施設の運営者はどちらがいいですか？",
+      "answers": [
+        {
+          "answer_id": "74f3acad-e0fb-4ebb-afa4-8b54396ed706",
+          "answer_text": "区立"
+        },
+        {
+          "answer_id": "e2967413-e602-4b31-984c-5f15e6a0b8a3",
+          "answer_text": "私立"
+        },
+        {
+          "answer_id": "1d7af362-8518-4210-9c74-f9cde63e411e",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "9f6d7ab9-da6c-49ef-86cc-7227ec436a04",
+      "question_text": "休園日はどれがいいですか？",
+      "answers": [
+        {
+          "answer_id": "80a1f046-8430-418d-ab23-a2d620a58660",
+          "answer_text": "土日祝"
+        },
+        {
+          "answer_id": "00fa7f8d-8af4-4439-bc86-3a473f64a7fe",
+          "answer_text": "日祝のみ"
+        },
+        {
+          "answer_id": "3fc9c1ff-43a0-4bcc-9125-cde097ca1c9e",
+          "answer_text": "祝のみ"
+        },
+        {
+          "answer_id": "fe99aad9-ecc9-4391-baef-8594608ac217",
+          "answer_text": "無し（年末年始は除く）"
+        },
+        {
+          "answer_id": "d373b908-6369-4933-a3c9-e58b2c9f211a",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "d98be785-ddde-4c3c-862f-9561788f19b0",
+      "question_text": "施設内に園庭は欲しいですか？",
+      "answers": [
+        {
+          "answer_id": "fb668525-2634-4a5e-b783-7ec819bc51fb",
+          "answer_text": "はい"
+        },
+        {
+          "answer_id": "c2fcb169-1111-4e1a-b598-1f43a67e57e2",
+          "answer_text": "いいえ"
+        },
+        {
+          "answer_id": "1480676b-d7f7-4d2e-a227-fe17334ace01",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "c5fb7bf0-c7c5-4329-aa6d-6a81cb7b29d2",
+      "question_text": "延長保育は何時までがいいですか？",
+      "answers": [
+        {
+          "answer_id": "e64eb7d8-cfbb-4161-8f67-9340dabdccf6",
+          "answer_text": "17時まで（幼稚園）"
+        },
+        {
+          "answer_id": "501b579b-a405-4fd9-8175-c3a57760613d",
+          "answer_text": "18時まで（幼稚園）"
+        },
+        {
+          "answer_id": "10414b11-13e2-4c92-b7d1-dae15c78538c",
+          "answer_text": "19時30分まで"
+        },
+        {
+          "answer_id": "ad66a0b1-7d0c-444c-8191-56d5bce9fca2",
+          "answer_text": "20時30分まで"
+        },
+        {
+          "answer_id": "9b9a09b4-8e4a-4713-b34d-3fd949045b7d",
+          "answer_text": "21時30分まで"
+        },
+        {
+          "answer_id": "c0c8c170-86d8-4329-a191-257ac7e5879f",
+          "answer_text": "気にしていない"
+        }
+      ]
+    },
+    {
+      "question_id": "b1046bc3-66e4-4e06-affb-2a62098d76b2",
+      "question_text": "見学が可能か？",
+      "answers": [
+        {
+          "answer_id": "1fccd044-3b5b-4812-8df3-54ec67622a39",
+          "answer_text": "可能"
+        },
+        {
+          "answer_id": "763b464f-85fb-4f0e-9938-8215180a26b7",
+          "answer_text": "可能（緊急事態宣言明けから）"
+        },
+        {
+          "answer_id": "8f7c151e-9a0a-43a4-8db3-c2959fb14877",
+          "answer_text": "不可"
+        },
+        {
+          "answer_id": "1412bffa-a477-473d-8bdb-016b82d3c948",
+          "answer_text": "気にしていない"
+        }
+      ]
+    }
+  ]
+}
