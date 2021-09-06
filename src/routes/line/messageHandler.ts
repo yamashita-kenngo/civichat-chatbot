@@ -69,7 +69,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                       type: "button",
                       action: {
                         type: "postback",
-                        label: "熊本震災Ver.",
+                        label: "熊本県・震災制度",
                         data: "start-kumamoto_earthquake",
                       },
                       style: "primary",
@@ -78,7 +78,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                       type: "button",
                       action: {
                         type: "postback",
-                        label: "渋谷子育てVer.",
+                        label: "渋谷区・子育て制度",
                         data: "start-shibuya_parenting",
                       },
                       style: "primary",
@@ -87,7 +87,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                       type: "button",
                       action: {
                         type: "postback",
-                        label: "渋谷幼稚・保育園Ver.",
+                        label: "渋谷区・保育施設",
                         data: "start-shibuya_preschool",
                       },
                       style: "primary",
@@ -117,31 +117,37 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
             cs.maintenanceQuestions();
             if (cs.isEnded()) {
               console.log(`制度推薦終了,${cs.getSystems().length}個の制度`);
+              if (cs.getSystems().length === 0) {
+                returnMessage = [
+                  {
+                    type: "text",
+                    text: "現在の条件では、該当するものを見つけることができませんでした。再度、条件を変更してお試しください。",
+                  },
+                ];
+              }
               //カルーセルが9枚より上
-              if (cs.getSystems().length > 9) {
+              else if (cs.getSystems().length > 9) {
                 const results = cs.getSystems().map((system: string) => {
                   return systemsData["systemsData"].filter((systemD) => {
                     return systemD["サービスID"] === system;
                   })[0];
                 });
                 const systemsCount = results.length;
-                const [resultId, othersType,imgUrl] = await db.queryServices(
+                const [resultId, othersType, imgUrl] = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId,
                   cs.getSeido()
                 );
-                returnMessage = await carouselTemplate(
-                  results.slice(0, 9),
-                  systemsCount,
-                  resultId,
-                  
-                );
                 returnMessage = [
-                  { type: "text", text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）` },
+                  {
+                    type: "text",
+                    text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）`,
+                  },
                   await carouselTemplate(
                     results.slice(0, 9),
                     systemsCount,
                     resultId,
+                    othersType,
                     imgUrl
                   ),
                 ];
@@ -153,14 +159,23 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   })[0];
                 });
                 const systemsCount = results.length;
-                const [resultId,othersType,imgUrl] = await db.queryServices(
+                const [resultId, othersType, imgUrl] = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId,
                   cs.getSeido()
                 );
                 returnMessage = [
-                  { type: "text", text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）` },
-                  await carouselTemplate(results, systemsCount, resultId, imgUrl),
+                  {
+                    type: "text",
+                    text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）`,
+                  },
+                  await carouselTemplate(
+                    results,
+                    systemsCount,
+                    resultId,
+                    othersType,
+                    imgUrl
+                  ),
                 ];
               }
             } else {

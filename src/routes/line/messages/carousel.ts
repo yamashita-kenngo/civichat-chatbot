@@ -5,6 +5,7 @@ module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
   resultId: string,
+  othersType:string,
   imgUrl: string
 ) {
   if (items.length === 0) {
@@ -20,6 +21,7 @@ module.exports = function carouselTemplate(
           {
             type: "text",
             text: String(systemsCount),
+            color: "#000000",
             align: "center",
             gravity: "center",
             size: "5xl",
@@ -28,7 +30,8 @@ module.exports = function carouselTemplate(
           },
           {
             type: "text",
-            text: "種類の制度が見つかりました🎉",
+            text: `種類の${othersType}が見つかりました🎉`,
+            color: "#000000",
             weight: "bold",
             align: "center",
           },
@@ -67,12 +70,11 @@ module.exports = function carouselTemplate(
               item["制度名"] ||
               item["幼稚園•保育園のタイトル"] ||
               "タイトル",
+            color: "#000000",
             weight: "bold",
             size: "xl",
             wrap: true,
           },
-          // ここに概要を追加する
-          //ここにboxを適宜追加する
         ],
       },
       footer: {
@@ -84,7 +86,7 @@ module.exports = function carouselTemplate(
             type: "text",
             text: "詳しく見る",
             weight: "bold",
-            size: "xl",
+            size: "lg",
             color: "#177BDCFF",
             align: "center",
             margin: "md",
@@ -96,7 +98,7 @@ module.exports = function carouselTemplate(
             contents: [],
           },
           {
-            type: "filler",
+            type: "spacer",
           },
         ],
       },
@@ -105,6 +107,7 @@ module.exports = function carouselTemplate(
       content.body.contents.push({
         type: "text",
         text: item["概要"] || item["制度概要"],
+        color: "#000000",
         weight: "bold",
         margin: "md",
         size: "sm",
@@ -112,6 +115,7 @@ module.exports = function carouselTemplate(
       });
     }
     if (item["住所"]) {
+      const encodeAddress = encodeURI(item["住所"]);
       content.body.contents.push({
         type: "box",
         layout: "vertical",
@@ -124,12 +128,19 @@ module.exports = function carouselTemplate(
               {
                 type: "text",
                 text: "住所",
+                color: "#000000",
                 contents: [],
               },
               {
                 type: "text",
                 text: item["住所"],
+                color: "#000000",
                 wrap: true,
+                action: {
+                  type: "uri",
+                  label: "tel",
+                  uri: `https://www.google.com/maps/search/?api=1&query=${encodeAddress}`,
+                },
                 contents: [],
               },
             ],
@@ -150,11 +161,13 @@ module.exports = function carouselTemplate(
               {
                 type: "text",
                 text: "見学",
+                color: "#000000",
                 contents: [],
               },
               {
                 type: "text",
                 text: item["見学"],
+                color: "#000000",
                 wrap: true,
                 contents: [],
               },
@@ -176,12 +189,19 @@ module.exports = function carouselTemplate(
               {
                 type: "text",
                 text: "お問い合わせ先",
+                color: "#000000",
                 contents: [],
               },
               {
                 type: "text",
                 text: item["お問い合わせ先"],
+                color: "#000000",
                 wrap: true,
+                action: {
+                  type: "uri",
+                  label: "tel",
+                  uri: `tel:${item["お問い合わせ先"]}`,
+                },
                 contents: [],
               },
             ],
@@ -202,11 +222,13 @@ module.exports = function carouselTemplate(
               {
                 type: "text",
                 text: "対象者",
+                color: "#000000",
                 contents: [],
               },
               {
                 type: "text",
                 text: item["対象者"],
+                color: "#000000",
                 wrap: true,
                 contents: [],
               },
@@ -228,11 +250,13 @@ module.exports = function carouselTemplate(
               {
                 type: "text",
                 text: "支援内容",
+                color: "#000000",
                 contents: [],
               },
               {
                 type: "text",
                 text: item["支援内容"],
+                color: "#000000",
                 wrap: true,
                 contents: [],
               },
@@ -256,7 +280,7 @@ module.exports = function carouselTemplate(
           type: "action",
           action: {
             type: "uri",
-            label: `利用できる${systemsCount}個の制度を見る`,
+            label: `利用できる${systemsCount}個の${othersType}を見る`,
             uri: `${process.env.LIFF_URL}/others/${resultId}`,
           },
         },
