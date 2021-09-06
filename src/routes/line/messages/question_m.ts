@@ -31,7 +31,7 @@ module.exports = (item: Question) => {
             text: item.questionText,
             weight: "bold",
             size: "md",
-            align: "center",
+            align: "start",
             wrap: true,
             contents: [],
           },
