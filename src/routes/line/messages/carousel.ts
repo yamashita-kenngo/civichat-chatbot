@@ -5,7 +5,7 @@ module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
   resultId: string,
-  othersType:string,
+  othersType: string,
   imgUrl: string
 ) {
   if (items.length === 0) {
@@ -237,7 +237,7 @@ module.exports = function carouselTemplate(
         ],
       });
     }
-    if (item["支援内容"]) {
+    if (item["行政サービス分類"]) {
       content.body.contents.push({
         type: "box",
         layout: "vertical",
@@ -249,13 +249,13 @@ module.exports = function carouselTemplate(
             contents: [
               {
                 type: "text",
-                text: "支援内容",
+                text: "行政サービス分類",
                 color: "#000000",
                 contents: [],
               },
               {
                 type: "text",
-                text: item["支援内容"],
+                text: item["行政サービス分類"],
                 color: "#000000",
                 wrap: true,
                 contents: [],
