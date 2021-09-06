@@ -83,7 +83,7 @@ var pg = new Client(pgConfig);
 pg.connect()
     .then(function () { return console.log("pg Connected successfuly"); })["catch"](function () { return console.log("pr err"); });
 exports.getServiceDetail = function (serviceId) { return __awaiter(void 0, void 0, void 0, function () {
-    var tableName, res, service;
+    var tableName, res, seidoType, img_url, service;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -97,8 +97,10 @@ exports.getServiceDetail = function (serviceId) { return __awaiter(void 0, void 
                 if (res.rows.length < 1) {
                     throw new Error("Not found");
                 }
+                seidoType = serviceId.split("-")[0];
+                img_url = getImageUrl(seidoType);
                 service = res.rows[0];
-                return [2 /*return*/, __assign(__assign({}, service), { image_url: "https://static.civichat.jp/thumbnail-image/deferment.png", uri: liffUrl + "/info/" + serviceId })];
+                return [2 /*return*/, __assign(__assign({}, service), { image_url: img_url, uri: liffUrl + "/info/" + serviceId })];
         }
     });
 }); };
@@ -192,18 +194,13 @@ exports.getQueryResult = function (resultId) { return __awaiter(void 0, void 0, 
                 })];
             case 1:
                 res = _a.sent();
-                seidoType = JSON.parse(res.rows[0].result_body).result[0].service_id.split('-')[0];
-                if (seidoType === 'shibuya_preschool' || seidoType === 'shibuya_parenting') {
-                    img_url = 'https://static.civichat.jp/thumbnail-image/babycar_man_color.png';
-                }
-                else if (seidoType === 'kumamoto_earthquake') {
-                    img_url = 'https://static.civichat.jp/thumbnail-image/support.png';
-                }
-                else {
-                    img_url = 'https://static.civichat.jp/thumbnail-image/support.png';
-                }
+                seidoType = JSON.parse(res.rows[0].result_body).result[0].service_id.split("-")[0];
+                img_url = getImageUrl(seidoType);
                 if (res.rows.length === 1) {
-                    return [2 /*return*/, { result: JSON.parse(res.rows[0].result_body).result, 'img_url': img_url }];
+                    return [2 /*return*/, {
+                            result: JSON.parse(res.rows[0].result_body).result,
+                            img_url: img_url
+                        }];
                 }
                 else {
                     return [2 /*return*/, { result: [] }];
@@ -360,3 +357,17 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
         }
     });
 }); };
+function getImageUrl(seidoType) {
+    var img_url;
+    if (seidoType === "shibuya_preschool" || seidoType === "shibuya_parenting") {
+        img_url =
+            "https://static.civichat.jp/thumbnail-image/babycar_man_color.png";
+    }
+    else if (seidoType === "kumamoto_earthquake") {
+        img_url = "https://static.civichat.jp/thumbnail-image/support.png";
+    }
+    else {
+        img_url = "https://static.civichat.jp/thumbnail-image/support.png";
+    }
+    return img_url;
+}
