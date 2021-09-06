@@ -67,11 +67,14 @@ exports.getServiceDetail = async (serviceId: string) => {
     throw new Error("Not found");
   }
 
+  const seidoType = serviceId.split("-")[0];
+  const img_url = getImageUrl(seidoType);
+
   const service = res.rows[0];
 
   return {
     ...service,
-    image_url: "https://static.civichat.jp/thumbnail-image/deferment.png",
+    image_url: img_url,
     uri: liffUrl + "/info/" + serviceId,
   };
 };
@@ -129,7 +132,6 @@ exports.queryServices = async (
   } else {
     imgUrl = "https://static.civichat.jp/thumbnail-image/savings.png";
   }
-
   for (const systemId of systemIds) {
     const res = await pg.query({
       text: `SELECT * FROM ${seido} WHERE service_id=$1;`,
@@ -149,6 +151,7 @@ exports.queryServices = async (
     values: [resultId, saveString, lineId, seido],
   });
   return [resultId,othersType,imgUrl];
+
 };
 
 exports.getQueryResult = async (resultId: string) => {
@@ -157,8 +160,15 @@ exports.getQueryResult = async (resultId: string) => {
     values: [String(resultId)],
   });
 
+  const seidoType = JSON.parse(
+    res.rows[0].result_body
+  ).result[0].service_id.split("-")[0];
+  const img_url = getImageUrl(seidoType);
   if (res.rows.length === 1) {
-    return JSON.parse(res.rows[0].result_body);
+    return {
+      result: JSON.parse(res.rows[0].result_body).result,
+      img_url: img_url,
+    };
   } else {
     return { result: [] };
   }
@@ -279,3 +289,16 @@ exports.saveInitialDatafromJson = async () => {
   }
   return "ok";
 };
+
+function getImageUrl(seidoType: string) {
+  let img_url: string;
+  if (seidoType === "shibuya_preschool" || seidoType === "shibuya_parenting") {
+    img_url =
+      "https://static.civichat.jp/thumbnail-image/babycar_man_color.png";
+  } else if (seidoType === "kumamoto_earthquake") {
+    img_url = "https://static.civichat.jp/thumbnail-image/support.png";
+  } else {
+    img_url = "https://static.civichat.jp/thumbnail-image/support.png";
+  }
+  return img_url;
+}
