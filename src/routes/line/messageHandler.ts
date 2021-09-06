@@ -121,7 +121,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   })[0];
                 });
                 const systemsCount = results.length;
-                const resultId = await db.queryServices(
+                const [resultId, imgUrl] = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId,
                   cs.getSeido()
@@ -129,7 +129,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                 returnMessage = await carouselTemplate(
                   results.slice(0, 9),
                   systemsCount,
-                  resultId
+                  resultId,
+                  imgUrl
                 );
               } else {
                 // 9枚以下
