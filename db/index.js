@@ -185,7 +185,7 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
             case 5:
                 //保存する
                 _a.sent();
-                return [2 /*return*/, [resultId, imgUrl]];
+                return [2 /*return*/, [resultId, othersType,imgUrl]];
         }
     });
 }); };

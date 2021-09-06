@@ -148,8 +148,7 @@ exports.queryServices = async (
     text: "INSERT INTO  results(result_id,result_body,line_id,src_table,created_at) VALUES ($1,$2,$3,$4,current_timestamp)",
     values: [resultId, saveString, lineId, seido],
   });
-
-  return [resultId, imgUrl];
+  return [resultId,othersType,imgUrl];
 };
 
 exports.getQueryResult = async (resultId: string) => {

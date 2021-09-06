@@ -32,67 +32,71 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
   if (!event.source.userId) {
     throw Error("userId is undefined");
   }
-  let returnMessage: types.Message = { type: "text", text: "hello world!" };
+  let returnMessage: Array<types.Message> = [
+    { type: "text", text: "hello world!" },
+  ];
 
   switch (event.type) {
     case "message":
       if (event.message.type === "text") {
         if (event.message.text === "制度を探す") {
-          returnMessage = {
-            type: "flex",
-            altText: "どの制度を探しますか？",
-            contents: {
-              type: "bubble",
-              direction: "ltr",
-              header: {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: "どの制度を探しますか？",
-                    weight: "bold",
-                    align: "center",
-                    contents: [],
-                  },
-                ],
-              },
-              body: {
-                type: "box",
-                layout: "vertical",
-                spacing: "md",
-                contents: [
-                  {
-                    type: "button",
-                    action: {
-                      type: "postback",
-                      label: "熊本震災Ver.",
-                      data: "start-kumamoto_earthquake",
+          returnMessage = [
+            {
+              type: "flex",
+              altText: "どの制度を探しますか？",
+              contents: {
+                type: "bubble",
+                direction: "ltr",
+                header: {
+                  type: "box",
+                  layout: "vertical",
+                  contents: [
+                    {
+                      type: "text",
+                      text: "どの制度を探しますか？",
+                      weight: "bold",
+                      align: "center",
+                      contents: [],
                     },
-                    style: "primary",
-                  },
-                  {
-                    type: "button",
-                    action: {
-                      type: "postback",
-                      label: "渋谷子育てVer.",
-                      data: "start-shibuya_parenting",
+                  ],
+                },
+                body: {
+                  type: "box",
+                  layout: "vertical",
+                  spacing: "md",
+                  contents: [
+                    {
+                      type: "button",
+                      action: {
+                        type: "postback",
+                        label: "熊本震災Ver.",
+                        data: "start-kumamoto_earthquake",
+                      },
+                      style: "primary",
                     },
-                    style: "primary",
-                  },
-                  {
-                    type: "button",
-                    action: {
-                      type: "postback",
-                      label: "渋谷幼稚・保育園Ver.",
-                      data: "start-shibuya_preschool",
+                    {
+                      type: "button",
+                      action: {
+                        type: "postback",
+                        label: "渋谷子育てVer.",
+                        data: "start-shibuya_parenting",
+                      },
+                      style: "primary",
                     },
-                    style: "primary",
-                  },
-                ],
+                    {
+                      type: "button",
+                      action: {
+                        type: "postback",
+                        label: "渋谷幼稚・保育園Ver.",
+                        data: "start-shibuya_preschool",
+                      },
+                      style: "primary",
+                    },
+                  ],
+                },
               },
             },
-          };
+          ];
         } else {
           // ユーザーのセッション取得
           const userSession: Session = sessions[event.source.userId];
@@ -121,7 +125,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   })[0];
                 });
                 const systemsCount = results.length;
-                const [resultId, imgUrl] = await db.queryServices(
+                const [resultId, othersType,imgUrl] = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId,
                   cs.getSeido()
@@ -130,8 +134,17 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   results.slice(0, 9),
                   systemsCount,
                   resultId,
-                  imgUrl
+                  
                 );
+                returnMessage = [
+                  { type: "text", text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）` },
+                  await carouselTemplate(
+                    results.slice(0, 9),
+                    systemsCount,
+                    resultId,
+                    imgUrl
+                  ),
+                ];
               } else {
                 // 9枚以下
                 const results = cs.getSystems().map((system: string) => {
@@ -140,17 +153,15 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   })[0];
                 });
                 const systemsCount = results.length;
-                const [resultId, imgUrl] = await db.queryServices(
+                const [resultId,othersType,imgUrl] = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId,
                   cs.getSeido()
                 );
-                returnMessage = await carouselTemplate(
-                  results,
-                  systemsCount,
-                  resultId,
-                  imgUrl
-                );
+                returnMessage = [
+                  { type: "text", text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）` },
+                  await carouselTemplate(results, systemsCount, resultId, imgUrl),
+                ];
               }
             } else {
               sessions = {
@@ -160,27 +171,35 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   cs.selectQuestionFromPriority().id
                 ),
               };
-              returnMessage = await questionTemplate(cs.questionMessageItem());
+              returnMessage = [
+                await questionTemplate(cs.questionMessageItem()),
+              ];
             }
           } else {
-            returnMessage = {
-              type: "text",
-              text: "不明なエラーが発生しました。「制度を探す」と送信してもう一度お試しください。",
-            };
+            returnMessage = [
+              {
+                type: "text",
+                text: "不明なエラーが発生しました。「制度を探す」と送信してもう一度お試しください。",
+              },
+            ];
           }
         }
       } else {
-        returnMessage = {
-          type: "text",
-          text: "「制度を探す」と送信してください！",
-        };
+        returnMessage = [
+          {
+            type: "text",
+            text: "「制度を探す」と送信してください！",
+          },
+        ];
       }
       break;
     case "follow":
-      returnMessage = {
-        type: "text",
-        text: "お友だち登録ありがとうございます！\n「制度を探す」と送信してみなさんにぴったりの制度を見つけてください！\n ━━━━━━━━━━━━ \n 現在は「渋谷区に在住」していて「20歳未満の子どもを養育している方」に向けて制度と、「熊本震災で使える制度情報」のおすすめをしています\n（他の市区町村に在住の方と熊本震災で被災されていない方はもうしばらくお待ちください...） \n ━━━━━━━━━━━━ \n このアカウントは「株式会社Civichat」が運営しています。 \n  https://civichat.jp/ \n LINE（株）が提供、または新たに取得される情報の取り扱いについては以下をご確認ください。 \n https://terms.line.me/OA_privacy?lang=ja",
-      };
+      returnMessage = [
+        {
+          type: "text",
+          text: "お友だち登録ありがとうございます！\n「制度を探す」と送信してみなさんにぴったりの制度を見つけてください！\n ━━━━━━━━━━━━ \n 現在は「渋谷区に在住」していて「20歳未満の子どもを養育している方」に向けて制度と、「熊本震災で使える制度情報」のおすすめをしています\n（他の市区町村に在住の方と熊本震災で被災されていない方はもうしばらくお待ちください...） \n ━━━━━━━━━━━━ \n このアカウントは「株式会社Civichat」が運営しています。 \n  https://civichat.jp/ \n LINE（株）が提供、または新たに取得される情報の取り扱いについては以下をご確認ください。 \n https://terms.line.me/OA_privacy?lang=ja",
+        },
+      ];
       break;
     case "postback":
       if (
@@ -249,7 +268,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
             cs.selectQuestionFromPriority().id
           ),
         };
-        returnMessage = await questionTemplate(cs.questionMessageItem());
+        returnMessage = [await questionTemplate(cs.questionMessageItem())];
       }
       break;
   }
