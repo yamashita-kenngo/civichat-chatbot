@@ -138,11 +138,6 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   event.source.userId,
                   cs.getSeido()
                 );
-                returnMessage = await carouselTemplate(
-                  results.slice(0, 9),
-                  systemsCount,
-                  resultId
-                );
                 returnMessage = [
                   {
                     type: "text",
@@ -152,6 +147,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     results.slice(0, 9),
                     systemsCount,
                     resultId,
+                    othersType,
                     imgUrl
                   ),
                 ];
@@ -177,6 +173,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     results,
                     systemsCount,
                     resultId,
+                    othersType,
                     imgUrl
                   ),
                 ];

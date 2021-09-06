@@ -5,6 +5,7 @@ module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
   resultId: string,
+  othersType:string,
   imgUrl: string
 ) {
   if (items.length === 0) {
@@ -29,7 +30,7 @@ module.exports = function carouselTemplate(
           },
           {
             type: "text",
-            text: "種類の制度が見つかりました🎉",
+            text: `種類の${othersType}が見つかりました🎉`,
             color: "#000000",
             weight: "bold",
             align: "center",
@@ -279,7 +280,7 @@ module.exports = function carouselTemplate(
           type: "action",
           action: {
             type: "uri",
-            label: `利用できる${systemsCount}個の制度を見る`,
+            label: `利用できる${systemsCount}個の${othersType}を見る`,
             uri: `${process.env.LIFF_URL}/others/${resultId}`,
           },
         },
