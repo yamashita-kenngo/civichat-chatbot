@@ -69,7 +69,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                       type: "button",
                       action: {
                         type: "postback",
-                        label: "熊本震災Ver.",
+                        label: "熊本県・震災制度",
                         data: "start-kumamoto_earthquake",
                       },
                       style: "primary",
@@ -78,7 +78,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                       type: "button",
                       action: {
                         type: "postback",
-                        label: "渋谷子育てVer.",
+                        label: "渋谷区・子育て制度",
                         data: "start-shibuya_parenting",
                       },
                       style: "primary",
@@ -87,7 +87,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                       type: "button",
                       action: {
                         type: "postback",
-                        label: "渋谷幼稚・保育園Ver.",
+                        label: "渋谷区・保育施設",
                         data: "start-shibuya_preschool",
                       },
                       style: "primary",
