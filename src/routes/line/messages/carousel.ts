@@ -71,8 +71,6 @@ module.exports = function carouselTemplate(
             size: "xl",
             wrap: true,
           },
-          // ここに概要を追加する
-          //ここにboxを適宜追加する
         ],
       },
       footer: {
@@ -182,6 +180,11 @@ module.exports = function carouselTemplate(
                 type: "text",
                 text: item["お問い合わせ先"],
                 wrap: true,
+                action: {
+                  type: "uri",
+                  label: "tel",
+                  uri: `tel:${item["お問い合わせ先"]}`,
+                },
                 contents: [],
               },
             ],
