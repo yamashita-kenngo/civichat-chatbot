@@ -110,6 +110,7 @@ module.exports = function carouselTemplate(
       });
     }
     if (item["住所"]) {
+      const encodeAddress = encodeURI(item["住所"]);
       content.body.contents.push({
         type: "box",
         layout: "vertical",
@@ -128,6 +129,11 @@ module.exports = function carouselTemplate(
                 type: "text",
                 text: item["住所"],
                 wrap: true,
+                action: {
+                  type: "uri",
+                  label: "tel",
+                  uri: `https://www.google.com/maps/search/?api=1&query=${encodeAddress}`,
+                },
                 contents: [],
               },
             ],
