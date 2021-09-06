@@ -4,7 +4,8 @@ import { SystemProperty } from "../../../classes";
 module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
-  resultId: string
+  resultId: string,
+  imgUrl:string
 ) {
   if (items.length === 0) {
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
@@ -64,10 +65,10 @@ module.exports = function carouselTemplate(
       },
       hero: {
         type: "image",
-        url: "https://static.civichat.jp/thumbnail-image/deferment.png",
+        url: imgUrl,
         size: "full",
         aspectRatio: "20:13",
-        aspectMode: "cover",
+        aspectMode: "fit",
       },
       body: {
         type: "box",
