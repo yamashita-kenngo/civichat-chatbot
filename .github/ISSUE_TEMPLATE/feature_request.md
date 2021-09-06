@@ -3,8 +3,6 @@ name: Feature request
 about: 新しい機能や実装など。基本はこっちを使うんじゃないかな
 title: ''
 labels: enhancement
-assignees: YuseiIto
-
 ---
 
 <!--これはテンプレートです! これ相当の情報があると良いですが、これに従うことは必須ではありません-->
