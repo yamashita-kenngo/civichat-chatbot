@@ -138,7 +138,7 @@ exports.queryServices = async (
     values: [resultId, saveString, lineId, seido],
   });
 
-  return resultId;
+  return [resultId,othersType];
 };
 
 exports.getQueryResult = async (resultId: string) => {
