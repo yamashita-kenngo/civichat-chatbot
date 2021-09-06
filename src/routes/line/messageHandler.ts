@@ -121,7 +121,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                 returnMessage = [
                   {
                     type: "text",
-                    text: "当てはまるものを見つけられませんでした",
+                    text: "現在の条件では、該当するものを見つけることができませんでした。再度、条件を変更してお試しください。",
                   },
                 ];
               }
