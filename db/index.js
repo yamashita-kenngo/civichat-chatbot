@@ -1,4 +1,5 @@
 "use strict";
+// DB操作まわりの関数をまとめて提供します
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -47,7 +48,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-// DB操作まわりの関数をまとめて提供します
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 var Client = require("pg").Client;
 var uuid = require("uuidv4").uuid;
@@ -133,7 +133,7 @@ exports.isLoggedIn = function (lineId) { return __awaiter(void 0, void 0, void 0
     });
 }); };
 exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(void 0, void 0, void 0, function () {
-    var resultId, resultSaveData, othersType, _i, systemIds_1, systemId, res, saveString;
+    var resultId, resultSaveData, othersType, imgUrl, _i, systemIds_1, systemId, res, saveString;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -150,6 +150,13 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
                 }
                 else {
                     othersType = "";
+                }
+                if (seido === "shibuya_parenting" || seido === "shibuya_preschool") {
+                    imgUrl =
+                        "https://static.civichat.jp/thumbnail-image/babycar_woman_color.png";
+                }
+                else {
+                    imgUrl = "https://static.civichat.jp/thumbnail-image/savings.png";
                 }
                 _i = 0, systemIds_1 = systemIds;
                 _a.label = 1;
@@ -178,7 +185,7 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
             case 5:
                 //保存する
                 _a.sent();
-                return [2 /*return*/, resultId];
+                return [2 /*return*/, [resultId, imgUrl]];
         }
     });
 }); };

@@ -1,4 +1,7 @@
 // DB操作まわりの関数をまとめて提供します
+
+import { idText } from "typescript";
+
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 const { Client } = require("pg");
 const { uuid } = require("uuidv4");
@@ -119,6 +122,14 @@ exports.queryServices = async (
     othersType = "";
   }
 
+  let imgUrl;
+  if (seido === "shibuya_parenting" || seido === "shibuya_preschool") {
+    imgUrl =
+      "https://static.civichat.jp/thumbnail-image/babycar_woman_color.png";
+  } else {
+    imgUrl = "https://static.civichat.jp/thumbnail-image/savings.png";
+  }
+
   for (const systemId of systemIds) {
     const res = await pg.query({
       text: `SELECT * FROM ${seido} WHERE service_id=$1;`,
@@ -138,7 +149,7 @@ exports.queryServices = async (
     values: [resultId, saveString, lineId, seido],
   });
 
-  return resultId;
+  return [resultId, imgUrl];
 };
 
 exports.getQueryResult = async (resultId: string) => {
