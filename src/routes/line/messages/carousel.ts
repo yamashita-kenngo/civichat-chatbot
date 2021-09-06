@@ -4,7 +4,8 @@ import { SystemProperty } from "../../../classes";
 module.exports = function carouselTemplate(
   items: SystemProperty[],
   systemsCount: number,
-  resultId: string
+  resultId: string,
+  imgUrl: string
 ) {
   if (items.length === 0) {
     return { type: "text", text: "当てはまる制度が見つかりませんでした。" };
@@ -37,37 +38,23 @@ module.exports = function carouselTemplate(
     },
   ] as types.FlexBubble[];
   for (const item of items) {
-    carouselContents.push({
+    const content: types.FlexBubble = {
       type: "bubble",
       header: {
         type: "box",
         layout: "vertical",
         contents: [
           {
-            type: "box",
-            layout: "vertical",
-            contents: [
-              {
-                type: "text",
-                text:
-                  item["タグ（テーマ）"] ||
-                  item["行政サービス分類"] ||
-                  item["エリア"] ||
-                  "結果",
-                wrap: true,
-                align: "end",
-                color: "#8e8989",
-              },
-            ],
+            type: "filler",
           },
         ],
       },
       hero: {
         type: "image",
-        url: "https://static.civichat.jp/thumbnail-image/deferment.png",
+        url: imgUrl,
         size: "full",
         aspectRatio: "20:13",
-        aspectMode: "cover",
+        aspectMode: "fit",
       },
       body: {
         type: "box",
@@ -84,24 +71,177 @@ module.exports = function carouselTemplate(
             size: "xl",
             wrap: true,
           },
+          // ここに概要を追加する
+          //ここにboxを適宜追加する
         ],
       },
       footer: {
         type: "box",
         layout: "vertical",
+        margin: "xxl",
         contents: [
           {
-            type: "button",
+            type: "text",
+            text: "詳しく見る",
+            weight: "bold",
+            size: "xl",
+            color: "#177BDCFF",
+            align: "center",
+            margin: "md",
             action: {
               type: "uri",
-              label: "詳細を見る",
+              label: "詳しく見る",
               uri: `${process.env.LIFF_URL}/services/${item["サービスID"]}`,
             },
-            style: "secondary",
+            contents: [],
+          },
+          {
+            type: "filler",
           },
         ],
       },
-    });
+    };
+    if (item["概要"] || item["制度概要"]) {
+      content.body.contents.push({
+        type: "text",
+        text: item["概要"] || item["制度概要"],
+        weight: "bold",
+        margin: "md",
+        size: "sm",
+        wrap: true,
+      });
+    }
+    if (item["住所"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "住所",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["住所"],
+                wrap: true,
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item["見学"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "見学",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["見学"],
+                wrap: true,
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item["お問い合わせ先"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "お問い合わせ先",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["お問い合わせ先"],
+                wrap: true,
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item["対象者"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "対象者",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["対象者"],
+                wrap: true,
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item["支援内容"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "支援内容",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item["支援内容"],
+                wrap: true,
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    carouselContents.push(content);
   }
   const returnMessage: types.Message = {
     type: "flex",

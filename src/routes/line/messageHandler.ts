@@ -125,17 +125,24 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   })[0];
                 });
                 const systemsCount = results.length;
-                const [resultId, othersType] = await db.queryServices(
+                const [resultId, othersType,imgUrl] = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId,
                   cs.getSeido()
+                );
+                returnMessage = await carouselTemplate(
+                  results.slice(0, 9),
+                  systemsCount,
+                  resultId,
+                  
                 );
                 returnMessage = [
                   { type: "text", text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）` },
                   await carouselTemplate(
                     results.slice(0, 9),
                     systemsCount,
-                    resultId
+                    resultId,
+                    imgUrl
                   ),
                 ];
               } else {
@@ -146,14 +153,14 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   })[0];
                 });
                 const systemsCount = results.length;
-                const [resultId,othersType] = await db.queryServices(
+                const [resultId,othersType,imgUrl] = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId,
                   cs.getSeido()
                 );
                 returnMessage = [
                   { type: "text", text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）` },
-                  await carouselTemplate(results, systemsCount, resultId),
+                  await carouselTemplate(results, systemsCount, resultId, imgUrl),
                 ];
               }
             } else {
