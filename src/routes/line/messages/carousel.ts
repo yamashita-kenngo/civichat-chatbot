@@ -176,39 +176,39 @@ module.exports = function carouselTemplate(
         ],
       });
     }
-    if (item["お問い合わせ先"]) {
-      content.body.contents.push({
-        type: "box",
-        layout: "vertical",
-        margin: "md",
-        contents: [
-          {
-            type: "box",
-            layout: "horizontal",
-            contents: [
-              {
-                type: "text",
-                text: "お問い合わせ先",
-                color: "#000000",
-                contents: [],
-              },
-              {
-                type: "text",
-                text: item["お問い合わせ先"],
-                color: "#000000",
-                wrap: true,
-                action: {
-                  type: "uri",
-                  label: "tel",
-                  uri: `tel:${item["お問い合わせ先"]}`,
-                },
-                contents: [],
-              },
-            ],
-          },
-        ],
-      });
-    }
+    // if (item["お問い合わせ先"]) {
+    //   content.body.contents.push({
+    //     type: "box",
+    //     layout: "vertical",
+    //     margin: "md",
+    //     contents: [
+    //       {
+    //         type: "box",
+    //         layout: "horizontal",
+    //         contents: [
+    //           {
+    //             type: "text",
+    //             text: "お問い合わせ先",
+    //             color: "#000000",
+    //             contents: [],
+    //           },
+    //           {
+    //             type: "text",
+    //             text: item["お問い合わせ先"],
+    //             color: "#000000",
+    //             wrap: true,
+    //             action: {
+    //               type: "uri",
+    //               label: "tel",
+    //               uri: `tel:${item["お問い合わせ先"]}`,
+    //             },
+    //             contents: [],
+    //           },
+    //         ],
+    //       },
+    //     ],
+    //   });
+    // }
     if (item["対象者"]) {
       content.body.contents.push({
         type: "box",
