@@ -172,7 +172,7 @@ class ChatState {
           trues += answer.qnaMap[system] ? 1 : 0;
         });
         return {
-          answerText: `${answer.answerText}（${String(trues)}）`,
+          answerText: `${answer.answerText}該当件数（${String(trues)}）`,
           callback: answer.answerText,
         };
       }),
