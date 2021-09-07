@@ -167,8 +167,12 @@ class ChatState {
     return {
       questionText: this.selectQuestionFromPriority().questionText,
       answers: this.selectQuestionFromPriority().answers.map((answer) => {
+        let trues = 0;
+        this.systems.forEach((system) => {
+          trues += answer.qnaMap[system] ? 1 : 0;
+        });
         return {
-          answerText: answer.answerText,
+          answerText: `${answer.answerText}（${String(trues)}）`,
           callback: answer.answerText,
         };
       }),
