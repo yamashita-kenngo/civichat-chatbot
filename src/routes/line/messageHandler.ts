@@ -53,7 +53,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   contents: [
                     {
                       type: "text",
-                      text: "どのカテゴリーの制度を探したいですか",
+                      text: "どのカテゴリーのを探したいですか",
                       weight: "bold",
                       align: "center",
                       contents: [],
