@@ -39,11 +39,11 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
   switch (event.type) {
     case "message":
       if (event.message.type === "text") {
-        if (event.message.text === "制度を探す") {
+        if (event.message.text === "Civichatをはじめる") {
           returnMessage = [
             {
               type: "flex",
-              altText: "どの制度を探しますか？",
+              altText: "選択してください",
               contents: {
                 type: "bubble",
                 direction: "ltr",
@@ -53,7 +53,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   contents: [
                     {
                       type: "text",
-                      text: "どの制度を探しますか？",
+                      text: "どのCivichatを始めますか？",
                       weight: "bold",
                       align: "center",
                       contents: [],
