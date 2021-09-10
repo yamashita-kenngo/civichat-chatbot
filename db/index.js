@@ -50,7 +50,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 var Client = require("pg").Client;
-var uuid = require("uuidv4").uuid;
+var uuidv4 = require('uuid').v4;
 require("dotenv").config();
 if (!process.env.RDS_HOSTNAME) {
     throw new Error("Environment variable RDS_HOSTNAME is not set.");
@@ -139,7 +139,7 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                resultId = uuid();
+                resultId = uuidv4();
                 resultSaveData = {
                     result: [],
                     resultId: resultId
