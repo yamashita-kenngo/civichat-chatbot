@@ -55,7 +55,7 @@ module.exports = function carouselTemplate(
       hero: {
         type: "image",
         url: imgUrl,
-        size: "full",
+        size: "5xl",
         aspectRatio: "20:13",
         aspectMode: "fit",
       },
@@ -259,6 +259,47 @@ module.exports = function carouselTemplate(
                 color: "#000000",
                 wrap: true,
                 contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item["保育施設の空き状況（0さい）"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "box",
+                layout: "vertical",
+                contents: [
+                  {
+                    type: "text",
+                    text: "直近の空き状況",
+                    contents: [],
+                  },
+                ],
+              },
+              {
+                type: "box",
+                layout: "vertical",
+                contents: [
+                  {
+                    type: "text",
+                    text: "0歳児 空きなし",
+                    contents: [],
+                  },
+                  {
+                    type: "text",
+                    text: "hello, world",
+                    contents: [],
+                  },
+                ],
               },
             ],
           },
