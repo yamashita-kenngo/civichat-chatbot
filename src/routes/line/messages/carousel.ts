@@ -267,43 +267,121 @@ module.exports = function carouselTemplate(
     }
     if (item["保育施設の空き状況（0さい）"]) {
       content.body.contents.push({
-        type: "box",
-        layout: "vertical",
-        contents: [
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "none",
+        "margin": "md",
+        "offsetStart": "1px",
+        "contents": [
           {
-            type: "box",
-            layout: "horizontal",
-            contents: [
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
               {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: "直近の空き状況",
-                    contents: [],
-                  },
-                ],
-              },
-              {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: "0歳児 空きなし",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "hello, world",
-                    contents: [],
-                  },
-                ],
-              },
-            ],
+                "type": "text",
+                "text": "直近の空き状況",
+                "color": "#000000FF",
+                "contents": []
+              }
+            ]
           },
-        ],
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "0歳児",
+                    "color": "#000000FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "1歳児",
+                    "color": "#000000FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "2歳児",
+                    "color": "#000000FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "3歳児",
+                    "color": "#000000FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "4歳児",
+                    "color": "#000000FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "5歳児",
+                    "color": "#000000FF",
+                    "contents": []
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "空きなし",
+                    "weight": "bold",
+                    "color": "#EC1212FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "3枠あり",
+                    "weight": "bold",
+                    "color": "#38AE45FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "3枠あり",
+                    "weight": "bold",
+                    "color": "#38AE45FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "3枠あり",
+                    "weight": "bold",
+                    "color": "#38AE45FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "3枠あり",
+                    "weight": "bold",
+                    "color": "#38AE45FF",
+                    "contents": []
+                  },
+                  {
+                    "type": "text",
+                    "text": "3枠あり",
+                    "weight": "bold",
+                    "color": "#38AE45FF",
+                    "contents": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       });
     }
     carouselContents.push(content);
