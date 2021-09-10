@@ -55,7 +55,7 @@ module.exports = function carouselTemplate(
       hero: {
         type: "image",
         url: imgUrl,
-        size: "5xl",
+        size: "3xl",
         aspectRatio: "20:13",
         aspectMode: "fit",
       },
@@ -80,7 +80,7 @@ module.exports = function carouselTemplate(
       footer: {
         type: "box",
         layout: "vertical",
-        margin: "xxl",
+        margin: "none",
         contents: [
           {
             type: "text",
@@ -271,7 +271,6 @@ module.exports = function carouselTemplate(
         "layout": "horizontal",
         "spacing": "none",
         "margin": "md",
-        "offsetStart": "1px",
         "contents": [
           {
             "type": "box",
@@ -292,6 +291,7 @@ module.exports = function carouselTemplate(
               {
                 "type": "box",
                 "layout": "vertical",
+                "spacing": "sm",
                 "contents": [
                   {
                     "type": "text",
@@ -334,6 +334,7 @@ module.exports = function carouselTemplate(
               {
                 "type": "box",
                 "layout": "vertical",
+                "spacing": "sm",
                 "contents": [
                   {
                     "type": "text",
