@@ -97,6 +97,13 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
               },
             },
           ];
+        } else if (event.message.text === "渋谷保育施設一覧希望") {
+          returnMessage = [
+            {
+              type: "text",
+              text: "「Civichatを利用している方全員に無料」で、施設名・住所などに加え、空き状況・保育所利用の倍率・指数（令和2, 3年度）などのデータを含めた「渋谷区の保育施設一覧」をお渡ししています！✌🏻\n\n貰う方法は、「@Civichat」をメンションして「Instagramでフィード投稿 or ストーリー投稿 or Twitterでツイート」をすると、1日以内にDMでメッセージが届きます！　📩\n\n渋谷区の保育施設を探しをしている方は、ぜひご参加ください！🔥",
+            },
+          ];
         } else {
           // ユーザーのセッション取得
           const userSession: Session = sessions[event.source.userId];
