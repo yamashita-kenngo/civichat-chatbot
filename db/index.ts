@@ -1,10 +1,9 @@
 // DB操作まわりの関数をまとめて提供します
 
-import { idText } from "typescript";
 
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 const { Client } = require("pg");
-const { uuid } = require("uuidv4");
+const { v4: uuidv4 } = require('uuid');
 
 require("dotenv").config();
 
@@ -109,7 +108,7 @@ exports.queryServices = async (
   lineId: string,
   seido: string
 ) => {
-  const resultId: string = uuid();
+  const resultId: string = uuidv4();
 
   const resultSaveData: resultSaveData = {
     result: [],
