@@ -125,8 +125,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   },
                 ];
               }
-              //カルーセルが9枚より上
-              else if (cs.getSystems().length > 9) {
+              //カルーセルが8枚より上
+              else if (cs.getSystems().length > 8) {
                 const results = cs.getSystems().map((system: string) => {
                   return systemsData["systemsData"].filter((systemD) => {
                     return systemD["サービスID"] === system;
@@ -144,7 +144,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）`,
                   },
                   await carouselTemplate(
-                    results.slice(0, 9),
+                    results.slice(0, 8),
                     systemsCount,
                     resultId,
                     othersType,
@@ -152,7 +152,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   ),
                 ];
               } else {
-                // 9枚以下
+                // 8枚以下
                 const results = cs.getSystems().map((system: string) => {
                   return systemsData["systemsData"].filter((systemD) => {
                     return systemD["サービスID"] === system;
