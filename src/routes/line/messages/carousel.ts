@@ -441,6 +441,29 @@ module.exports = function carouselTemplate(
     }
     carouselContents.push(content);
   }
+  carouselContents.push({
+    type: "bubble",
+    direction: "ltr",
+    body: {
+      type: "box",
+      layout: "vertical",
+      contents: [
+        {
+          type: "button",
+          action: {
+            type: "uri",
+            label: `利用できる${systemsCount}個の${othersType}を見る`,
+            uri: `${process.env.LIFF_URL}/others/${resultId}`,
+          },
+          color: "#269DFFFF",
+          style: "primary",
+          gravity: "center",
+          position: "relative",
+          offsetTop: "45%",
+        },
+      ],
+    },
+  });
   const returnMessage: types.Message = {
     type: "flex",
     altText: "検索結果",
