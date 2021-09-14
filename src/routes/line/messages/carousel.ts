@@ -441,27 +441,28 @@ module.exports = function carouselTemplate(
     }
     carouselContents.push(content);
   }
+
   carouselContents.push({
     type: "bubble",
-    direction: "ltr",
     body: {
       type: "box",
       layout: "vertical",
       contents: [
         {
-          type: "button",
+          type: "text",
+          text: `利用できる${systemsCount}個の${othersType}を見る`,
+          size: "lg",
+          color: "#1F00FFFF",
+          align: "center",
           action: {
             type: "uri",
-            label: `利用できる${systemsCount}個の${othersType}を見る`,
+            label: "リンク",
             uri: `${process.env.LIFF_URL}/others/${resultId}`,
           },
-          color: "#269DFFFF",
-          style: "primary",
-          gravity: "center",
-          position: "relative",
-          offsetTop: "45%",
+          contents: [],
         },
       ],
+      justifyContent: "center",
     },
   });
   const returnMessage: types.Message = {
