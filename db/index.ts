@@ -1,10 +1,9 @@
 // DB操作まわりの関数をまとめて提供します
 
-import { idText } from "typescript";
 
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 const { Client } = require("pg");
-const { uuid } = require("uuidv4");
+const { v4: uuidv4 } = require('uuid');
 
 require("dotenv").config();
 
@@ -109,7 +108,7 @@ exports.queryServices = async (
   lineId: string,
   seido: string
 ) => {
-  const resultId: string = uuid();
+  const resultId: string = uuidv4();
 
   const resultSaveData: resultSaveData = {
     result: [],
@@ -176,10 +175,11 @@ exports.getQueryResult = async (resultId: string) => {
 
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = async () => {
+  
   const systemsDataShibuya = require("../datas/shibuyaParenting/systemsdata.json");
   for (const item of systemsDataShibuya.systemsData) {
     await pg.query({
-      text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,url,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
+      text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
       values: [
         item["サービスID"],
         item["制度番号"],
@@ -195,7 +195,6 @@ exports.saveInitialDatafromJson = async () => {
         item["利用・申請方法"],
         item["受付開始日"],
         item["受付終了日"],
-        item["詳細参照先"],
         item["お問い合わせ先"],
         item["公開日"],
         item["タグ"],
@@ -205,10 +204,13 @@ exports.saveInitialDatafromJson = async () => {
         item["タグ（事業者分類）"],
         item["タグ（キーワード）"],
         item["タグ（テーマ）"],
+        item["詳細参照先"]
       ],
     });
   }
-
+  
+  
+  /*
   const systemsDataKumamoto = require("../datas/kumamotoEarthquake/systemsdata.json");
   for (const item of systemsDataKumamoto.systemsData) {
     await pg.query({
@@ -245,15 +247,15 @@ exports.saveInitialDatafromJson = async () => {
         item["詳細参照先"],
         item["行政サービス分類"],
         item["ライフステージ分類"],
-        item["お困りごと分類"],
+        item["お困りごと分類"]
       ],
     });
   }
-
+  */
   const systemsDataShibuyaKindergarten = require("../datas/shibuyaPreschool/systemsdata.json");
   for (const item of systemsDataShibuyaKindergarten.systemsData) {
     await pg.query({
-      text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,url,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29) ;",
+      text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location,thisyear_admission_rate_for_0,thisyear_admission_rate_for_1,thisyear_admission_rate_for_2,thisyear_admission_rate_for_3,thisyear_admission_rate_for_4,thisyear_admission_rate_for_5,thisyear_admission_point_for_0,thisyear_admission_point_for_1,thisyear_admission_point_for_2,thisyear_admission_point_for_3,thisyear_admission_point_for_4,thisyear_admission_point_for_5,lastyear_admission_rate_for_0,lastyear_admission_rate_for_1,lastyear_admission_rate_for_2,lastyear_admission_rate_for_3,lastyear_admission_rate_for_4,lastyear_admission_rate_for_5,lastyear_admission_point_for_0,lastyear_admission_point_for_1,lastyear_admission_point_for_2,lastyear_admission_point_for_3,lastyear_admission_point_for_4,lastyear_admission_point_for_5,security,baby_buggy,ibservation_detail,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56 ) ;",
       values: [
         item["サービスID"],
         item["都道府県"],
@@ -274,7 +276,6 @@ exports.saveInitialDatafromJson = async () => {
         item["アレルギー対応"],
         item["入園可能"],
         item["申し込み受付先"],
-        item["詳細参照先"],
         item["お問い合わせ先"],
         item["公開日"],
         item["保育施設の空き状況（0さい）"],
@@ -284,7 +285,35 @@ exports.saveInitialDatafromJson = async () => {
         item["保育施設の空き状況（4さい）"],
         item["保育施設の空き状況（5さい）"],
         item["住所"],
-      ],
+        item["今年の保育所利用の倍率（0さい）"],
+        item["今年の保育所利用の倍率（1さい）"],
+        item["今年の保育所利用の倍率（2さい）"],
+        item["今年の保育所利用の倍率（3さい）"],
+        item["今年の保育所利用の倍率（4さい）"],
+        item["今年の保育所利用の倍率（5さい）"],
+        item["今年の保育所利用の指数・ポイント（0さい）"],
+        item["今年の保育所利用の指数・ポイント（1さい）"],
+        item["今年の保育所利用の指数・ポイント（2さい）"],
+        item["今年の保育所利用の指数・ポイント（3さい）"],
+        item["今年の保育所利用の指数・ポイント（4さい）"],
+        item["今年の保育所利用の指数・ポイント（5さい）"],
+        item["去年の保育所利用の倍率（0さい）"],
+        item["去年の保育所利用の倍率（1さい）"],
+        item["去年の保育所利用の倍率（2さい）"],
+        item["去年の保育所利用の倍率（3さい）"],
+        item["去年の保育所利用の倍率（4さい）"],
+        item["去年の保育所利用の倍率（5さい）"],
+        item["去年の保育所利用の指数・ポイント（0さい）"],
+        item["去年の保育所利用の指数・ポイント（1さい）"],
+        item["去年の保育所利用の指数・ポイント（2さい）"],
+        item["去年の保育所利用の指数・ポイント（3さい）"],
+        item["去年の保育所利用の指数・ポイント（4さい）"],
+        item["去年の保育所利用の指数・ポイント（5さい）"],
+        item["保育施設のセキュリティ"],
+        item["ベビーバギー置き場"],
+        item["見学詳細"],
+        item["詳細参照先"]
+       ],
     });
   }
   return "ok";

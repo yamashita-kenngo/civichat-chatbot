@@ -39,11 +39,11 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
   switch (event.type) {
     case "message":
       if (event.message.type === "text") {
-        if (event.message.text === "制度を探す") {
+        if (event.message.text === "Civichatをはじめる") {
           returnMessage = [
             {
               type: "flex",
-              altText: "どの制度を探しますか？",
+              altText: "選択してください",
               contents: {
                 type: "bubble",
                 direction: "ltr",
@@ -53,7 +53,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   contents: [
                     {
                       type: "text",
-                      text: "どの制度を探しますか？",
+                      text: "どのカテゴリーを探したいですか",
                       weight: "bold",
                       align: "center",
                       contents: [],
@@ -125,8 +125,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   },
                 ];
               }
-              //カルーセルが9枚より上
-              else if (cs.getSystems().length > 9) {
+              //カルーセルが8枚より上
+              else if (cs.getSystems().length > 8) {
                 const results = cs.getSystems().map((system: string) => {
                   return systemsData["systemsData"].filter((systemD) => {
                     return systemD["サービスID"] === system;
@@ -144,7 +144,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     text: `質問へのご回答ありがとうございました！\nあなたの条件にぴったりの${othersType}が${results.length}件見つかりました！\n\n（最新情報は各公式ホームページをご確認ください。もし間違いなどございましたら、運営までご連絡ください。）`,
                   },
                   await carouselTemplate(
-                    results.slice(0, 9),
+                    results.slice(0, 8),
                     systemsCount,
                     resultId,
                     othersType,
@@ -152,7 +152,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   ),
                 ];
               } else {
-                // 9枚以下
+                // 8枚以下
                 const results = cs.getSystems().map((system: string) => {
                   return systemsData["systemsData"].filter((systemD) => {
                     return systemD["サービスID"] === system;
@@ -194,7 +194,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
             returnMessage = [
               {
                 type: "text",
-                text: "不明なエラーが発生しました。「制度を探す」と送信してもう一度お試しください。",
+                text: "不明なエラーが発生しました。「Civichatをはじめる」と送信してもう一度お試しください。",
               },
             ];
           }
@@ -203,7 +203,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
         returnMessage = [
           {
             type: "text",
-            text: "「制度を探す」と送信してください！",
+            text: "「Civichatをはじめる」と送信してください！",
           },
         ];
       }

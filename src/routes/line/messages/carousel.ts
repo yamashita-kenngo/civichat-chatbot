@@ -55,7 +55,7 @@ module.exports = function carouselTemplate(
       hero: {
         type: "image",
         url: imgUrl,
-        size: "full",
+        size: "3xl",
         aspectRatio: "20:13",
         aspectMode: "fit",
       },
@@ -80,7 +80,7 @@ module.exports = function carouselTemplate(
       footer: {
         type: "box",
         layout: "vertical",
-        margin: "xxl",
+        margin: "none",
         contents: [
           {
             type: "text",
@@ -265,8 +265,206 @@ module.exports = function carouselTemplate(
         ],
       });
     }
+    if (item["保育施設の空き状況（0さい）"]) {
+      content.body.contents.push({
+        type: "box",
+        layout: "horizontal",
+        spacing: "none",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "vertical",
+            contents: [
+              {
+                type: "text",
+                text: "直近の空き状況",
+                color: "#000000FF",
+                contents: [],
+              },
+            ],
+          },
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "box",
+                layout: "vertical",
+                spacing: "sm",
+                contents: [
+                  {
+                    type: "text",
+                    text: "0歳児",
+                    color: "#000000FF",
+                    contents: [],
+                  },
+                  {
+                    type: "text",
+                    text: "1歳児",
+                    color: "#000000FF",
+                    contents: [],
+                  },
+                  {
+                    type: "text",
+                    text: "2歳児",
+                    color: "#000000FF",
+                    contents: [],
+                  },
+                  {
+                    type: "text",
+                    text: "3歳児",
+                    color: "#000000FF",
+                    contents: [],
+                  },
+                  {
+                    type: "text",
+                    text: "4歳児",
+                    color: "#000000FF",
+                    contents: [],
+                  },
+                  {
+                    type: "text",
+                    text: "5歳児",
+                    color: "#000000FF",
+                    contents: [],
+                  },
+                ],
+              },
+              {
+                type: "box",
+                layout: "vertical",
+                spacing: "sm",
+                contents: [
+                  {
+                    type: "text",
+                    text:
+                      item["保育施設の空き状況（0さい）"] === "0" ||
+                      item["保育施設の空き状況（0さい）"] === "（なし）"
+                        ? "空きなし"
+                        : `${item["保育施設の空き状況（0さい）"]}枠`,
+                    weight: "bold",
+                    color:
+                      item["保育施設の空き状況（0さい）"] === "0" ||
+                      item["保育施設の空き状況（0さい）"] === "（なし）"
+                        ? "#EC1212FF"
+                        : "#38AE45FF",
+                    contents: [],
+                    wrap: true,
+                  },
+                  {
+                    type: "text",
+                    text:
+                      item["保育施設の空き状況（1さい）"] === "0" ||
+                      item["保育施設の空き状況（1さい）"] === "（なし）"
+                        ? "空きなし"
+                        : `${item["保育施設の空き状況（1さい）"]}枠`,
+                    weight: "bold",
+                    color:
+                      item["保育施設の空き状況（1さい）"] === "0" ||
+                      item["保育施設の空き状況（1さい）"] === "（なし）"
+                        ? "#EC1212FF"
+                        : "#38AE45FF",
+                    contents: [],
+                    wrap: true,
+                  },
+                  {
+                    type: "text",
+                    text:
+                      item["保育施設の空き状況（2さい）"] === "0" ||
+                      item["保育施設の空き状況（2さい）"] === "（なし）"
+                        ? "空きなし"
+                        : `${item["保育施設の空き状況（2さい）"]}枠`,
+                    weight: "bold",
+                    color:
+                      item["保育施設の空き状況（2さい）"] === "0" ||
+                      item["保育施設の空き状況（2さい）"] === "（なし）"
+                        ? "#EC1212FF"
+                        : "#38AE45FF",
+                    contents: [],
+                    wrap: true,
+                  },
+                  {
+                    type: "text",
+                    text:
+                      item["保育施設の空き状況（3さい）"] === "0" ||
+                      item["保育施設の空き状況（3さい）"] === "（なし）"
+                        ? "空きなし"
+                        : `${item["保育施設の空き状況（3さい）"]}枠`,
+                    weight: "bold",
+                    color:
+                      item["保育施設の空き状況（3さい）"] === "0" ||
+                      item["保育施設の空き状況（3さい）"] === "（なし）"
+                        ? "#EC1212FF"
+                        : "#38AE45FF",
+                    contents: [],
+                    wrap: true,
+                  },
+                  {
+                    type: "text",
+                    text:
+                      item["保育施設の空き状況（4さい）"] === "0" ||
+                      item["保育施設の空き状況（4さい）"] === "（なし）"
+                        ? "空きなし"
+                        : `${item["保育施設の空き状況（4さい）"]}枠`,
+                    weight: "bold",
+                    color:
+                      item["保育施設の空き状況（4さい）"] === "0" ||
+                      item["保育施設の空き状況（4さい）"] === "（なし）"
+                        ? "#EC1212FF"
+                        : "#38AE45FF",
+                    contents: [],
+                    wrap: true,
+                  },
+                  {
+                    type: "text",
+                    text:
+                      item["保育施設の空き状況（5さい）"] === "0" ||
+                      item["保育施設の空き状況（5さい）"] === "（なし）"
+                        ? "空きなし"
+                        : `${item["保育施設の空き状況（5さい）"]}枠`,
+                    weight: "bold",
+                    color:
+                      item["保育施設の空き状況（5さい）"] === "0" ||
+                      item["保育施設の空き状況（5さい）"] === "（なし）"
+                        ? "#EC1212FF"
+                        : "#38AE45FF",
+                    contents: [],
+                    wrap: true,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      });
+    }
     carouselContents.push(content);
   }
+
+  carouselContents.push({
+    type: "bubble",
+    body: {
+      type: "box",
+      layout: "vertical",
+      contents: [
+        {
+          type: "text",
+          text: `利用できる${systemsCount}個の${othersType}を見る`,
+          size: "lg",
+          color: "#1F00FFFF",
+          align: "center",
+          action: {
+            type: "uri",
+            label: "リンク",
+            uri: `${process.env.LIFF_URL}/others/${resultId}`,
+          },
+          contents: [],
+        },
+      ],
+      justifyContent: "center",
+    },
+  });
   const returnMessage: types.Message = {
     type: "flex",
     altText: "検索結果",
