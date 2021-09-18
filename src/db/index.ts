@@ -175,7 +175,6 @@ exports.getQueryResult = async (resultId: string) => {
 
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = async () => {
-  
   const systemsDataShibuya = require("../static_data/shibuyaParenting/systemsdata.json");
   for (const item of systemsDataShibuya.systemsData) {
     await pg.query({
