@@ -104,11 +104,11 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           if (userSession) {
             const cs = userSession.getState();
             if (cs.getSeido() === "kumamoto_earthquake") {
-              systemsData = require("../../../datas/kumamotoEarthquake/systemsdata.json");
+              systemsData = require("../../../static_data/kumamotoEarthquake/systemsdata.json");
             } else if (cs.getSeido() === "shibuya_parenting") {
-              systemsData = require("../../../datas/shibuyaParenting/systemsdata.json");
+              systemsData = require("../../../static_data/shibuyaParenting/systemsdata.json");
             } else if (cs.getSeido() === "shibuya_preschool") {
-              systemsData = require("../../../datas/shibuyaPreschool/systemsdata.json");
+              systemsData = require("../../../static_data/shibuyaPreschool/systemsdata.json");
             }
             cs.selectAnswerByText(
               userSession.getBeforeQuestionId(),
@@ -227,17 +227,17 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
         // 上でやってた初期化をここでやる
         let jsonAnswers, jsonQuestions, systems;
         if (selected === "kumamoto_earthquake") {
-          jsonAnswers = require(`../../../datas/kumamotoEarthquake/answers.json`);
-          jsonQuestions = require(`../../../datas/kumamotoEarthquake/questions.json`);
-          systems = require(`../../../datas/kumamotoEarthquake/systems.json`);
+          jsonAnswers = require(`../../../static_data/kumamotoEarthquake/answers.json`);
+          jsonQuestions = require(`../../../static_data/kumamotoEarthquake/questions.json`);
+          systems = require(`../../../static_data/kumamotoEarthquake/systems.json`);
         } else if (selected === "shibuya_parenting") {
-          jsonAnswers = require(`../../../datas/shibuyaParenting/answers.json`);
-          jsonQuestions = require(`../../../datas/shibuyaParenting/questions.json`);
-          systems = require(`../../../datas/shibuyaParenting/systems.json`);
+          jsonAnswers = require(`../../../static_data/shibuyaParenting/answers.json`);
+          jsonQuestions = require(`../../../static_data/shibuyaParenting/questions.json`);
+          systems = require(`../../../static_data/shibuyaParenting/systems.json`);
         } else if (selected === "shibuya_preschool") {
-          jsonAnswers = require(`../../../datas/shibuyaPreschool/answers.json`);
-          jsonQuestions = require(`../../../datas/shibuyaPreschool/questions.json`);
-          systems = require(`../../../datas/shibuyaPreschool/systems.json`);
+          jsonAnswers = require(`../../../static_data/shibuyaPreschool/answers.json`);
+          jsonQuestions = require(`../../../static_data/shibuyaPreschool/questions.json`);
+          systems = require(`../../../static_data/shibuyaPreschool/systems.json`);
         }
         const questions: Array<Question> = [];
 
