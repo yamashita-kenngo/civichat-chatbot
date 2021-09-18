@@ -222,7 +222,7 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
     return __generator(this, function (_d) {
         switch (_d.label) {
             case 0:
-                systemsDataShibuya = require("../datas/shibuyaParenting/systemsdata.json");
+                systemsDataShibuya = require("../static_data/shibuyaParenting/systemsdata.json");
                 _i = 0, _a = systemsDataShibuya.systemsData;
                 _d.label = 1;
             case 1:
@@ -264,7 +264,7 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                 _i++;
                 return [3 /*break*/, 1];
             case 4:
-                systemsDataShibuyaKindergarten = require("../datas/shibuyaPreschool/systemsdata.json");
+                systemsDataShibuyaKindergarten = require("../static_data/shibuyaPreschool/systemsdata.json");
                 _b = 0, _c = systemsDataShibuyaKindergarten.systemsData;
                 _d.label = 5;
             case 5:
