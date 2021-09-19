@@ -12,7 +12,7 @@ import {
   syst,
 } from "../../classes";
 
-const db = require("../../db/index");
+const db = require("../../db/index.js");
 
 const config: line.ClientConfig = {
   channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
