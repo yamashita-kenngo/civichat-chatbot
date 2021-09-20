@@ -101,7 +101,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           returnMessage = [
             {
               type: "text",
-              text: "「Civichatを利用している方全員に無料」で、施設名・住所などに加え、空き状況・保育所利用の倍率・指数（令和2, 3年度）などのデータを含めた「渋谷区の保育施設一覧」をお渡ししています！✌🏻\n\n貰う方法は、SNSで感想を投稿するだけ！\n1. 〈Twitterの場合〉規定のツイートに引用RTで感想を書いてツイート https://twitter.com/civichat/status/1435516003140583428?openExternalBrowser=1\n2. 〈Instagramの場合〉 規定の動画をストーリーでリポスト（@civichat.jpのメンションをしてください） https://www.instagram.com/p/CTpGWcJBg0N/?openExternalBrowser=1\n\n完了すると、運営から1日以内にDMでメッセージが届きます！📩保育施設を探しをしているパパ・ママの方は、ぜひご参加ください！🔥\n---\n⚠️鍵アカウントの方は鍵を外してからご参加ください。",
+              text: "「Civichatを利用している方全員に無料」で、施設名・住所などに加え、空き状況・保育所利用の倍率・指数（令和2, 3年度）などのデータを含めた「渋谷区の保育施設一覧」をお渡ししています！✌🏻\n\n貰う方法は、SNSで感想を投稿するだけ！\n1. 〈Twitterの場合〉規定のツイートに引用RTで感想を書いてツイート https://twitter.com/civichat/status/1435516003140583428?openExternalBrowser=1\n2. 〈Instagramの場合〉 規定の動画をストーリーでリポスト（@civichat.jpのメンションをしてください） https://www.instagram.com/p/CTpGWcJBg0N/?openExternalBrowser=1\n\n完了すると、運営から1日以内にDMでメッセージが届きます！📩保育施設を探しをしているパパ・ママの方は、ぜひご参加ください！🔥\n---\n⚠️鍵アカウントの方は鍵を外してからご参加ください。\n🔗応募規約https://civichat.notion.site/SNS-e8672bf7c71d4048844b11c53b7c7a14",
             },
             {
               type: "imagemap",
