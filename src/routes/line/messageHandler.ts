@@ -12,7 +12,7 @@ import {
   syst,
 } from "../../classes";
 
-const db = require("../../../db/index.js");
+const db = require("../../db/index.js");
 
 const config: line.ClientConfig = {
   channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
@@ -97,6 +97,46 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
               },
             },
           ];
+        } else if (event.message.text === "渋谷保育施設一覧希望") {
+          returnMessage = [
+            {
+              type: "text",
+              text: "「Civichatを利用している方全員に無料」で、施設名・住所などに加え、空き状況・保育所利用の倍率・指数（令和2, 3年度）などのデータを含めた「渋谷区の保育施設一覧」をお渡ししています！✌🏻\n\n貰う方法は、SNSで感想を投稿するだけ！\n1. 〈Twitterの場合〉規定のツイートに引用RTで感想を書いてツイート https://twitter.com/civichat/status/1435516003140583428?openExternalBrowser=1\n2. 〈Instagramの場合〉 規定の動画をストーリーでリポスト（@civichat.jpのメンションをしてください） https://www.instagram.com/p/CTpGWcJBg0N/?openExternalBrowser=1\n\n完了すると、運営から1日以内にDMでメッセージが届きます！📩保育施設を探しをしているパパ・ママの方は、ぜひご参加ください！🔥\n---\n⚠️鍵アカウントの方は鍵を外してからご参加ください。\n🔗応募規約https://civichat.notion.site/SNS-e8672bf7c71d4048844b11c53b7c7a14",
+            },
+            {
+              type: "imagemap",
+              baseUrl: "https://static.civichat.jp/cp",
+              altText: "This is an imagemap",
+              baseSize: {
+                width: 1040,
+                height: 1057,
+              },
+              actions: [
+                {
+                  type: "uri",
+                  area: {
+                    x: 0,
+                    y: 3,
+                    width: 1035,
+                    height: 527,
+                  },
+                  linkUri:
+                    "https://twitter.com/civichat/status/1435516003140583428?openExternalBrowser=1",
+                },
+                {
+                  type: "uri",
+                  area: {
+                    x: 0,
+                    y: 539,
+                    width: 1030,
+                    height: 518,
+                  },
+                  linkUri:
+                    "https://www.instagram.com/p/CTpGWcJBg0N?openExternalBrowser=1",
+                },
+              ],
+            },
+          ];
         } else {
           // ユーザーのセッション取得
           const userSession: Session = sessions[event.source.userId];
@@ -104,11 +144,11 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           if (userSession) {
             const cs = userSession.getState();
             if (cs.getSeido() === "kumamoto_earthquake") {
-              systemsData = require("../../../datas/kumamotoEarthquake/systemsdata.json");
+              systemsData = require("../../../static_data/kumamotoEarthquake/systemsdata.json");
             } else if (cs.getSeido() === "shibuya_parenting") {
-              systemsData = require("../../../datas/shibuyaParenting/systemsdata.json");
+              systemsData = require("../../../static_data/shibuyaParenting/systemsdata.json");
             } else if (cs.getSeido() === "shibuya_preschool") {
-              systemsData = require("../../../datas/shibuyaPreschool/systemsdata.json");
+              systemsData = require("../../../static_data/shibuyaPreschool/systemsdata.json");
             }
             cs.selectAnswerByText(
               userSession.getBeforeQuestionId(),
@@ -227,17 +267,17 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
         // 上でやってた初期化をここでやる
         let jsonAnswers, jsonQuestions, systems;
         if (selected === "kumamoto_earthquake") {
-          jsonAnswers = require(`../../../datas/kumamotoEarthquake/answers.json`);
-          jsonQuestions = require(`../../../datas/kumamotoEarthquake/questions.json`);
-          systems = require(`../../../datas/kumamotoEarthquake/systems.json`);
+          jsonAnswers = require(`../../../static_data/kumamotoEarthquake/answers.json`);
+          jsonQuestions = require(`../../../static_data/kumamotoEarthquake/questions.json`);
+          systems = require(`../../../static_data/kumamotoEarthquake/systems.json`);
         } else if (selected === "shibuya_parenting") {
-          jsonAnswers = require(`../../../datas/shibuyaParenting/answers.json`);
-          jsonQuestions = require(`../../../datas/shibuyaParenting/questions.json`);
-          systems = require(`../../../datas/shibuyaParenting/systems.json`);
+          jsonAnswers = require(`../../../static_data/shibuyaParenting/answers.json`);
+          jsonQuestions = require(`../../../static_data/shibuyaParenting/questions.json`);
+          systems = require(`../../../static_data/shibuyaParenting/systems.json`);
         } else if (selected === "shibuya_preschool") {
-          jsonAnswers = require(`../../../datas/shibuyaPreschool/answers.json`);
-          jsonQuestions = require(`../../../datas/shibuyaPreschool/questions.json`);
-          systems = require(`../../../datas/shibuyaPreschool/systems.json`);
+          jsonAnswers = require(`../../../static_data/shibuyaPreschool/answers.json`);
+          jsonQuestions = require(`../../../static_data/shibuyaPreschool/questions.json`);
+          systems = require(`../../../static_data/shibuyaPreschool/systems.json`);
         }
         const questions: Array<Question> = [];
 
