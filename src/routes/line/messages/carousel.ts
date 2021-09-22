@@ -265,179 +265,220 @@ module.exports = function carouselTemplate(
         ],
       });
     }
-    if (item["保育施設の空き状況（0さい）"]) {
-      content.body.contents.push({
-        type: "box",
-        layout: "horizontal",
-        spacing: "none",
-        margin: "md",
-        contents: [
-          {
-            type: "box",
-            layout: "vertical",
-            contents: [
-              {
-                type: "text",
-                text: "直近の空き状況",
-                color: "#000000FF",
-                contents: [],
-              },
-            ],
-          },
-          {
-            type: "box",
-            layout: "horizontal",
-            contents: [
-              {
-                type: "box",
-                layout: "vertical",
-                spacing: "sm",
-                contents: [
-                  {
-                    type: "text",
-                    text: "0歳児",
-                    color: "#000000FF",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "1歳児",
-                    color: "#000000FF",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "2歳児",
-                    color: "#000000FF",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "3歳児",
-                    color: "#000000FF",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "4歳児",
-                    color: "#000000FF",
-                    contents: [],
-                  },
-                  {
-                    type: "text",
-                    text: "5歳児",
-                    color: "#000000FF",
-                    contents: [],
-                  },
-                ],
-              },
-              {
-                type: "box",
-                layout: "vertical",
-                spacing: "sm",
-                contents: [
-                  {
-                    type: "text",
-                    text:
-                      item["保育施設の空き状況（0さい）"] === "0" ||
-                      item["保育施設の空き状況（0さい）"] === "（なし）"
-                        ? "空きなし"
-                        : `${item["保育施設の空き状況（0さい）"]}枠`,
-                    weight: "bold",
-                    color:
-                      item["保育施設の空き状況（0さい）"] === "0" ||
-                      item["保育施設の空き状況（0さい）"] === "（なし）"
-                        ? "#EC1212FF"
-                        : "#38AE45FF",
-                    contents: [],
-                    wrap: true,
-                  },
-                  {
-                    type: "text",
-                    text:
-                      item["保育施設の空き状況（1さい）"] === "0" ||
-                      item["保育施設の空き状況（1さい）"] === "（なし）"
-                        ? "空きなし"
-                        : `${item["保育施設の空き状況（1さい）"]}枠`,
-                    weight: "bold",
-                    color:
-                      item["保育施設の空き状況（1さい）"] === "0" ||
-                      item["保育施設の空き状況（1さい）"] === "（なし）"
-                        ? "#EC1212FF"
-                        : "#38AE45FF",
-                    contents: [],
-                    wrap: true,
-                  },
-                  {
-                    type: "text",
-                    text:
-                      item["保育施設の空き状況（2さい）"] === "0" ||
-                      item["保育施設の空き状況（2さい）"] === "（なし）"
-                        ? "空きなし"
-                        : `${item["保育施設の空き状況（2さい）"]}枠`,
-                    weight: "bold",
-                    color:
-                      item["保育施設の空き状況（2さい）"] === "0" ||
-                      item["保育施設の空き状況（2さい）"] === "（なし）"
-                        ? "#EC1212FF"
-                        : "#38AE45FF",
-                    contents: [],
-                    wrap: true,
-                  },
-                  {
-                    type: "text",
-                    text:
-                      item["保育施設の空き状況（3さい）"] === "0" ||
-                      item["保育施設の空き状況（3さい）"] === "（なし）"
-                        ? "空きなし"
-                        : `${item["保育施設の空き状況（3さい）"]}枠`,
-                    weight: "bold",
-                    color:
-                      item["保育施設の空き状況（3さい）"] === "0" ||
-                      item["保育施設の空き状況（3さい）"] === "（なし）"
-                        ? "#EC1212FF"
-                        : "#38AE45FF",
-                    contents: [],
-                    wrap: true,
-                  },
-                  {
-                    type: "text",
-                    text:
-                      item["保育施設の空き状況（4さい）"] === "0" ||
-                      item["保育施設の空き状況（4さい）"] === "（なし）"
-                        ? "空きなし"
-                        : `${item["保育施設の空き状況（4さい）"]}枠`,
-                    weight: "bold",
-                    color:
-                      item["保育施設の空き状況（4さい）"] === "0" ||
-                      item["保育施設の空き状況（4さい）"] === "（なし）"
-                        ? "#EC1212FF"
-                        : "#38AE45FF",
-                    contents: [],
-                    wrap: true,
-                  },
-                  {
-                    type: "text",
-                    text:
-                      item["保育施設の空き状況（5さい）"] === "0" ||
-                      item["保育施設の空き状況（5さい）"] === "（なし）"
-                        ? "空きなし"
-                        : `${item["保育施設の空き状況（5さい）"]}枠`,
-                    weight: "bold",
-                    color:
-                      item["保育施設の空き状況（5さい）"] === "0" ||
-                      item["保育施設の空き状況（5さい）"] === "（なし）"
-                        ? "#EC1212FF"
-                        : "#38AE45FF",
-                    contents: [],
-                    wrap: true,
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      });
+    if (
+      item["去年の保育所利用の倍率（0さい）"] ||
+      item["去年の保育所利用の指数・ポイント（0さい）"]
+    ) {
+      content.body.contents.push(
+        {
+          type: "text",
+          text: "aa",
+          weight: "bold",
+          size: "lg",
+          align: "start",
+          margin: "md",
+          contents: [
+            {
+              type: "span",
+              text: "前年度の申し込み状況",
+              size: "md",
+            },
+          ],
+        },
+        {
+          type: "text",
+          text: "hello, world",
+          contents: [
+            {
+              type: "span",
+              text: "（倍率／最下指数）",
+              size: "md",
+              weight: "regular",
+            },
+          ],
+        },
+        {
+          type: "box",
+          layout: "horizontal",
+          margin: "md",
+          contents: [
+            {
+              type: "text",
+              text: "0歳児",
+              weight: "regular",
+              align: "start",
+              contents: [],
+            },
+            {
+              type: "text",
+              text: `${
+                item["去年の保育所利用の倍率（0さい）"] != null
+                  ? item["去年の保育所利用の倍率（0さい）"]
+                  : "-"
+              }/${
+                item["去年の保育所利用の指数・ポイント（0さい）"] != null
+                  ? item["去年の保育所利用の指数・ポイント（0さい）"]
+                  : `-`
+              }`,
+              weight: "bold",
+              color: "#000000",
+              align: "end",
+              wrap: true,
+              contents: [],
+            },
+          ],
+        },
+        {
+          type: "box",
+          layout: "horizontal",
+          contents: [
+            {
+              type: "text",
+              text: "1歳児",
+              weight: "regular",
+              align: "start",
+              contents: [],
+            },
+            {
+              type: "text",
+              text: `${
+                item["去年の保育所利用の倍率（1さい）"] != null
+                  ? item["去年の保育所利用の倍率（1さい）"]
+                  : "-"
+              }/${
+                item["去年の保育所利用の指数・ポイント（1さい）"] != null
+                  ? item["去年の保育所利用の指数・ポイント（1さい）"]
+                  : `-`
+              }`,
+              weight: "bold",
+              color: "#000000",
+              align: "end",
+              wrap: true,
+              contents: [],
+            },
+          ],
+        },
+        {
+          type: "box",
+          layout: "horizontal",
+          contents: [
+            {
+              type: "text",
+              text: "2歳児",
+              weight: "regular",
+              align: "start",
+              contents: [],
+            },
+            {
+              type: "text",
+              text: `${
+                item["去年の保育所利用の倍率（2さい）"] != null
+                  ? item["去年の保育所利用の倍率（2さい）"]
+                  : "-"
+              }/${
+                item["去年の保育所利用の指数・ポイント（2さい）"] != null
+                  ? item["去年の保育所利用の指数・ポイント（2さい）"]
+                  : `-`
+              }`,
+              weight: "bold",
+              color: "#000000",
+              align: "end",
+              wrap: true,
+              contents: [],
+            },
+          ],
+        },
+        {
+          type: "box",
+          layout: "horizontal",
+          contents: [
+            {
+              type: "text",
+              text: "3歳児",
+              weight: "regular",
+              align: "start",
+              contents: [],
+            },
+            {
+              type: "text",
+              text: `${
+                item["去年の保育所利用の倍率（3さい）"] != null
+                  ? item["去年の保育所利用の倍率（3さい）"]
+                  : "-"
+              }/${
+                item["去年の保育所利用の指数・ポイント（3さい）"] != null
+                  ? item["去年の保育所利用の指数・ポイント（3さい）"]
+                  : `-`
+              }`,
+              weight: "bold",
+              color: "#000000",
+              align: "end",
+              wrap: true,
+              contents: [],
+            },
+          ],
+        },
+        {
+          type: "box",
+          layout: "horizontal",
+          contents: [
+            {
+              type: "text",
+              text: "4歳児",
+              weight: "regular",
+              align: "start",
+              contents: [],
+            },
+            {
+              type: "text",
+              text: `${
+                item["去年の保育所利用の倍率（4さい）"] != null
+                  ? item["去年の保育所利用の倍率（4さい）"]
+                  : "-"
+              }/${
+                item["去年の保育所利用の指数・ポイント（4さい）"] != null
+                  ? item["去年の保育所利用の指数・ポイント（4さい）"]
+                  : `-`
+              }`,
+              weight: "bold",
+              color: "#000000",
+              align: "end",
+              wrap: true,
+              contents: [],
+            },
+          ],
+        },
+        {
+          type: "box",
+          layout: "horizontal",
+          contents: [
+            {
+              type: "text",
+              text: "5歳児",
+              weight: "regular",
+              align: "start",
+              contents: [],
+            },
+            {
+              type: "text",
+              text: `${
+                item["去年の保育所利用の倍率（5さい）"] != null
+                  ? item["去年の保育所利用の倍率（5さい）"]
+                  : "-"
+              }/${
+                item["去年の保育所利用の指数・ポイント（5さい）"] != null
+                  ? item["去年の保育所利用の指数・ポイント（5さい）"]
+                  : `-`
+              }`,
+              weight: "bold",
+              color: "#000000",
+              align: "end",
+              wrap: true,
+              contents: [],
+            },
+          ],
+        }
+      );
     }
     carouselContents.push(content);
   }
