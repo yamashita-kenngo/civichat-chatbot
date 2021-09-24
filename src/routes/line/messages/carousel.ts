@@ -128,7 +128,7 @@ module.exports = function carouselTemplate(
               {
                 type: "text",
                 text: "住所",
-                color: "#000000",
+                color: "#6A6A6A",
                 contents: [],
               },
               {
@@ -161,7 +161,7 @@ module.exports = function carouselTemplate(
               {
                 type: "text",
                 text: "見学",
-                color: "#000000",
+                color: "#6A6A6A",
                 contents: [],
               },
               {
@@ -222,7 +222,7 @@ module.exports = function carouselTemplate(
               {
                 type: "text",
                 text: "対象者",
-                color: "#000000",
+                color: "#6A6A6A",
                 contents: [],
               },
               {
@@ -250,7 +250,7 @@ module.exports = function carouselTemplate(
               {
                 type: "text",
                 text: "行政サービス分類",
-                color: "#000000",
+                color: "#6A6A6A",
                 contents: [],
               },
               {
@@ -280,7 +280,8 @@ module.exports = function carouselTemplate(
           contents: [
             {
               type: "span",
-              text: "前年度の申し込み状況",
+              text: "前年度の申込状況",
+              color: "#6A6A6A",
               size: "md",
             },
           ],
@@ -292,6 +293,7 @@ module.exports = function carouselTemplate(
             {
               type: "span",
               text: "（倍率／最下指数）",
+              color: "#6A6A6A",
               size: "md",
               weight: "regular",
             },
@@ -305,6 +307,7 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: "0歳児",
+              color: "#6A6A6A",
               weight: "regular",
               align: "start",
               contents: [],
@@ -315,12 +318,11 @@ module.exports = function carouselTemplate(
                 item["去年の保育所利用の倍率（0さい）"] != null
                   ? item["去年の保育所利用の倍率（0さい）"]
                   : "-"
-              }/${
+              }／${
                 item["去年の保育所利用の指数・ポイント（0さい）"] != null
                   ? item["去年の保育所利用の指数・ポイント（0さい）"]
                   : `-`
               }`,
-              weight: "bold",
               color: "#000000",
               align: "end",
               wrap: true,
@@ -335,6 +337,7 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: "1歳児",
+              color: "#6A6A6A",
               weight: "regular",
               align: "start",
               contents: [],
@@ -345,12 +348,12 @@ module.exports = function carouselTemplate(
                 item["去年の保育所利用の倍率（1さい）"] != null
                   ? item["去年の保育所利用の倍率（1さい）"]
                   : "-"
-              }/${
+              }／${
+
                 item["去年の保育所利用の指数・ポイント（1さい）"] != null
                   ? item["去年の保育所利用の指数・ポイント（1さい）"]
                   : `-`
               }`,
-              weight: "bold",
               color: "#000000",
               align: "end",
               wrap: true,
@@ -365,6 +368,7 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: "2歳児",
+              color: "#6A6A6A",
               weight: "regular",
               align: "start",
               contents: [],
@@ -375,12 +379,11 @@ module.exports = function carouselTemplate(
                 item["去年の保育所利用の倍率（2さい）"] != null
                   ? item["去年の保育所利用の倍率（2さい）"]
                   : "-"
-              }/${
+              }／${
                 item["去年の保育所利用の指数・ポイント（2さい）"] != null
                   ? item["去年の保育所利用の指数・ポイント（2さい）"]
                   : `-`
               }`,
-              weight: "bold",
               color: "#000000",
               align: "end",
               wrap: true,
@@ -395,6 +398,7 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: "3歳児",
+              color: "#6A6A6A",
               weight: "regular",
               align: "start",
               contents: [],
@@ -405,12 +409,11 @@ module.exports = function carouselTemplate(
                 item["去年の保育所利用の倍率（3さい）"] != null
                   ? item["去年の保育所利用の倍率（3さい）"]
                   : "-"
-              }/${
+              }／${
                 item["去年の保育所利用の指数・ポイント（3さい）"] != null
                   ? item["去年の保育所利用の指数・ポイント（3さい）"]
                   : `-`
               }`,
-              weight: "bold",
               color: "#000000",
               align: "end",
               wrap: true,
@@ -435,12 +438,11 @@ module.exports = function carouselTemplate(
                 item["去年の保育所利用の倍率（4さい）"] != null
                   ? item["去年の保育所利用の倍率（4さい）"]
                   : "-"
-              }/${
+              }／${
                 item["去年の保育所利用の指数・ポイント（4さい）"] != null
                   ? item["去年の保育所利用の指数・ポイント（4さい）"]
                   : `-`
               }`,
-              weight: "bold",
               color: "#000000",
               align: "end",
               wrap: true,
@@ -455,6 +457,7 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: "5歳児",
+              color: "#6A6A6A",
               weight: "regular",
               align: "start",
               contents: [],
@@ -465,7 +468,7 @@ module.exports = function carouselTemplate(
                 item["去年の保育所利用の倍率（5さい）"] != null
                   ? item["去年の保育所利用の倍率（5さい）"]
                   : "-"
-              }/${
+              }／${
                 item["去年の保育所利用の指数・ポイント（5さい）"] != null
                   ? item["去年の保育所利用の指数・ポイント（5さい）"]
                   : `-`
