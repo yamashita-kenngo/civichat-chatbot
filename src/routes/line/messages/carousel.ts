@@ -473,7 +473,6 @@ module.exports = function carouselTemplate(
                   ? item["去年の保育所利用の指数・ポイント（5さい）"]
                   : `-`
               }`,
-              weight: "bold",
               color: "#000000",
               align: "end",
               wrap: true,
