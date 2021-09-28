@@ -92,6 +92,15 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                       },
                       style: "primary",
                     },
+                    {
+                      type: "button",
+                      "action": {
+                        "type": "uri",
+                        "label": "導入リクエストを送る",
+                        "uri": "https://forms.gle/HvoejEDFo1TPFnxA8"
+                      },
+                      style: "secondary",
+                    },
                   ],
                 },
               },
