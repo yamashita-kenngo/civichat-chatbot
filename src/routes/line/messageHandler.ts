@@ -94,6 +94,15 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                     },
                     {
                       type: "button",
+                      action: {
+                        type: "postback",
+                        label: "全国版",
+                        data: "start-japan",
+                      },
+                      style: "primary",
+                    },
+                    {
+                      type: "button",
                       "action": {
                         "type": "uri",
                         "label": "導入リクエストを送る",
@@ -158,6 +167,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
               systemsData = require("../../../static_data/shibuyaParenting/systemsdata.json");
             } else if (cs.getSeido() === "shibuya_preschool") {
               systemsData = require("../../../static_data/shibuyaPreschool/systemsdata.json");
+            } else if (cs.getSeido() === "japan") {
+              systemsData = require("../../../static_data/japan/systemsdata.json");
             }
             cs.selectAnswerByText(
               userSession.getBeforeQuestionId(),
@@ -269,7 +280,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
       if (
         event.postback.data === "start-kumamoto_earthquake" ||
         event.postback.data === "start-shibuya_preschool" ||
-        event.postback.data === "start-shibuya_parenting"
+        event.postback.data === "start-shibuya_parenting" ||
+        event.postback.data === "start-japan"
       ) {
         const selected = event.postback.data.split("-")[1];
 
@@ -287,6 +299,10 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           jsonAnswers = require(`../../../static_data/shibuyaPreschool/answers.json`);
           jsonQuestions = require(`../../../static_data/shibuyaPreschool/questions.json`);
           systems = require(`../../../static_data/shibuyaPreschool/systems.json`);
+        } else if (selected === "japan") {
+          jsonAnswers = require(`../../../static_data/japan/answers.json`);
+          jsonQuestions = require(`../../../static_data/japan/questions.json`);
+          systems = require(`../../../static_data/japan/systems.json`);
         }
         const questions: Array<Question> = [];
 
