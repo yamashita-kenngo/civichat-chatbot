@@ -118,7 +118,7 @@ exports.queryServices = async (
   let othersType: string;
   if (seido === "shibuya_preschool") {
     othersType = "施設";
-  } else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake") {
+  } else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake"|| seido === "japan") {
     othersType = "制度";
   } else {
     othersType = "";
@@ -175,7 +175,7 @@ exports.getQueryResult = async (resultId: string) => {
 
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = async () => {
-  const systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
+  /*const systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
   for (const item of systemsDataShibuya.systemsData) {
     await pg.query({
       text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
@@ -206,7 +206,7 @@ exports.saveInitialDatafromJson = async () => {
         item["詳細参照先"]
       ],
     });
-  }
+  }*/
   
   
   /*
@@ -251,7 +251,7 @@ exports.saveInitialDatafromJson = async () => {
     });
   }
   */
-  const systemsDataShibuyaKindergarten = require("../../static_data/shibuyaPreschool/systemsdata.json");
+  /*const systemsDataShibuyaKindergarten = require("../../static_data/shibuyaPreschool/systemsdata.json");
   for (const item of systemsDataShibuyaKindergarten.systemsData) {
     await pg.query({
       text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location,thisyear_admission_rate_for_0,thisyear_admission_rate_for_1,thisyear_admission_rate_for_2,thisyear_admission_rate_for_3,thisyear_admission_rate_for_4,thisyear_admission_rate_for_5,thisyear_admission_point_for_0,thisyear_admission_point_for_1,thisyear_admission_point_for_2,thisyear_admission_point_for_3,thisyear_admission_point_for_4,thisyear_admission_point_for_5,lastyear_admission_rate_for_0,lastyear_admission_rate_for_1,lastyear_admission_rate_for_2,lastyear_admission_rate_for_3,lastyear_admission_rate_for_4,lastyear_admission_rate_for_5,lastyear_admission_point_for_0,lastyear_admission_point_for_1,lastyear_admission_point_for_2,lastyear_admission_point_for_3,lastyear_admission_point_for_4,lastyear_admission_point_for_5,security,baby_buggy,ibservation_detail,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56 ) ;",
@@ -313,6 +313,39 @@ exports.saveInitialDatafromJson = async () => {
         item["見学詳細"],
         item["詳細参照先"]
        ],
+    });
+  }*/
+
+  const systemsDataJapan = require("../../static_data/japan/systemsdata.json");
+  for (const item of systemsDataJapan.systemsData) {
+    await pg.query({
+      text: "INSERT INTO japan (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
+      values: [
+        item["サービスID"],
+        item["制度番号"],
+        item["元制度番号"],
+        item["制度変更区分"],
+        item["制度所管組織"],
+        item["都道府県"],
+        item["市町村"],
+        item["タイトル（制度名）"],
+        item["概要"],
+        item["支援内容"],
+        item["対象者"],
+        item["利用・申請方法"],
+        item["受付開始日"],
+        item["受付終了日"],
+        item["お問い合わせ先"],
+        item["公開日"],
+        item["タグ"],
+        item["テーマ"],
+        item["タグ（カテゴリー）"],
+        item["タグ（事業者分類）"],
+        item["タグ（事業者分類）"],
+        item["タグ（キーワード）"],
+        item["タグ（テーマ）"],
+        item["詳細参照先"]
+      ],
     });
   }
   return "ok";

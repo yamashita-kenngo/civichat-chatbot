@@ -147,7 +147,7 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
                 if (seido === "shibuya_preschool") {
                     othersType = "施設";
                 }
-                else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake") {
+                else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake" || seido === "japan") {
                     othersType = "制度";
                 }
                 else {
@@ -218,18 +218,18 @@ exports.getQueryResult = function (resultId) { return __awaiter(void 0, void 0, 
 }); };
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var systemsDataShibuya, _i, _a, item, systemsDataShibuyaKindergarten, _b, _c, item;
-    return __generator(this, function (_d) {
-        switch (_d.label) {
+    var systemsDataJapan, _i, _a, item;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
-                _i = 0, _a = systemsDataShibuya.systemsData;
-                _d.label = 1;
+                systemsDataJapan = require("../../static_data/japan/systemsdata.json");
+                _i = 0, _a = systemsDataJapan.systemsData;
+                _b.label = 1;
             case 1:
                 if (!(_i < _a.length)) return [3 /*break*/, 4];
                 item = _a[_i];
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
+                        text: "INSERT INTO japan (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
                         values: [
                             item["サービスID"],
                             item["制度番号"],
@@ -258,86 +258,12 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                         ]
                     })];
             case 2:
-                _d.sent();
-                _d.label = 3;
+                _b.sent();
+                _b.label = 3;
             case 3:
                 _i++;
                 return [3 /*break*/, 1];
-            case 4:
-                systemsDataShibuyaKindergarten = require("../../static_data/shibuyaPreschool/systemsdata.json");
-                _b = 0, _c = systemsDataShibuyaKindergarten.systemsData;
-                _d.label = 5;
-            case 5:
-                if (!(_b < _c.length)) return [3 /*break*/, 8];
-                item = _c[_b];
-                return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location,thisyear_admission_rate_for_0,thisyear_admission_rate_for_1,thisyear_admission_rate_for_2,thisyear_admission_rate_for_3,thisyear_admission_rate_for_4,thisyear_admission_rate_for_5,thisyear_admission_point_for_0,thisyear_admission_point_for_1,thisyear_admission_point_for_2,thisyear_admission_point_for_3,thisyear_admission_point_for_4,thisyear_admission_point_for_5,lastyear_admission_rate_for_0,lastyear_admission_rate_for_1,lastyear_admission_rate_for_2,lastyear_admission_rate_for_3,lastyear_admission_rate_for_4,lastyear_admission_rate_for_5,lastyear_admission_point_for_0,lastyear_admission_point_for_1,lastyear_admission_point_for_2,lastyear_admission_point_for_3,lastyear_admission_point_for_4,lastyear_admission_point_for_5,security,baby_buggy,ibservation_detail,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56 ) ;",
-                        values: [
-                            item["サービスID"],
-                            item["都道府県"],
-                            item["市町村"],
-                            item["エリア"],
-                            item["幼稚園•保育園のタイトル"],
-                            item["対象年齢"],
-                            item["施設のカテゴリ"],
-                            item["施設の運営者"],
-                            item["休園日"],
-                            item["園庭"],
-                            item["タオルの持ち込み"],
-                            item["オムツの持ち帰り"],
-                            item["駐輪場"],
-                            item["給食・離乳食"],
-                            item["見学"],
-                            item["延長保育の対応時間"],
-                            item["アレルギー対応"],
-                            item["入園可能"],
-                            item["申し込み受付先"],
-                            item["お問い合わせ先"],
-                            item["公開日"],
-                            item["保育施設の空き状況（0さい）"],
-                            item["保育施設の空き状況（1さい）"],
-                            item["保育施設の空き状況（2さい）"],
-                            item["保育施設の空き状況（3さい）"],
-                            item["保育施設の空き状況（4さい）"],
-                            item["保育施設の空き状況（5さい）"],
-                            item["住所"],
-                            item["今年の保育所利用の倍率（0さい）"],
-                            item["今年の保育所利用の倍率（1さい）"],
-                            item["今年の保育所利用の倍率（2さい）"],
-                            item["今年の保育所利用の倍率（3さい）"],
-                            item["今年の保育所利用の倍率（4さい）"],
-                            item["今年の保育所利用の倍率（5さい）"],
-                            item["今年の保育所利用の指数・ポイント（0さい）"],
-                            item["今年の保育所利用の指数・ポイント（1さい）"],
-                            item["今年の保育所利用の指数・ポイント（2さい）"],
-                            item["今年の保育所利用の指数・ポイント（3さい）"],
-                            item["今年の保育所利用の指数・ポイント（4さい）"],
-                            item["今年の保育所利用の指数・ポイント（5さい）"],
-                            item["去年の保育所利用の倍率（0さい）"],
-                            item["去年の保育所利用の倍率（1さい）"],
-                            item["去年の保育所利用の倍率（2さい）"],
-                            item["去年の保育所利用の倍率（3さい）"],
-                            item["去年の保育所利用の倍率（4さい）"],
-                            item["去年の保育所利用の倍率（5さい）"],
-                            item["去年の保育所利用の指数・ポイント（0さい）"],
-                            item["去年の保育所利用の指数・ポイント（1さい）"],
-                            item["去年の保育所利用の指数・ポイント（2さい）"],
-                            item["去年の保育所利用の指数・ポイント（3さい）"],
-                            item["去年の保育所利用の指数・ポイント（4さい）"],
-                            item["去年の保育所利用の指数・ポイント（5さい）"],
-                            item["保育施設のセキュリティ"],
-                            item["ベビーバギー置き場"],
-                            item["見学詳細"],
-                            item["詳細参照先"]
-                        ]
-                    })];
-            case 6:
-                _d.sent();
-                _d.label = 7;
-            case 7:
-                _b++;
-                return [3 /*break*/, 5];
-            case 8: return [2 /*return*/, "ok"];
+            case 4: return [2 /*return*/, "ok"];
         }
     });
 }); };

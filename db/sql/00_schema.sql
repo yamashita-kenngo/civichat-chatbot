@@ -52,6 +52,34 @@ CREATE TABLE "shibuya_parenting" (
   "issue_type" text
 );
 
+CREATE TABLE "japan" (
+  "id" serial PRIMARY KEY,
+  "service_id" character varying(255) NOT NULL UNIQUE UNIQUE UNIQUE,
+  "service_number" text,
+  "origin_id" text,
+  "alteration_flag" text,
+  "provider" text,
+  "prefecture_id" text,
+  "city_id" text,
+  "name" text,
+  "abstract" text,
+  "provisions" text,
+  "target" text,
+  "how_to_apply" text,
+  "application_start_date" text,
+  "application_close_date" text,
+  "detail_url" text,
+  "contact" text,
+  "information_release_date" text,
+  "tags" text,
+  "theme" text,
+  "category" text,
+  "person_type" text,
+  "entity_type" text,
+  "keyword_type" text,
+  "issue_type" text
+);
+
 CREATE TABLE "kumamoto_earthquake" (
   "id" serial PRIMARY KEY,
   "service_id" character varying(255) NOT NULL UNIQUE UNIQUE UNIQUE,
