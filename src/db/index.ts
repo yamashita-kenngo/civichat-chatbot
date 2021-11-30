@@ -118,7 +118,7 @@ exports.queryServices = async (
   let othersType: string;
   if (seido === "shibuya_preschool") {
     othersType = "施設";
-  } else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake") {
+  } else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake"|| seido === "japan") {
     othersType = "制度";
   } else {
     othersType = "";
