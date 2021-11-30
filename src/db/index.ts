@@ -207,10 +207,8 @@ exports.saveInitialDatafromJson = async () => {
       ],
     });
   }*/
-  
-  
-  /*
-  const systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
+
+  /*const systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
   for (const item of systemsDataKumamoto.systemsData) {
     await pg.query({
       text: "INSERT INTO kumamoto_earthquake (service_id,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
@@ -249,8 +247,8 @@ exports.saveInitialDatafromJson = async () => {
         item["お困りごと分類"]
       ],
     });
-  }
-  */
+  }*/
+
   /*const systemsDataShibuyaKindergarten = require("../../static_data/shibuyaPreschool/systemsdata.json");
   for (const item of systemsDataShibuyaKindergarten.systemsData) {
     await pg.query({
@@ -312,7 +310,7 @@ exports.saveInitialDatafromJson = async () => {
         item["ベビーバギー置き場"],
         item["見学詳細"],
         item["詳細参照先"]
-       ],
+      ],
     });
   }*/
 

@@ -147,7 +147,7 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
                 if (seido === "shibuya_preschool") {
                     othersType = "施設";
                 }
-                else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake") {
+                else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake" || seido === "japan") {
                     othersType = "制度";
                 }
                 else {
@@ -218,13 +218,13 @@ exports.getQueryResult = function (resultId) { return __awaiter(void 0, void 0, 
 }); };
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var systemsDataShibuya, _i, _a, item, systemsDataShibuyaKindergarten, _b, _c, item;
-    return __generator(this, function (_d) {
-        switch (_d.label) {
+    var systemsDataShibuya, _i, _a, item, systemsDataKumamoto, _b, _c, item, systemsDataShibuyaKindergarten, _d, _e, item, systemsDataJapan, _f, _g, item;
+    return __generator(this, function (_h) {
+        switch (_h.label) {
             case 0:
-                systemsDataShibuya = require("../static_data/shibuyaParenting/systemsdata.json");
+                systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
                 _i = 0, _a = systemsDataShibuya.systemsData;
-                _d.label = 1;
+                _h.label = 1;
             case 1:
                 if (!(_i < _a.length)) return [3 /*break*/, 4];
                 item = _a[_i];
@@ -258,18 +258,68 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                         ]
                     })];
             case 2:
-                _d.sent();
-                _d.label = 3;
+                _h.sent();
+                _h.label = 3;
             case 3:
                 _i++;
                 return [3 /*break*/, 1];
             case 4:
-                systemsDataShibuyaKindergarten = require("../static_data/shibuyaPreschool/systemsdata.json");
-                _b = 0, _c = systemsDataShibuyaKindergarten.systemsData;
-                _d.label = 5;
+                systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
+                _b = 0, _c = systemsDataKumamoto.systemsData;
+                _h.label = 5;
             case 5:
                 if (!(_b < _c.length)) return [3 /*break*/, 8];
                 item = _c[_b];
+                return [4 /*yield*/, pg.query({
+                        text: "INSERT INTO kumamoto_earthquake (service_id,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
+                        values: [
+                            item["サービスID"],
+                            item["制度管理番号"],
+                            item["制度名"],
+                            item["対象者"],
+                            item["サブタイトル"],
+                            item["表示優先度"],
+                            item["公開日程"],
+                            item["申請期限（公開終了日）"],
+                            item["公開・非公開（チェックで公開）"],
+                            item["制度概要"],
+                            item["制度所管組織"],
+                            item["親制度"],
+                            item["親制度との関係性"],
+                            item["条件"],
+                            item["用途・対象物"],
+                            item["対象地域"],
+                            item["支援内容"],
+                            item["留意事項"],
+                            item["手続き等"],
+                            item["必要なもの"],
+                            item["必要書類のURL"],
+                            item["申請窓口"],
+                            item["受付可能日時（受付日）"],
+                            item["受付可能日時（受付時間）"],
+                            item["申請可能URL"],
+                            item["受付開始日"],
+                            item["受付終了日"],
+                            item["お問い合わせ先"],
+                            item["詳細参照先"],
+                            item["行政サービス分類"],
+                            item["ライフステージ分類"],
+                            item["お困りごと分類"]
+                        ]
+                    })];
+            case 6:
+                _h.sent();
+                _h.label = 7;
+            case 7:
+                _b++;
+                return [3 /*break*/, 5];
+            case 8:
+                systemsDataShibuyaKindergarten = require("../../static_data/shibuyaPreschool/systemsdata.json");
+                _d = 0, _e = systemsDataShibuyaKindergarten.systemsData;
+                _h.label = 9;
+            case 9:
+                if (!(_d < _e.length)) return [3 /*break*/, 12];
+                item = _e[_d];
                 return [4 /*yield*/, pg.query({
                         text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location,thisyear_admission_rate_for_0,thisyear_admission_rate_for_1,thisyear_admission_rate_for_2,thisyear_admission_rate_for_3,thisyear_admission_rate_for_4,thisyear_admission_rate_for_5,thisyear_admission_point_for_0,thisyear_admission_point_for_1,thisyear_admission_point_for_2,thisyear_admission_point_for_3,thisyear_admission_point_for_4,thisyear_admission_point_for_5,lastyear_admission_rate_for_0,lastyear_admission_rate_for_1,lastyear_admission_rate_for_2,lastyear_admission_rate_for_3,lastyear_admission_rate_for_4,lastyear_admission_rate_for_5,lastyear_admission_point_for_0,lastyear_admission_point_for_1,lastyear_admission_point_for_2,lastyear_admission_point_for_3,lastyear_admission_point_for_4,lastyear_admission_point_for_5,security,baby_buggy,ibservation_detail,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56 ) ;",
                         values: [
@@ -331,13 +381,55 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                             item["詳細参照先"]
                         ]
                     })];
-            case 6:
-                _d.sent();
-                _d.label = 7;
-            case 7:
-                _b++;
-                return [3 /*break*/, 5];
-            case 8: return [2 /*return*/, "ok"];
+            case 10:
+                _h.sent();
+                _h.label = 11;
+            case 11:
+                _d++;
+                return [3 /*break*/, 9];
+            case 12:
+                systemsDataJapan = require("../../static_data/japan/systemsdata.json");
+                _f = 0, _g = systemsDataJapan.systemsData;
+                _h.label = 13;
+            case 13:
+                if (!(_f < _g.length)) return [3 /*break*/, 16];
+                item = _g[_f];
+                return [4 /*yield*/, pg.query({
+                        text: "INSERT INTO japan (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
+                        values: [
+                            item["サービスID"],
+                            item["制度番号"],
+                            item["元制度番号"],
+                            item["制度変更区分"],
+                            item["制度所管組織"],
+                            item["都道府県"],
+                            item["市町村"],
+                            item["タイトル（制度名）"],
+                            item["概要"],
+                            item["支援内容"],
+                            item["対象者"],
+                            item["利用・申請方法"],
+                            item["受付開始日"],
+                            item["受付終了日"],
+                            item["お問い合わせ先"],
+                            item["公開日"],
+                            item["タグ"],
+                            item["テーマ"],
+                            item["タグ（カテゴリー）"],
+                            item["タグ（事業者分類）"],
+                            item["タグ（事業者分類）"],
+                            item["タグ（キーワード）"],
+                            item["タグ（テーマ）"],
+                            item["詳細参照先"]
+                        ]
+                    })];
+            case 14:
+                _h.sent();
+                _h.label = 15;
+            case 15:
+                _f++;
+                return [3 /*break*/, 13];
+            case 16: return [2 /*return*/, "ok"];
         }
     });
 }); };
