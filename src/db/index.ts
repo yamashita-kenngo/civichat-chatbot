@@ -53,7 +53,7 @@ const pg = new Client(pgConfig);
 
 pg.connect()
   .then(() => console.log("pg Connected successfuly"))
-  .catch(() => console.log("pr err"));
+  .catch((e: string) => console.log("pr err\n"+e));
 
 exports.getServiceDetail = async (serviceId: string) => {
   const tableName = serviceId.split("-")[0];

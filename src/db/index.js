@@ -81,7 +81,7 @@ var pgConfig = {
 console.log(pgConfig);
 var pg = new Client(pgConfig);
 pg.connect()
-    .then(function () { return console.log("pg Connected successfuly"); })["catch"](function () { return console.log("pr err"); });
+    .then(function () { return console.log("pg Connected successfuly"); })["catch"](function (e) { return console.log("pr err\n" + e); });
 exports.getServiceDetail = function (serviceId) { return __awaiter(void 0, void 0, void 0, function () {
     var tableName, res, seidoType, img_url, service;
     return __generator(this, function (_a) {
