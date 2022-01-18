@@ -38,6 +38,7 @@ export type pgConfig = {
   database: string;
   password: string;
   port: string;
+  ssl: any;
 };
 
 const pgConfig: pgConfig = {
@@ -46,6 +47,7 @@ const pgConfig: pgConfig = {
   database: process.env.RDS_DB_NAME,
   password: process.env.RDS_PASSWORD,
   port: process.env.RDS_PORT,
+  ssl: { rejectUnauthorized: false }
 };
 
 console.log(pgConfig);

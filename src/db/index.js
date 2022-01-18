@@ -76,7 +76,8 @@ var pgConfig = {
     host: process.env.RDS_HOSTNAME,
     database: process.env.RDS_DB_NAME,
     password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT
+    port: process.env.RDS_PORT,
+    ssl: { rejectUnauthorized: false }
 };
 console.log(pgConfig);
 var pg = new Client(pgConfig);
