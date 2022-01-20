@@ -51,7 +51,10 @@ const pgConfig: pgConfig = {
 };
 
 console.log(pgConfig);
-const pg = new Client(pgConfig);
+const cred = process.env.DATABASE_URL
+const pg = new Client({
+  cred,
+})
 
 pg.connect()
   .then(() => console.log("pg Connected successfuly"))
@@ -178,7 +181,7 @@ exports.getQueryResult = async (resultId: string) => {
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = async () => {
 
-  await pg.query({
+  /*await pg.query({
     text: `
     CREATE TABLE "apply_locations" (
       "service_id" text,
@@ -496,7 +499,7 @@ exports.saveInitialDatafromJson = async () => {
         item["詳細参照先"]
       ],
     });
-  }
+  }*/
 
   const systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
   for (const item of systemsDataKumamoto.systemsData) {
