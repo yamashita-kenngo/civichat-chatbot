@@ -42,7 +42,7 @@ export type pgConfig = {
   ssl: any;
 };
 
-var config = parse(process.env.DATABASE_URL)
+var config = pgParse(process.env.DATABASE_URL)
 const pgConfig: pgConfig = {
   user: config.user,
   host: config.host,

@@ -51,6 +51,7 @@ exports.__esModule = true;
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 var Client = require("pg").Client;
 var uuidv4 = require('uuid').v4;
+var pgParse = require('pg-connection-string').parse;
 require("dotenv").config();
 if (!process.env.RDS_HOSTNAME) {
     throw new Error("Environment variable RDS_HOSTNAME is not set.");
@@ -71,19 +72,17 @@ if (!process.env.LIFF_URL) {
     throw new Error("Environment variable LIFF_URL is not set.");
 }
 var liffUrl = process.env.LIFF_URL;
+var config = pgParse(process.env.DATABASE_URL);
 var pgConfig = {
-    user: process.env.RDS_USERNAME,
-    host: process.env.RDS_HOSTNAME,
-    database: process.env.RDS_DB_NAME,
-    password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT,
-    ssl: { rejectUnauthorized: false }
+    user: config.user,
+    host: config.host,
+    database: config.database,
+    password: config.password,
+    port: config.port,
+    ssl: config.ssl
 };
-var cred = process.env.DATABASE_URL;
-console.log(cred);
-var pg = new Client({
-    cred: cred
-});
+console.log(pgConfig);
+var pg = new Client(pgConfig);
 pg.connect()
     .then(function () { return console.log("pg Connected successfuly"); })["catch"](function (e) { return console.log("pr err\n" + e); });
 exports.getServiceDetail = function (serviceId) { return __awaiter(void 0, void 0, void 0, function () {
