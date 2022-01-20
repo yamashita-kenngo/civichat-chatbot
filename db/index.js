@@ -79,8 +79,8 @@ var pgConfig = {
     port: process.env.RDS_PORT,
     ssl: { rejectUnauthorized: false }
 };
-console.log(pgConfig);
 var cred = process.env.DATABASE_URL;
+console.log(cred);
 var pg = new Client({
     cred: cred
 });

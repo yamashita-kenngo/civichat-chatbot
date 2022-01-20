@@ -50,8 +50,8 @@ const pgConfig: pgConfig = {
   ssl: { rejectUnauthorized: false }
 };
 
-console.log(pgConfig);
 const cred = process.env.DATABASE_URL
+console.log(cred);
 const pg = new Client({
   cred,
 })
