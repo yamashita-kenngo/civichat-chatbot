@@ -79,7 +79,7 @@ var pgConfig = {
     database: config.database,
     password: config.password,
     port: config.port,
-    ssl: config.ssl
+    ssl: { rejectUnauthorized: false }
 };
 console.log(pgConfig);
 var pg = new Client(pgConfig);
