@@ -4,6 +4,7 @@
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 const { Client } = require("pg");
 const { v4: uuidv4 } = require('uuid');
+const pgParse = require('pg-connection-string').parse;
 
 require("dotenv").config();
 
@@ -41,20 +42,18 @@ export type pgConfig = {
   ssl: any;
 };
 
+var config = parse(process.env.DATABASE_URL)
 const pgConfig: pgConfig = {
-  user: process.env.RDS_USERNAME,
-  host: process.env.RDS_HOSTNAME,
-  database: process.env.RDS_DB_NAME,
-  password: process.env.RDS_PASSWORD,
-  port: process.env.RDS_PORT,
-  ssl: { rejectUnauthorized: false }
+  user: config.user,
+  host: config.host,
+  database: config.database,
+  password: config.password,
+  port: config.port,
+  ssl: config.ssl
 };
 
-const cred = process.env.DATABASE_URL
-console.log(cred);
-const pg = new Client({
-  cred,
-})
+console.log(pgConfig);
+const pg = new Client(pgConfig);
 
 pg.connect()
   .then(() => console.log("pg Connected successfuly"))
