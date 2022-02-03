@@ -8,7 +8,9 @@ const pgParse = require('pg-connection-string').parse;
 
 require("dotenv").config();
 
-if (!process.env.RDS_HOSTNAME) {
+if(!process.env.DATABASE_URL) throw new Error("Environment variable DATABASE_URL is not set.");
+
+/*if (!process.env.RDS_HOSTNAME) {
   throw new Error("Environment variable RDS_HOSTNAME is not set.");
 }
 
@@ -25,7 +27,7 @@ if (!process.env.RDS_USERNAME) {
 
 if (!process.env.RDS_PASSWORD) {
   throw new Error("Environment variable RDS_PASSWORD is not set.");
-}
+}*/
 
 if (!process.env.LIFF_URL) {
   throw new Error("Environment variable LIFF_URL is not set.");

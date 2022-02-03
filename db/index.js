@@ -53,21 +53,26 @@ var Client = require("pg").Client;
 var uuidv4 = require('uuid').v4;
 var pgParse = require('pg-connection-string').parse;
 require("dotenv").config();
-if (!process.env.RDS_HOSTNAME) {
-    throw new Error("Environment variable RDS_HOSTNAME is not set.");
+if (!process.env.DATABASE_URL)
+    throw new Error("Environment variable DATABASE_URL is not set.");
+/*if (!process.env.RDS_HOSTNAME) {
+  throw new Error("Environment variable RDS_HOSTNAME is not set.");
 }
+
 if (!process.env.RDS_PORT) {
-    throw new Error("Environment variable RDS_PORT is not set.");
+  throw new Error("Environment variable RDS_PORT is not set.");
 }
+
 if (!process.env.RDS_DB_NAME) {
-    throw new Error("Environment variable RDS_DB_NAME is not set.");
+  throw new Error("Environment variable RDS_DB_NAME is not set.");
 }
 if (!process.env.RDS_USERNAME) {
-    throw new Error("Environment variable RDS_USERNAME is not set.");
+  throw new Error("Environment variable RDS_USERNAME is not set.");
 }
+
 if (!process.env.RDS_PASSWORD) {
-    throw new Error("Environment variable RDS_PASSWORD is not set.");
-}
+  throw new Error("Environment variable RDS_PASSWORD is not set.");
+}*/
 if (!process.env.LIFF_URL) {
     throw new Error("Environment variable LIFF_URL is not set.");
 }
