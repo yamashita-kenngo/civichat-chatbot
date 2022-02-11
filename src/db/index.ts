@@ -100,7 +100,7 @@ exports.saveUser = async (lineId: string) => {
 
 exports.updateUserCount = async (lineId: string) => {
   const res = await pg.query({
-    text: "SELECT user_id FROM users WHERE line_id=$1",
+    text: "SELECT * FROM users WHERE line_id=$1",
     values: [lineId],
   });
   console.log(res)

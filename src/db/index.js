@@ -139,7 +139,7 @@ exports.updateUserCount = function (lineId) { return __awaiter(void 0, void 0, v
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, pg.query({
-                    text: "SELECT user_id FROM users WHERE line_id=$1",
+                    text: "SELECT * FROM users WHERE line_id=$1",
                     values: [lineId]
                 })];
             case 1:
