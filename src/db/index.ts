@@ -468,7 +468,6 @@ exports.saveInitialDatafromJson = async () => {
     text: `ALTER TABLE "related_system"
   ADD FOREIGN KEY ("object_service_id") REFERENCES "shibuya_parenting" ("service_id");`
 })
-
   const systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
   for (const item of systemsDataShibuya.systemsData) {
     await pg.query({
@@ -500,7 +499,7 @@ exports.saveInitialDatafromJson = async () => {
         item["詳細参照先"]
       ],
     });
-  }*/
+  }
 
   const systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
   for (const item of systemsDataKumamoto.systemsData) {
