@@ -269,6 +269,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
       }
       break;
     case "follow":
+      await db.saveUser(event.source.userId);
       returnMessage = [
         {
           type: "text",
@@ -349,6 +350,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           ),
         };
         returnMessage = [await questionTemplate(cs.questionMessageItem())];
+        await db.updateUserCount(event.source.userId);
       }
       break;
   }
