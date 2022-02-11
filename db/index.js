@@ -221,12 +221,143 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
     var systemsDataShibuya, _i, _a, item, systemsDataKumamoto, _b, _c, item, systemsDataShibuyaKindergarten, _d, _e, item, systemsDataJapan, _f, _g, item;
     return __generator(this, function (_h) {
         switch (_h.label) {
+<<<<<<< Updated upstream
             case 0:
                 systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
                 _i = 0, _a = systemsDataShibuya.systemsData;
                 _h.label = 1;
+=======
+            case 0: return [4 /*yield*/, pg.query({
+                    text: "\n    CREATE TABLE \"apply_locations\" (\n      \"service_id\" text,\n      \"application_lcoation\" text,\n      PRIMARY KEY (\"service_id\", \"application_lcoation\")\n    );"
+                })];
+>>>>>>> Stashed changes
             case 1:
-                if (!(_i < _a.length)) return [3 /*break*/, 4];
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "CREATE TABLE \"apply_postal_address\" (\n      \"service_id\" text,\n      \"postal_address\" text,\n      PRIMARY KEY (\"service_id\", \"postal_address\")\n    );"
+                    })];
+            case 2:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "CREATE TABLE \"documents\" (\n      \"service_id\" text,\n      \"document_name\" text,\n      \"document_url\" text,\n      PRIMARY KEY (\"service_id\", \"document_name\")\n    );"
+                    })];
+            case 3:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "CREATE TABLE \"related_system\" (\n      \"subject_service_id\" text,\n      \"object_service_id\" text,\n      \"relationship\" text,\n      PRIMARY KEY (\"subject_service_id\", \"object_service_id\")\n    );"
+                    })];
+            case 4:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "CREATE TABLE \"shibuya_parenting\" (\n      \"id\" serial PRIMARY KEY,\n      \"service_id\" character varying(255) NOT NULL UNIQUE UNIQUE UNIQUE,\n      \"service_number\" text,\n      \"origin_id\" text,\n      \"alteration_flag\" text,\n      \"provider\" text,\n      \"prefecture_id\" text,\n      \"city_id\" text,\n      \"name\" text,\n      \"abstract\" text,\n      \"provisions\" text,\n      \"target\" text,\n      \"how_to_apply\" text,\n      \"application_start_date\" text,\n      \"application_close_date\" text,\n      \"detail_url\" text,\n      \"contact\" text,\n      \"information_release_date\" text,\n      \"tags\" text,\n      \"theme\" text,\n      \"category\" text,\n      \"person_type\" text,\n      \"entity_type\" text,\n      \"keyword_type\" text,\n      \"issue_type\" text\n    );"
+                    })];
+            case 5:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "CREATE TABLE \"japan\" (\n      \"id\" serial PRIMARY KEY,\n      \"service_id\" character varying(255) NOT NULL UNIQUE UNIQUE UNIQUE,\n      \"service_number\" text,\n      \"origin_id\" text,\n      \"alteration_flag\" text,\n      \"provider\" text,\n      \"prefecture_id\" text,\n      \"city_id\" text,\n      \"name\" text,\n      \"abstract\" text,\n      \"provisions\" text,\n      \"target\" text,\n      \"how_to_apply\" text,\n      \"application_start_date\" text,\n      \"application_close_date\" text,\n      \"detail_url\" text,\n      \"contact\" text,\n      \"information_release_date\" text,\n      \"tags\" text,\n      \"theme\" text,\n      \"category\" text,\n      \"person_type\" text,\n      \"entity_type\" text,\n      \"keyword_type\" text,\n      \"issue_type\" text\n    );"
+                    })];
+            case 6:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "CREATE TABLE \"kumamoto_earthquake\" (\n      \"id\" serial PRIMARY KEY,\n      \"service_id\" character varying(255) NOT NULL UNIQUE UNIQUE UNIQUE,\n      \"management_id\" text,\n      \"name\" text,\n      \"target\" text,\n      \"sub_title\" text,\n      \"priority\" text,\n      \"start_release_date\" text,\n      \"end_release_date\" text,\n      \"is_release\" text,\n      \"overview\" text,\n      \"organization\" text,\n      \"parent_system\" text,\n      \"relationship_parent_system\" text,\n      \"qualification\" text,\n      \"purpose\" text,\n      \"area\" text,\n      \"support_content\" text,\n      \"note\" text,\n      \"how_to_use\" text,\n      \"needs\" text,\n      \"documents_url\" text,\n      \"postal_address\" text,\n      \"acceptable_dates\" text,\n      \"acceptable_times\" text,\n      \"apply_url\" text,\n      \"start_application_date\" text,\n      \"end_application_date\" text,\n      \"contact\" text,\n      \"detail_url\" text,\n      \"administrative_service_category\" text,\n      \"lifestage_category\" text,\n      \"problem_category\" text\n    );"
+                    })];
+            case 7:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "CREATE TABLE \"shibuya_preschool\" (\n      \"id\" serial PRIMARY KEY,\n      \"service_id\" character varying(255) NOT NULL UNIQUE UNIQUE UNIQUE,\n      \"prefecture_id\" text,\n      \"city_id\" text,\n      \"area\" text,\n      \"name\" text,\n      \"target_age\" text,\n      \"type_nursery_school\" text,\n      \"administrator\" text,\n      \"closed_days\" text,\n      \"playground\" text,\n      \"bringing_your_own_towel\" text,\n      \"take_out_diapers\" text,\n      \"parking\" text,\n      \"lunch\" text,\n      \"ibservation\" text,\n      \"extended_hours_childcare\" text,\n      \"allergy_friendly\" text,\n      \"admission_available\" text,\n      \"apply\" text,\n      \"detail_url\" text,\n      \"contact\" text,\n      \"information_release_date\" text,\n      \"availability_of_childcare_facilities_for_0\" text,\n      \"availability_of_childcare_facilities_for_1\" text,\n      \"availability_of_childcare_facilities_for_2\" text,\n      \"availability_of_childcare_facilities_for_3\" text,\n      \"availability_of_childcare_facilities_for_4\" text,\n      \"availability_of_childcare_facilities_for_5\" text,\n      \"location\" text,\n      \"thisyear_admission_rate_for_0\" text,\n      \"thisyear_admission_rate_for_1\" text,\n      \"thisyear_admission_rate_for_2\" text,\n      \"thisyear_admission_rate_for_3\" text,\n      \"thisyear_admission_rate_for_4\" text,\n      \"thisyear_admission_rate_for_5\" text,\n      \"thisyear_admission_point_for_0\" text,\n      \"thisyear_admission_point_for_1\" text,\n      \"thisyear_admission_point_for_2\" text,\n      \"thisyear_admission_point_for_3\" text,\n      \"thisyear_admission_point_for_4\" text,\n      \"thisyear_admission_point_for_5\" text,\n      \"lastyear_admission_rate_for_0\" text,\n      \"lastyear_admission_rate_for_1\" text,\n      \"lastyear_admission_rate_for_2\" text,\n      \"lastyear_admission_rate_for_3\" text,\n      \"lastyear_admission_rate_for_4\" text,\n      \"lastyear_admission_rate_for_5\" text,\n      \"lastyear_admission_point_for_0\" text,\n      \"lastyear_admission_point_for_1\" text,\n      \"lastyear_admission_point_for_2\" text,\n      \"lastyear_admission_point_for_3\" text,\n      \"lastyear_admission_point_for_4\" text,\n      \"lastyear_admission_point_for_5\" text,\n      \"security\" text,\n      \"baby_buggy\" text,\n      \"ibservation_detail\" text\n    );"
+                    })];
+            case 8:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "CREATE TABLE \"users\" (\n      \"line_id\" text,\n      \"created_at\" text\n    );"
+                    })];
+            case 9:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "CREATE TABLE \"results\" (\n      \"result_id\" text,\n      \"result_body\" text,\n      \"line_id\" text,\n      \"src_table\" text,\n      \"created_at\" text\n    );"
+                    })];
+            case 10:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"apply_locations\"\n    ADD FOREIGN KEY (\"service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 11:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"apply_postal_address\"\n  ADD FOREIGN KEY (\"service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 12:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"documents\"\n  ADD FOREIGN KEY (\"service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 13:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"related_system\"\n  ADD FOREIGN KEY (\"subject_service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 14:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"related_system\"\n  ADD FOREIGN KEY (\"object_service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 15:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"apply_locations\"\n  ADD FOREIGN KEY (\"service_id\") REFERENCES \"kumamoto_earthquake\" (\"service_id\");"
+                    })];
+            case 16:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"apply_postal_address\"\n  ADD FOREIGN KEY (\"service_id\") REFERENCES \"kumamoto_earthquake\" (\"service_id\");"
+                    })];
+            case 17:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"documents\"\n  ADD FOREIGN KEY (\"service_id\") REFERENCES \"kumamoto_earthquake\" (\"service_id\");"
+                    })];
+            case 18:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"related_system\"\n  ADD FOREIGN KEY (\"subject_service_id\") REFERENCES \"kumamoto_earthquake\" (\"service_id\");"
+                    })];
+            case 19:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"related_system\"\n  ADD FOREIGN KEY (\"object_service_id\") REFERENCES \"kumamoto_earthquake\" (\"service_id\");"
+                    })];
+            case 20:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"apply_locations\"\n  ADD FOREIGN KEY (\"service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 21:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"apply_postal_address\"\n  ADD FOREIGN KEY (\"service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 22:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"documents\"\n  ADD FOREIGN KEY (\"service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 23:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"related_system\"\n  ADD FOREIGN KEY (\"subject_service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 24:
+                _h.sent();
+                return [4 /*yield*/, pg.query({
+                        text: "ALTER TABLE \"related_system\"\n  ADD FOREIGN KEY (\"object_service_id\") REFERENCES \"shibuya_parenting\" (\"service_id\");"
+                    })];
+            case 25:
+                _h.sent();
+                systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
+                _i = 0, _a = systemsDataShibuya.systemsData;
+                _h.label = 26;
+            case 26:
+                if (!(_i < _a.length)) return [3 /*break*/, 29];
                 item = _a[_i];
                 return [4 /*yield*/, pg.query({
                         text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
@@ -257,6 +388,7 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                             item["詳細参照先"]
                         ]
                     })];
+<<<<<<< Updated upstream
             case 2:
                 _h.sent();
                 _h.label = 3;
@@ -269,6 +401,20 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                 _h.label = 5;
             case 5:
                 if (!(_b < _c.length)) return [3 /*break*/, 8];
+=======
+            case 27:
+                _h.sent();
+                _h.label = 28;
+            case 28:
+                _i++;
+                return [3 /*break*/, 26];
+            case 29:
+                systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
+                _b = 0, _c = systemsDataKumamoto.systemsData;
+                _h.label = 30;
+            case 30:
+                if (!(_b < _c.length)) return [3 /*break*/, 33];
+>>>>>>> Stashed changes
                 item = _c[_b];
                 return [4 /*yield*/, pg.query({
                         text: "INSERT INTO kumamoto_earthquake (service_id,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
@@ -307,6 +453,7 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                             item["お困りごと分類"]
                         ]
                     })];
+<<<<<<< Updated upstream
             case 6:
                 _h.sent();
                 _h.label = 7;
@@ -319,6 +466,20 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                 _h.label = 9;
             case 9:
                 if (!(_d < _e.length)) return [3 /*break*/, 12];
+=======
+            case 31:
+                _h.sent();
+                _h.label = 32;
+            case 32:
+                _b++;
+                return [3 /*break*/, 30];
+            case 33:
+                systemsDataShibuyaKindergarten = require("../../static_data/shibuyaPreschool/systemsdata.json");
+                _d = 0, _e = systemsDataShibuyaKindergarten.systemsData;
+                _h.label = 34;
+            case 34:
+                if (!(_d < _e.length)) return [3 /*break*/, 37];
+>>>>>>> Stashed changes
                 item = _e[_d];
                 return [4 /*yield*/, pg.query({
                         text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location,thisyear_admission_rate_for_0,thisyear_admission_rate_for_1,thisyear_admission_rate_for_2,thisyear_admission_rate_for_3,thisyear_admission_rate_for_4,thisyear_admission_rate_for_5,thisyear_admission_point_for_0,thisyear_admission_point_for_1,thisyear_admission_point_for_2,thisyear_admission_point_for_3,thisyear_admission_point_for_4,thisyear_admission_point_for_5,lastyear_admission_rate_for_0,lastyear_admission_rate_for_1,lastyear_admission_rate_for_2,lastyear_admission_rate_for_3,lastyear_admission_rate_for_4,lastyear_admission_rate_for_5,lastyear_admission_point_for_0,lastyear_admission_point_for_1,lastyear_admission_point_for_2,lastyear_admission_point_for_3,lastyear_admission_point_for_4,lastyear_admission_point_for_5,security,baby_buggy,ibservation_detail,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56 ) ;",
@@ -381,6 +542,7 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                             item["詳細参照先"]
                         ]
                     })];
+<<<<<<< Updated upstream
             case 10:
                 _h.sent();
                 _h.label = 11;
@@ -393,6 +555,20 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                 _h.label = 13;
             case 13:
                 if (!(_f < _g.length)) return [3 /*break*/, 16];
+=======
+            case 35:
+                _h.sent();
+                _h.label = 36;
+            case 36:
+                _d++;
+                return [3 /*break*/, 34];
+            case 37:
+                systemsDataJapan = require("../../static_data/japan/systemsdata.json");
+                _f = 0, _g = systemsDataJapan.systemsData;
+                _h.label = 38;
+            case 38:
+                if (!(_f < _g.length)) return [3 /*break*/, 41];
+>>>>>>> Stashed changes
                 item = _g[_f];
                 return [4 /*yield*/, pg.query({
                         text: "INSERT INTO japan (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
@@ -423,6 +599,7 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                             item["詳細参照先"]
                         ]
                     })];
+<<<<<<< Updated upstream
             case 14:
                 _h.sent();
                 _h.label = 15;
@@ -430,6 +607,15 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                 _f++;
                 return [3 /*break*/, 13];
             case 16: return [2 /*return*/, "ok"];
+=======
+            case 39:
+                _h.sent();
+                _h.label = 40;
+            case 40:
+                _f++;
+                return [3 /*break*/, 38];
+            case 41: return [2 /*return*/, "ok"];
+>>>>>>> Stashed changes
         }
     });
 }); };
