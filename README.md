@@ -10,13 +10,6 @@
 
 しかし、両リポジトリ間での重複がとても大きかったので、[Typescriptへの移行](https://scrapbox.io/Civichat/議論:技術選定の話)に伴って、実装を統合しています。
 
-
-## 技術スタック
-（このセクションは暫定的です。また、この構成の実際の構築はこのファイルを作成するコミット以降にあります。)
-
-- TypeScript
-- AWS Elastic Beanstalk
-
 ## ブランチルール
 
 - 原則 **Git-flow** に従います。
@@ -37,18 +30,28 @@
 - 開発が終わったら、`develop`に対してPull Requestしてください。
   - Pull Requestは、**エンジニア1人以上のコードレビュー**を受けてmergeできます。
 
+## 技術スタック
+
+- TypeScript
+- AWS Elastic Beanstalk
+- PostgreSQL
+
+### 必要なもの
+ - LINE Developer Account
+ - AWS Account
+
 ## 環境構築
 
-・mac
+### ローカル
 
-- env 
+- env
 `.env.sample`を参考に作成する
 
 - LINEBot
 ngrokを使い、ローカルでLINEBotを作成します
 
 ```
-npm install 
+npm install
 ```
 
 ```
@@ -66,8 +69,23 @@ node dist/index.js
 ```
 ngrok http 5000
 ```
-- db
+
+- データベース
 
 ```
 docker-compose up
 ```
+
+- ngrokを実行して表示されたURLに`/line`をパスに追加してLINE Developer Consoleで登録してください。
+  - この際にWebhookも有効にしてください。
+
+## AWS環境構築
+
+基本的に、Elastic Beanstalkを利用します。
+[この記事](https://hacknote.jp/archives/57416/)を参考に、CI/CDの構築をしておくと便利です。
+
+Beanstalkで新しい環境を作成します
+1. ウェブサーバー環境
+2. プラットフォーム`Node.js 14 running on 64bit Amazon Linux 2/5.4.9`を利用してください。
+3. 一旦CI/CDの設定をせずに`コードのアップロード`を行ってください。
+4. BeanstalkのDBの環境に合わせて.envの編集をしてください。

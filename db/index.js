@@ -51,37 +51,45 @@ exports.__esModule = true;
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
 var Client = require("pg").Client;
 var uuidv4 = require('uuid').v4;
+var pgParse = require('pg-connection-string').parse;
 require("dotenv").config();
-if (!process.env.RDS_HOSTNAME) {
-    throw new Error("Environment variable RDS_HOSTNAME is not set.");
+if (!process.env.DATABASE_URL)
+    throw new Error("Environment variable DATABASE_URL is not set.");
+/*if (!process.env.RDS_HOSTNAME) {
+  throw new Error("Environment variable RDS_HOSTNAME is not set.");
 }
+
 if (!process.env.RDS_PORT) {
-    throw new Error("Environment variable RDS_PORT is not set.");
+  throw new Error("Environment variable RDS_PORT is not set.");
 }
+
 if (!process.env.RDS_DB_NAME) {
-    throw new Error("Environment variable RDS_DB_NAME is not set.");
+  throw new Error("Environment variable RDS_DB_NAME is not set.");
 }
 if (!process.env.RDS_USERNAME) {
-    throw new Error("Environment variable RDS_USERNAME is not set.");
+  throw new Error("Environment variable RDS_USERNAME is not set.");
 }
+
 if (!process.env.RDS_PASSWORD) {
-    throw new Error("Environment variable RDS_PASSWORD is not set.");
-}
+  throw new Error("Environment variable RDS_PASSWORD is not set.");
+}*/
 if (!process.env.LIFF_URL) {
     throw new Error("Environment variable LIFF_URL is not set.");
 }
 var liffUrl = process.env.LIFF_URL;
+var config = pgParse(process.env.DATABASE_URL);
 var pgConfig = {
-    user: process.env.RDS_USERNAME,
-    host: process.env.RDS_HOSTNAME,
-    database: process.env.RDS_DB_NAME,
-    password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT
+    user: config.user,
+    host: config.host,
+    database: config.database,
+    password: config.password,
+    port: config.port,
+    ssl: { rejectUnauthorized: false }
 };
 console.log(pgConfig);
 var pg = new Client(pgConfig);
 pg.connect()
-    .then(function () { return console.log("pg Connected successfuly"); })["catch"](function () { return console.log("pr err"); });
+    .then(function () { return console.log("pg Connected successfuly"); })["catch"](function (e) { return console.log("pr err\n" + e); });
 exports.getServiceDetail = function (serviceId) { return __awaiter(void 0, void 0, void 0, function () {
     var tableName, res, seidoType, img_url, service;
     return __generator(this, function (_a) {
@@ -147,7 +155,7 @@ exports.queryServices = function (systemIds, lineId, seido) { return __awaiter(v
                 if (seido === "shibuya_preschool") {
                     othersType = "施設";
                 }
-                else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake") {
+                else if (seido === "shibuya_parenting" || seido === "kumamoto_earthquake" || seido === "japan") {
                     othersType = "制度";
                 }
                 else {
@@ -218,55 +226,63 @@ exports.getQueryResult = function (resultId) { return __awaiter(void 0, void 0, 
 }); };
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var systemsDataShibuya, _i, _a, item, systemsDataShibuyaKindergarten, _b, _c, item;
-    return __generator(this, function (_d) {
-        switch (_d.label) {
+    var systemsDataKumamoto, _i, _a, item, systemsDataShibuyaKindergarten, _b, _c, item, systemsDataJapan, _d, _e, item;
+    return __generator(this, function (_f) {
+        switch (_f.label) {
             case 0:
-                systemsDataShibuya = require("../static_data/shibuyaParenting/systemsdata.json");
-                _i = 0, _a = systemsDataShibuya.systemsData;
-                _d.label = 1;
+                systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
+                _i = 0, _a = systemsDataKumamoto.systemsData;
+                _f.label = 1;
             case 1:
                 if (!(_i < _a.length)) return [3 /*break*/, 4];
                 item = _a[_i];
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
+                        text: "INSERT INTO kumamoto_earthquake (service_id,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
                         values: [
                             item["サービスID"],
-                            item["制度番号"],
-                            item["元制度番号"],
-                            item["制度変更区分"],
-                            item["制度所管組織"],
-                            item["都道府県"],
-                            item["市町村"],
-                            item["タイトル（制度名）"],
-                            item["概要"],
-                            item["支援内容"],
+                            item["制度管理番号"],
+                            item["制度名"],
                             item["対象者"],
-                            item["利用・申請方法"],
+                            item["サブタイトル"],
+                            item["表示優先度"],
+                            item["公開日程"],
+                            item["申請期限（公開終了日）"],
+                            item["公開・非公開（チェックで公開）"],
+                            item["制度概要"],
+                            item["制度所管組織"],
+                            item["親制度"],
+                            item["親制度との関係性"],
+                            item["条件"],
+                            item["用途・対象物"],
+                            item["対象地域"],
+                            item["支援内容"],
+                            item["留意事項"],
+                            item["手続き等"],
+                            item["必要なもの"],
+                            item["必要書類のURL"],
+                            item["申請窓口"],
+                            item["受付可能日時（受付日）"],
+                            item["受付可能日時（受付時間）"],
+                            item["申請可能URL"],
                             item["受付開始日"],
                             item["受付終了日"],
                             item["お問い合わせ先"],
-                            item["公開日"],
-                            item["タグ"],
-                            item["テーマ"],
-                            item["タグ（カテゴリー）"],
-                            item["タグ（事業者分類）"],
-                            item["タグ（事業者分類）"],
-                            item["タグ（キーワード）"],
-                            item["タグ（テーマ）"],
-                            item["詳細参照先"]
+                            item["詳細参照先"],
+                            item["行政サービス分類"],
+                            item["ライフステージ分類"],
+                            item["お困りごと分類"]
                         ]
                     })];
             case 2:
-                _d.sent();
-                _d.label = 3;
+                _f.sent();
+                _f.label = 3;
             case 3:
                 _i++;
                 return [3 /*break*/, 1];
             case 4:
-                systemsDataShibuyaKindergarten = require("../static_data/shibuyaPreschool/systemsdata.json");
+                systemsDataShibuyaKindergarten = require("../../static_data/shibuyaPreschool/systemsdata.json");
                 _b = 0, _c = systemsDataShibuyaKindergarten.systemsData;
-                _d.label = 5;
+                _f.label = 5;
             case 5:
                 if (!(_b < _c.length)) return [3 /*break*/, 8];
                 item = _c[_b];
@@ -332,12 +348,54 @@ exports.saveInitialDatafromJson = function () { return __awaiter(void 0, void 0,
                         ]
                     })];
             case 6:
-                _d.sent();
-                _d.label = 7;
+                _f.sent();
+                _f.label = 7;
             case 7:
                 _b++;
                 return [3 /*break*/, 5];
-            case 8: return [2 /*return*/, "ok"];
+            case 8:
+                systemsDataJapan = require("../../static_data/japan/systemsdata.json");
+                _d = 0, _e = systemsDataJapan.systemsData;
+                _f.label = 9;
+            case 9:
+                if (!(_d < _e.length)) return [3 /*break*/, 12];
+                item = _e[_d];
+                return [4 /*yield*/, pg.query({
+                        text: "INSERT INTO japan (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
+                        values: [
+                            item["サービスID"],
+                            item["制度番号"],
+                            item["元制度番号"],
+                            item["制度変更区分"],
+                            item["制度所管組織"],
+                            item["都道府県"],
+                            item["市町村"],
+                            item["タイトル（制度名）"],
+                            item["概要"],
+                            item["支援内容"],
+                            item["対象者"],
+                            item["利用・申請方法"],
+                            item["受付開始日"],
+                            item["受付終了日"],
+                            item["お問い合わせ先"],
+                            item["公開日"],
+                            item["タグ"],
+                            item["テーマ"],
+                            item["タグ（カテゴリー）"],
+                            item["タグ（事業者分類）"],
+                            item["タグ（事業者分類）"],
+                            item["タグ（キーワード）"],
+                            item["タグ（テーマ）"],
+                            item["詳細参照先"]
+                        ]
+                    })];
+            case 10:
+                _f.sent();
+                _f.label = 11;
+            case 11:
+                _d++;
+                return [3 /*break*/, 9];
+            case 12: return [2 /*return*/, "ok"];
         }
     });
 }); };

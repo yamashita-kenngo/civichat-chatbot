@@ -6,13 +6,19 @@
     "build": "esbuild --bundle --minify --outfile=dist/index.js --platform=node --charset=utf8 src/index.ts",
     "build:dev": "npm run build -- --watch",
     "start": "node dist/index.js",
-    "test":"jest"
+    "test": "jest"
+  },
+  "main": "dist/main.js",
+  "engines": {
+    "node": "15.4.x",
+    "npm": "7.21.x"
   },
   "dependencies": {
     "@line/bot-sdk": "^7.3.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "pg": "^8.7.1",
+    "pg-connection-string": "^2.5.0",
     "pg-native": "^3.0.0",
     "ts-node": "^10.2.0",
     "uuidv4": "^6.2.11"
