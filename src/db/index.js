@@ -144,8 +144,15 @@ exports.updateUserCount = function (lineId) { return __awaiter(void 0, void 0, v
                 })];
             case 1:
                 res = _a.sent();
-                console.log(res);
-                return [2 /*return*/];
+                if (!(res.rows.length === 1)) return [3 /*break*/, 3];
+                return [4 /*yield*/, pg.query({
+                        text: "UPDATE users SET count=$1 WHERE line_id=$2;",
+                        values: [res.rows[0].count + 1, lineId]
+                    })];
+            case 2:
+                _a.sent();
+                _a.label = 3;
+            case 3: return [2 /*return*/];
         }
     });
 }); };

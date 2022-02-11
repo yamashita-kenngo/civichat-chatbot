@@ -103,14 +103,13 @@ exports.updateUserCount = async (lineId: string) => {
     text: "SELECT * FROM users WHERE line_id=$1",
     values: [lineId],
   });
-  console.log(res)
 
-  /*if (res.rows.length === 1) {
+  if (res.rows.length === 1) {
     await pg.query({
-      text: "UPDATE users SET count=count+1 WHERE line_id=$1;",
-      values: [lineId],
+      text: "UPDATE users SET count=$1 WHERE line_id=$2;",
+      values: [res.rows[0].count+1, lineId],
     });
-  }*/
+  }
 };
 
 exports.isLoggedIn = async (lineId: string) => {
