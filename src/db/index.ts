@@ -85,17 +85,32 @@ exports.getServiceDetail = async (serviceId: string) => {
 };
 
 exports.saveUser = async (lineId: string) => {
-  await pg.query({
-    text: "INSERT INTO users(line_id,count,created_at) VALUES ($1,$2,current_timestamp);",
-    values: [lineId, 0],
+  const res = await pg.query({
+    text: "SELECT user_id FROM users WHERE line_id=$1",
+    values: [lineId],
   });
+
+  if (res.rows.length < 1) {
+    await pg.query({
+      text: "INSERT INTO users(line_id,count,created_at) VALUES ($1,$2,current_timestamp);",
+      values: [lineId, 0],
+    });
+  }
 };
 
 exports.updateUserCount = async (lineId: string) => {
-  await pg.query({
-    text: "UPDATE users SET count=count+1 WHERE line_id=$1;",
+  const res = await pg.query({
+    text: "SELECT user_id FROM users WHERE line_id=$1",
     values: [lineId],
   });
+  console.log(res)
+
+  /*if (res.rows.length === 1) {
+    await pg.query({
+      text: "UPDATE users SET count=count+1 WHERE line_id=$1;",
+      values: [lineId],
+    });
+  }*/
 };
 
 exports.isLoggedIn = async (lineId: string) => {

@@ -113,27 +113,38 @@ exports.getServiceDetail = function (serviceId) { return __awaiter(void 0, void 
     });
 }); };
 exports.saveUser = function (lineId) { return __awaiter(void 0, void 0, void 0, function () {
+    var res;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, pg.query({
-                    text: "INSERT INTO users(line_id,count,created_at) VALUES ($1,$2,current_timestamp);",
-                    values: [lineId, 0]
+                    text: "SELECT user_id FROM users WHERE line_id=$1",
+                    values: [lineId]
                 })];
             case 1:
+                res = _a.sent();
+                if (!(res.rows.length < 1)) return [3 /*break*/, 3];
+                return [4 /*yield*/, pg.query({
+                        text: "INSERT INTO users(line_id,count,created_at) VALUES ($1,$2,current_timestamp);",
+                        values: [lineId, 0]
+                    })];
+            case 2:
                 _a.sent();
-                return [2 /*return*/];
+                _a.label = 3;
+            case 3: return [2 /*return*/];
         }
     });
 }); };
 exports.updateUserCount = function (lineId) { return __awaiter(void 0, void 0, void 0, function () {
+    var res;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, pg.query({
-                    text: "UPDATE users SET count=count+1 WHERE line_id=$1;",
+                    text: "SELECT user_id FROM users WHERE line_id=$1",
                     values: [lineId]
                 })];
             case 1:
-                _a.sent();
+                res = _a.sent();
+                console.log(res);
                 return [2 /*return*/];
         }
     });
