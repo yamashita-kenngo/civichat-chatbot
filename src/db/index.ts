@@ -182,7 +182,7 @@ exports.getQueryResult = async (resultId: string) => {
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = async () => {
 
-  /*await pg.query({
+  await pg.query({
     text: `
     CREATE TABLE "apply_locations" (
       "service_id" text,
