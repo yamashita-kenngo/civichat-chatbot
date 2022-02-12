@@ -353,8 +353,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
         returnMessage = [await questionTemplate(cs.questionMessageItem())];
       }
       break;
-    default:
-      break;
+    case "unfollow":
+      return;
   }
   client.replyMessage(event.replyToken, returnMessage);
 };
