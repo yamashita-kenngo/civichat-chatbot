@@ -144,11 +144,11 @@ exports.updateUserCount = function (lineId, selected) { return __awaiter(void 0,
                 })];
             case 1:
                 res = _a.sent();
-                console.log(res.rows[0]);
+                console.log(lineId, selected, res.rows[0]);
                 if (!(res.rows.length === 1)) return [3 /*break*/, 3];
                 return [4 /*yield*/, pg.query({
-                        text: "UPDATE users SET $1=$2,updated_at=current_timestamp WHERE line_id=$3;",
-                        values: [selected, res.rows[0][selected] + 1, lineId]
+                        text: "UPDATE users SET $1=$1+1,updated_at=current_timestamp WHERE line_id=$3;",
+                        values: [selected, lineId]
                     })];
             case 2:
                 _a.sent();
