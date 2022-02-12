@@ -103,12 +103,11 @@ exports.updateUserCount = async (lineId: string, selected: string) => {
     text: "SELECT * FROM users WHERE line_id=$1",
     values: [lineId],
   });
-  console.log(lineId, selected, res.rows[0]);
 
   if (res.rows.length === 1) {
     await pg.query({
-      text: "UPDATE users SET "+selected+"=$1+1,updated_at=current_timestamp WHERE line_id=$2;",
-      values: [selected, lineId],
+      text: `UPDATE users SET "${selected}"=$1,updated_at=current_timestamp WHERE line_id=$2;`,
+      values: [res["rows"][0][selected]+1, lineId],
     });
   }else{
     await pg.query({
