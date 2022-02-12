@@ -238,6 +238,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   ),
                 ];
               }
+              await db.updateUserCount(event.source.userId, cs.getSeido());
             } else {
               sessions = {
                 ...sessions,
@@ -350,7 +351,6 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
           ),
         };
         returnMessage = [await questionTemplate(cs.questionMessageItem())];
-        await db.updateUserCount(event.source.userId, selected);
       }
       break;
   }

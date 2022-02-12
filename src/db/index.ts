@@ -98,11 +98,12 @@ exports.saveUser = async (lineId: string) => {
   }
 };
 
-exports.updateUserCount = async (lineId: string, selected: string) => {//
+exports.updateUserCount = async (lineId: string, selected: string) => {
   const res = await pg.query({
     text: "SELECT * FROM users WHERE line_id=$1",
     values: [lineId],
   });
+  console.log(res.rows[0]);
 
   if (res.rows.length === 1) {
     await pg.query({
