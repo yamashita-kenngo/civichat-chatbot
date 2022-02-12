@@ -85,10 +85,36 @@ exports.getServiceDetail = async (serviceId: string) => {
 };
 
 exports.saveUser = async (lineId: string) => {
-  await pg.query({
-    text: "INSERT INTO users(line_id,created_at) VALUES ($1,current_timestamp);",
+  const res = await pg.query({
+    text: "SELECT line_id FROM users WHERE line_id=$1",
     values: [lineId],
   });
+
+  if (res.rows.length < 1) {
+    await pg.query({
+      text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,$5,current_timestamp);",
+      values: [lineId, 0, 0, 0, 0],
+    });
+  }
+};
+
+exports.updateUserCount = async (lineId: string, selected: string) => {
+  const res = await pg.query({
+    text: "SELECT * FROM users WHERE line_id=$1",
+    values: [lineId],
+  });
+
+  if (res.rows.length === 1) {
+    await pg.query({
+      text: `UPDATE users SET "${selected}"=$1,updated_at=current_timestamp WHERE line_id=$2;`,
+      values: [res["rows"][0][selected]+1, lineId],
+    });
+  }else{
+    await pg.query({
+      text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,$5,current_timestamp);",
+      values: [lineId, selected=="shibuya_preschool"?1:0, selected=="shibuya_parenting"?1:0, selected=="kumamoto_earthquake"?1:0, selected=="japan"?1:0],
+    });
+  }
 };
 
 exports.isLoggedIn = async (lineId: string) => {
