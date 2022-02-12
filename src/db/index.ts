@@ -92,7 +92,7 @@ exports.saveUser = async (lineId: string) => {
 
   if (res.rows.length < 1) {
     await pg.query({
-      text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,current_timestamp);",
+      text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,$5,current_timestamp);",
       values: [lineId, 0, 0, 0, 0],
     });
   }

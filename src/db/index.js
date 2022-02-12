@@ -124,7 +124,7 @@ exports.saveUser = function (lineId) { return __awaiter(void 0, void 0, void 0, 
                 res = _a.sent();
                 if (!(res.rows.length < 1)) return [3 /*break*/, 3];
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,current_timestamp);",
+                        text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,$5,current_timestamp);",
                         values: [lineId, 0, 0, 0, 0]
                     })];
             case 2:
