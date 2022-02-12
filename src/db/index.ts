@@ -86,7 +86,7 @@ exports.getServiceDetail = async (serviceId: string) => {
 
 exports.saveUser = async (lineId: string) => {
   const res = await pg.query({
-    text: "SELECT user_id FROM users WHERE line_id=$1",
+    text: "SELECT line_id FROM users WHERE line_id=$1",
     values: [lineId],
   });
 
@@ -108,6 +108,11 @@ exports.updateUserCount = async (lineId: string, selected: string) => {//
     await pg.query({
       text: "UPDATE users SET $1=$2,updated_at=current_timestamp WHERE line_id=$3;",
       values: [selected, res.rows[0][selected]+1, lineId],
+    });
+  }else{
+    await pg.query({
+      text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,current_timestamp);",
+      values: [lineId, selected=="shibuya_preschool"?1:0, selected=="shibuya_parenting"?1:0, selected=="kumamoto_earthquake"?1:0, selected=="japan"?1:0],
     });
   }
 };

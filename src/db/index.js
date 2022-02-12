@@ -117,7 +117,7 @@ exports.saveUser = function (lineId) { return __awaiter(void 0, void 0, void 0, 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, pg.query({
-                    text: "SELECT user_id FROM users WHERE line_id=$1",
+                    text: "SELECT line_id FROM users WHERE line_id=$1",
                     values: [lineId]
                 })];
             case 1:
@@ -151,8 +151,15 @@ exports.updateUserCount = function (lineId, selected) { return __awaiter(void 0,
                     })];
             case 2:
                 _a.sent();
-                _a.label = 3;
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 5];
+            case 3: return [4 /*yield*/, pg.query({
+                    text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,current_timestamp);",
+                    values: [lineId, selected == "shibuya_preschool" ? 1 : 0, selected == "shibuya_parenting" ? 1 : 0, selected == "kumamoto_earthquake" ? 1 : 0, selected == "japan" ? 1 : 0]
+                })];
+            case 4:
+                _a.sent();
+                _a.label = 5;
+            case 5: return [2 /*return*/];
         }
     });
 }); };
