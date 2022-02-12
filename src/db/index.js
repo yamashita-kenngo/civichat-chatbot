@@ -124,8 +124,8 @@ exports.saveUser = function (lineId) { return __awaiter(void 0, void 0, void 0, 
                 res = _a.sent();
                 if (!(res.rows.length < 1)) return [3 /*break*/, 3];
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO users(line_id,count,created_at) VALUES ($1,$2,current_timestamp);",
-                        values: [lineId, 0]
+                        text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,current_timestamp);",
+                        values: [lineId, 0, 0, 0, 0]
                     })];
             case 2:
                 _a.sent();
@@ -134,7 +134,7 @@ exports.saveUser = function (lineId) { return __awaiter(void 0, void 0, void 0, 
         }
     });
 }); };
-exports.updateUserCount = function (lineId) { return __awaiter(void 0, void 0, void 0, function () {
+exports.updateUserCount = function (lineId, selected) { return __awaiter(void 0, void 0, void 0, function () {
     var res;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -146,8 +146,8 @@ exports.updateUserCount = function (lineId) { return __awaiter(void 0, void 0, v
                 res = _a.sent();
                 if (!(res.rows.length === 1)) return [3 /*break*/, 3];
                 return [4 /*yield*/, pg.query({
-                        text: "UPDATE users SET count=$1 WHERE line_id=$2;",
-                        values: [res.rows[0].count + 1, lineId]
+                        text: "UPDATE users SET $1=$2,updated_at=current_timestamp WHERE line_id=$3;",
+                        values: [selected, res.rows[0][selected] + 1, lineId]
                     })];
             case 2:
                 _a.sent();
