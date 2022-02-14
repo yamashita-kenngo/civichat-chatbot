@@ -124,8 +124,8 @@ exports.saveUser = function (lineId) { return __awaiter(void 0, void 0, void 0, 
                 res = _a.sent();
                 if (!(res.rows.length < 1)) return [3 /*break*/, 3];
                 return [4 /*yield*/, pg.query({
-                        text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at) VALUES ($1,$2,$3,$4,$5,current_timestamp);",
-                        values: [lineId, 0, 0, 0, 0]
+                        text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,favorite,created_at) VALUES ($1,$2,$3,$4,$5,$6,current_timestamp);",
+                        values: [lineId, 0, 0, 0, 0, "[]"]
                     })];
             case 2:
                 _a.sent();
@@ -153,8 +153,8 @@ exports.updateUserCount = function (lineId, selected) { return __awaiter(void 0,
                 _a.sent();
                 return [3 /*break*/, 5];
             case 3: return [4 /*yield*/, pg.query({
-                    text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at,updated_at) VALUES ($1,$2,$3,$4,$5,current_timestamp,current_timestamp);",
-                    values: [lineId, selected == "shibuya_preschool" ? 1 : 0, selected == "shibuya_parenting" ? 1 : 0, selected == "kumamoto_earthquake" ? 1 : 0, selected == "japan" ? 1 : 0]
+                    text: "INSERT INTO users(line_id,shibuya_preschool,shibuya_parenting,kumamoto_earthquake,japan,created_at,favorite,updated_at) VALUES ($1,$2,$3,$4,$5,$6,current_timestamp,current_timestamp);",
+                    values: [lineId, selected == "shibuya_preschool" ? 1 : 0, selected == "shibuya_parenting" ? 1 : 0, selected == "kumamoto_earthquake" ? 1 : 0, selected == "japan" ? 1 : 0, "[]"]
                 })];
             case 4:
                 _a.sent();
@@ -163,6 +163,22 @@ exports.updateUserCount = function (lineId, selected) { return __awaiter(void 0,
         }
     });
 }); };
+/*exports.userFavorite = async (lineId: string, seidoId: string) => {
+  const res = await pg.query({
+    text: "SELECT * FROM users WHERE line_id=$1",
+    values: [lineId],
+  });
+
+  if (res.rows.length === 1) {
+    const favList: string = [];
+
+    const saveString = JSON.stringify(resultSaveData);
+    await pg.query({
+      text: `UPDATE users SET "${selected}"=$1 WHERE line_id=$2;`,
+      values: [seidoId, lineId],
+    });
+  }
+};*/
 exports.isLoggedIn = function (lineId) { return __awaiter(void 0, void 0, void 0, function () {
     var res;
     return __generator(this, function (_a) {
