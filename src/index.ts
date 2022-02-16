@@ -26,8 +26,10 @@ app.post("/line", line.middleware(config), function (req, res) {
   const linePost = require("./routes/line/post");
   linePost(req, res);
 });
-app.post("/user", function (req, res) {
-  require("./routes/user/post");
+app.options("/user", function (req, res) {
+  app.use(express.json());
+  const user = require("./routes/user/post");
+  user(req, res);
 });
 
 app.get("/info/:serviceId", function (req, res) {
