@@ -219,6 +219,34 @@ exports.userFavorite = function (lineId, seidoId) { return __awaiter(void 0, voi
         }
     });
 }); };
+exports.getUserFavorite = function (lineId) { return __awaiter(void 0, void 0, void 0, function () {
+    var res, fav, e_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, pg.query({
+                    text: "SELECT * FROM users WHERE line_id=$1",
+                    values: [lineId]
+                })];
+            case 1:
+                res = _a.sent();
+                if (!(res.rows.length === 1)) return [3 /*break*/, 5];
+                _a.label = 2;
+            case 2:
+                _a.trys.push([2, 4, , 5]);
+                return [4 /*yield*/, pg.query({
+                        text: "SELECT favorite FROM users WHERE line_id=$1",
+                        values: [lineId]
+                    })];
+            case 3:
+                fav = _a.sent();
+                return [2 /*return*/, JSON.parse(fav.rows[0].favorite)];
+            case 4:
+                e_2 = _a.sent();
+                return [2 /*return*/, []];
+            case 5: return [2 /*return*/];
+        }
+    });
+}); };
 exports.isLoggedIn = function (lineId) { return __awaiter(void 0, void 0, void 0, function () {
     var res;
     return __generator(this, function (_a) {

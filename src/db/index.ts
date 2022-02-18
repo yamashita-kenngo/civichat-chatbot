@@ -197,6 +197,25 @@ exports.userFavorite = async (lineId: string, seidoId: string) => {
   }
 };
 
+exports.getUserFavorite = async (lineId: string) => {
+  const res = await pg.query({
+    text: "SELECT * FROM users WHERE line_id=$1",
+    values: [lineId],
+  });
+
+  if (res.rows.length === 1) {
+    try{
+      const fav = await pg.query({
+        text: "SELECT favorite FROM users WHERE line_id=$1",
+        values: [lineId],
+      });
+      return JSON.parse(fav.rows[0].favorite);
+    }catch(e){
+      return [];
+    }
+  }
+};
+
 exports.isLoggedIn = async (lineId: string) => {
   // lineIdがすでにDBに乗ってたらtrue,そうでなければFalse
   const res = await pg.query({
