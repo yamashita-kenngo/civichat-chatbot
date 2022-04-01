@@ -258,7 +258,7 @@ exports.queryServices = async (
   let imgUrl;
   if (seido === "shibuya_parenting" || seido === "shibuya_preschool") {
     imgUrl =
-      "https://files.slack.com/files-pri/T022ZNW9YR2-F03A66HV256/babycar_woman_color_1.png";
+      "https://static.civichat.jp/thumbnail-image/babycar_woman_color.png";
   } else {
     imgUrl = "https://static.civichat.jp/thumbnail-image/savings.png";
   }
