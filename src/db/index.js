@@ -177,6 +177,42 @@ exports.updateUserCount = function (lineId, selected) { return __awaiter(void 0,
         }
     });
 }); };
+//制度の利用数ログ
+exports.updateUseCount = function (serviceId) { return __awaiter(void 0, void 0, void 0, function () {
+    var res;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, pg.query({
+                    text: "SELECT * FROM seido_use_count WHERE service_id=$1",
+                    values: [serviceId]
+                })];
+            case 1:
+                res = _a.sent();
+                if (!(res.rows.length === 1)) return [3 /*break*/, 3];
+                return [4 /*yield*/, pg.query({
+                        text: "UPDATE seido_use_count SET count=$1 WHERE service_id=$2;",
+                        values: [res["rows"][0]["count"] + 1, serviceId]
+                    })];
+            case 2:
+                _a.sent();
+                return [3 /*break*/, 5];
+            case 3:
+                if (!(res.rows.length < 1)) return [3 /*break*/, 5];
+                return [4 /*yield*/, pg.query({
+                        text: "\n          INSERT INTO seido_use_count(\n            service_id,\n            count\n          ) VALUES (\n            $1,\n            $2\n          );",
+                        values: [
+                            serviceId,
+                            1
+                        ]
+                    })];
+            case 4:
+                _a.sent();
+                _a.label = 5;
+            case 5: return [2 /*return*/];
+        }
+    });
+}); };
+//制度の利用数
 /*exports.userFavorite = async (lineId: string, seidoId: string) => {
   const res = await pg.query({
     text: "SELECT * FROM users WHERE line_id=$1",
