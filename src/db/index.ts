@@ -166,6 +166,39 @@ exports.updateUserCount = async (lineId: string, selected: string) => {
   }
 };
 
+//制度の利用数ログ
+exports.updateUseCount = async (serviceId: string) => {
+  const res = await pg.query({
+    text: "SELECT * FROM seido_use_count WHERE service_id=$1",
+    values: [serviceId],
+  });
+
+  if (res.rows.length === 1) {
+    await pg.query({
+      text: `UPDATE seido_use_count SET count=$1 WHERE service_id=$2;`,
+      values: [res["rows"][0]["count"]+1, serviceId],
+    });
+  }else{
+    if (res.rows.length < 1) {
+      await pg.query({
+        text: `
+          INSERT INTO seido_use_count(
+            service_id,
+            count
+          ) VALUES (
+            $1,
+            $2
+          );`,
+        values: [
+          serviceId,
+          1
+        ],
+      });
+    }
+  }
+};
+//制度の利用数
+
 /*exports.userFavorite = async (lineId: string, seidoId: string) => {
   const res = await pg.query({
     text: "SELECT * FROM users WHERE line_id=$1",

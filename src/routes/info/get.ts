@@ -1,11 +1,12 @@
 import { Response, Request } from "express";
 
-const getServiceDetail = require("../../db/index.js").getServiceDetail;
+const db = require("../../db/index.js");
 
 module.exports = async (req: Request, res: Response) => {
   const serviceId = req.params.serviceId || "";
-  const ans = await getServiceDetail(serviceId);
+  const ans = await db.getServiceDetail(serviceId);
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET");
   res.json(ans);
+  await db.updateUseCount(serviceId);
 };
