@@ -5,6 +5,8 @@
 const { Client } = require("pg");
 const { v4: uuidv4 } = require('uuid');
 const pgParse = require('pg-connection-string').parse;
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 
 require("dotenv").config();
 
@@ -63,19 +65,17 @@ pg.connect()
 
 exports.getServiceDetail = async (serviceId: string) => {
   const tableName = serviceId.split("-")[0];
-  const res = await pg.query({
-    text: `SELECT * FROM ${tableName} WHERE service_id=$1;`,
-    values: [String(serviceId)],
-  });
+  const query = `SELECT * FROM ${tableName} WHERE id=${String(serviceId)}`;
+  const res = await prisma.$queryRaw(query);
 
-  if (res.rows.length < 1) {
+  if (!res) {
     throw new Error("Not found");
   }
 
   const seidoType = serviceId.split("-")[0];
   const img_url = getImageUrl(seidoType);
 
-  const service = res.rows[0];
+  const service = res;
 
   return {
     ...service,
@@ -85,39 +85,21 @@ exports.getServiceDetail = async (serviceId: string) => {
 };
 
 exports.saveUser = async (lineId: string) => {
-  const res = await pg.query({
-    text: "SELECT line_id FROM users WHERE line_id=$1",
-    values: [lineId],
+  const res = await prisma.users.findUnique({
+    where: { line_id: lineId },
   });
 
-  if (res.rows.length < 1) {
-    await pg.query({
-      text: `
-        INSERT INTO users(
-          line_id,
-          shibuya_preschool,
-          shibuya_parenting,
-          kumamoto_earthquake,
-          japan,
-          favorite,
-          created_at
-        ) VALUES (
-          $1,
-          $2,
-          $3,
-          $4,
-          $5,
-          $6,
-          current_timestamp
-        );`,
-      values: [
-        lineId,
-        0,
-        0,
-        0,
-        0,
-        "[]"
-      ],
+  if (!res) {
+    await prisma.users.create({
+      data: {
+        line_id: lineId,
+        shibuya_preschool: 0,
+        shibuya_parenting: 0,
+        kumamoto_earthquake: 0,
+        japan: 0,
+        favorite: "[]",
+        created_at: new Date(),
+      },
     });
   }
 };
@@ -168,33 +150,24 @@ exports.updateUserCount = async (lineId: string, selected: string) => {
 
 //制度の利用数ログ
 exports.updateUseCount = async (serviceId: string) => {
-  const res = await pg.query({
-    text: "SELECT * FROM seido_use_count WHERE service_id=$1",
-    values: [serviceId],
+  const res = await prisma.seido_use_counts.findUnique({
+    where: { service_id: serviceId },
   });
 
-  if (res.rows.length === 1) {
-    await pg.query({
-      text: `UPDATE seido_use_count SET count=$1 WHERE service_id=$2;`,
-      values: [res["rows"][0]["count"]+1, serviceId],
+  if (res) {
+    await prisma.seido_use_count.update({
+      where: { service_id: serviceId },
+      data: {
+        count: Number(res.count) + 1,
+      },
     });
   }else{
-    if (res.rows.length < 1) {
-      await pg.query({
-        text: `
-          INSERT INTO seido_use_count(
-            service_id,
-            count
-          ) VALUES (
-            $1,
-            $2
-          );`,
-        values: [
-          serviceId,
-          1
-        ],
-      });
-    }
+    await prisma.seido_use_count.create({
+      data: {
+        service_id: serviceId,
+        count: 1,
+      },
+    });
   }
 };
 //制度の利用数
@@ -251,12 +224,11 @@ exports.getUserFavorite = async (lineId: string) => {
 
 exports.isLoggedIn = async (lineId: string) => {
   // lineIdがすでにDBに乗ってたらtrue,そうでなければFalse
-  const res = await pg.query({
-    text: "SELECT user_id FROM users WHERE line_id=$1",
-    values: [lineId],
+  const res = await prisma.users.findUnique({
+    where: { line_id: lineId },
   });
 
-  if (res.rows.length < 1) {
+  if (!res) {
     return false;
   }
   return true;
@@ -296,40 +268,42 @@ exports.queryServices = async (
     imgUrl = "https://static.civichat.jp/thumbnail-image/savings.png";
   }
   for (const systemId of systemIds) {
-    const res = await pg.query({
-      text: `SELECT * FROM ${seido} WHERE service_id=$1;`,
-      values: [String(systemId)],
-    });
+    const query = `SELECT * FROM ${seido} WHERE service_id=${String(systemId)};`
+    const res = await prisma.$queryRaw(query);
     //検索結果を配列に格納
     resultSaveData.result.push({
-      ...res.rows[0],
+      ...res,
       othersType: othersType,
     });
   }
   const saveString = JSON.stringify(resultSaveData);
 
   //保存する
-  await pg.query({
-    text: "INSERT INTO  results(result_id,result_body,line_id,src_table,created_at) VALUES ($1,$2,$3,$4,current_timestamp)",
-    values: [resultId, saveString, lineId, seido],
+  await prisma.results.create({
+    data: {
+      result_id: resultId,
+      result_body: saveString,
+      line_id: lineId,
+      src_table: seido,
+      created_at: new Date(),
+    },
   });
   return [resultId,othersType,imgUrl];
 
 };
 
 exports.getQueryResult = async (resultId: string) => {
-  const res = await pg.query({
-    text: "SELECT * FROM results WHERE result_id=$1;",
-    values: [String(resultId)],
+  const res = await prisma.results.findUnique({
+    where: { result_id: resultId },
   });
 
   const seidoType = JSON.parse(
-    res.rows[0].result_body
+    res.result_body
   ).result[0].service_id.split("-")[0];
   const img_url = getImageUrl(seidoType);
-  if (res.rows.length === 1) {
+  if (res) {
     return {
-      result: JSON.parse(res.rows[0].result_body).result,
+      result: JSON.parse(res.result_body).result,
       img_url: img_url,
     };
   } else {
@@ -340,7 +314,7 @@ exports.getQueryResult = async (resultId: string) => {
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.saveInitialDatafromJson = async () => {
 
-  await pg.query({
+  /*await pg.query({
     text: `
     CREATE TABLE "apply_locations" (
       "service_id" text,
@@ -625,10 +599,39 @@ exports.saveInitialDatafromJson = async () => {
   await pg.query({
     text: `ALTER TABLE "related_system"
   ADD FOREIGN KEY ("object_service_id") REFERENCES "shibuya_parenting" ("service_id");`
-})
+})*/
+
   const systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
   for (const item of systemsDataShibuya.systemsData) {
-    await pg.query({
+    await prisma.shibuya_parenting.create({
+      data: {
+        service_id: item["サービスID"],
+        service_number: item["制度番号"],
+        origin_id: item["元制度番号"],
+        alteration_flag: item["制度変更区分"],
+        provider: item["制度所管組織"],
+        prefecture_id: item["都道府県"],
+        city_id: item["市町村"],
+        name: item["タイトル（制度名）"],
+        abstract: item["概要"],
+        provisions: item["支援内容"],
+        target: item["対象者"],
+        how_to_apply: item["利用・申請方法"],
+        application_start_date: item["受付開始日"],
+        application_close_date: item["受付終了日"],
+        contact: item["お問い合わせ先"],
+        information_release_date: item["公開日"],
+        tags: item["タグ"],
+        theme: item["テーマ"],
+        category: item["タグ（カテゴリー）"],
+        person_type: item["タグ（事業者分類）"],
+        entity_type: item["タグ（事業者分類）"],
+        keyword_type: item["タグ（キーワード）"],
+        issue_type: item["タグ（テーマ）"],
+        detail_url: item["詳細参照先"]
+      }
+    });
+    /*await pg.query({
       text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
       values: [
         item["サービスID"],
@@ -656,7 +659,7 @@ exports.saveInitialDatafromJson = async () => {
         item["タグ（テーマ）"],
         item["詳細参照先"]
       ],
-    });
+    });*/
   }
 
   const systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
