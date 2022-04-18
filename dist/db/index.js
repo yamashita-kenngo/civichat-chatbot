@@ -536,39 +536,6 @@ exports.saveInitialDatafromJson = async () => {
       text: `ALTER TABLE "related_system"
     ADD FOREIGN KEY ("object_service_id") REFERENCES "shibuya_parenting" ("service_id");`
   })*/
-    /*
-    const systemsDataJapan = require("../../static_data/japan/systemsdata.json");
-    for (const item of systemsDataJapan.systemsData) {
-      await pg.query({
-        text: "INSERT INTO japan (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
-        values: [
-          item["サービスID"],
-          item["制度番号"],
-          item["元制度番号"],
-          item["制度変更区分"],
-          item["制度所管組織"],
-          item["都道府県"],
-          item["市町村"],
-          item["タイトル（制度名）"],
-          item["概要"],
-          item["支援内容"],
-          item["対象者"],
-          item["利用・申請方法"],
-          item["受付開始日"],
-          item["受付終了日"],
-          item["お問い合わせ先"],
-          item["公開日"],
-          item["タグ"],
-          item["テーマ"],
-          item["タグ（カテゴリー）"],
-          item["タグ（事業者分類）"],
-          item["タグ（事業者分類）"],
-          item["タグ（キーワード）"],
-          item["タグ（テーマ）"],
-          item["詳細参照先"]
-        ],
-      });
-    }*/
     return "ok";
 };
 function getImageUrl(seidoType) {
