@@ -247,10 +247,10 @@ model shibuya_preschool {
 model users {
   line_id             String @unique @id
   created_at          DateTime
-  shibuya_preschool   Int
-  shibuya_parenting   Int
-  kumamoto_earthquake Int
-  japan               Int
+  shibuya_preschool   Int?
+  shibuya_parenting   Int?
+  kumamoto_earthquake Int?
+  japan               Int?
   updated_at          DateTime @updatedAt
   favorite            String
 }

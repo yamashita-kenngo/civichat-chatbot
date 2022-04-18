@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 
-const db = require("../../db/index.js");
+const db = require("../../db/index");
 
 module.exports = async (req: Request, res: Response) => {
   const serviceId = req.params.serviceId || "";

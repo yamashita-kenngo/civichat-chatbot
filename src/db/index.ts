@@ -10,7 +10,7 @@ const prisma = new PrismaClient()
 
 require("dotenv").config();
 
-if(!process.env.DATABASE_URL) throw new Error("Environment variable DATABASE_URL is not set.");
+//if(!process.env.DATABASE_URL) throw new Error("Environment variable DATABASE_URL is not set.");
 
 /*if (!process.env.RDS_HOSTNAME) {
   throw new Error("Environment variable RDS_HOSTNAME is not set.");
@@ -46,7 +46,7 @@ export type pgConfig = {
   ssl: any;
 };
 
-var config = pgParse(process.env.DATABASE_URL)
+/*var config = pgParse(process.env.DATABASE_URL)
 const pgConfig: pgConfig = {
   user: config.user,
   host: config.host,
@@ -61,12 +61,11 @@ const pg = new Client(pgConfig);
 
 pg.connect()
   .then(() => console.log("pg Connected successfuly"))
-  .catch((e: string) => console.log("pr err\n"+e));
+  .catch((e: string) => console.log("pr err\n"+e));*/
 
 exports.getServiceDetail = async (serviceId: string) => {
   const tableName = serviceId.split("-")[0];
-  const query = `SELECT * FROM ${tableName} WHERE id=${String(serviceId)}`;
-  const res = await prisma.$queryRaw(query);
+  const res = await prisma.$queryRawUnsafe(`SELECT * FROM ${tableName} WHERE id="${String(serviceId)}"`);
 
   if (!res) {
     throw new Error("Not found");
@@ -105,48 +104,28 @@ exports.saveUser = async (lineId: string) => {
 };
 
 exports.updateUserCount = async (lineId: string, selected: string) => {
-  const res = await pg.query({
-    text: "SELECT * FROM users WHERE line_id=$1",
-    values: [lineId],
+  const res = await prisma.users.findUnique({
+    where: { line_id: lineId },
   });
 
-  if (res.rows.length === 1) {
-    await pg.query({
-      text: `UPDATE users SET "${selected}"=$1,updated_at=current_timestamp WHERE line_id=$2;`,
-      values: [res["rows"][0][selected]+1, lineId],
+  if (res) {
+    await prisma.users.update({
+      where: { line_id: lineId },
+      data: {
+        [selected]: Number(res[selected]) + 1,
+      },
     });
   }else{
-    await pg.query({
-      text: `
-        INSERT INTO users(
-          line_id,
-          shibuya_preschool,
-          shibuya_parenting,
-          kumamoto_earthquake,
-          japan,
-          favorite,
-          created_at,
-          updated_at
-        ) VALUES (
-          $1,
-          $2,
-          $3,
-          $4,
-          $5,
-          $6,
-          current_timestamp,
-          current_timestamp
-        );`,
-      values: [
-        lineId,
-        selected=="shibuya_preschool"?1:0,
-        selected=="shibuya_parenting"?1:0,
-        selected=="kumamoto_earthquake"?1:0,
-        selected=="japan"?1:0,
-        "[]"],
+    await prisma.users.create({
+      data: {
+        line_id: lineId,
+        [selected]: 1,
+        favorite: "[]",
+        created_at: new Date(),
+      },
     });
   }
-};
+}
 
 //制度の利用数ログ
 exports.updateUseCount = async (serviceId: string) => {
@@ -268,8 +247,7 @@ exports.queryServices = async (
     imgUrl = "https://static.civichat.jp/thumbnail-image/savings.png";
   }
   for (const systemId of systemIds) {
-    const query = `SELECT * FROM ${seido} WHERE service_id=${String(systemId)};`
-    const res = await prisma.$queryRaw(query);
+    const res = await prisma.$queryRawUnsafe(`SELECT * FROM ${seido} WHERE service_id="${String(systemId)}"`);
     //検索結果を配列に格納
     resultSaveData.result.push({
       ...res,
@@ -601,7 +579,7 @@ exports.saveInitialDatafromJson = async () => {
   ADD FOREIGN KEY ("object_service_id") REFERENCES "shibuya_parenting" ("service_id");`
 })*/
 
-  const systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
+  /*const systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
   for (const item of systemsDataShibuya.systemsData) {
     await prisma.shibuya_parenting.create({
       data: {
@@ -631,7 +609,7 @@ exports.saveInitialDatafromJson = async () => {
         detail_url: item["詳細参照先"]
       }
     });
-    /*await pg.query({
+    await pg.query({
       text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
       values: [
         item["サービスID"],
@@ -659,7 +637,7 @@ exports.saveInitialDatafromJson = async () => {
         item["タグ（テーマ）"],
         item["詳細参照先"]
       ],
-    });*/
+    });
   }
 
   const systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
@@ -799,7 +777,7 @@ exports.saveInitialDatafromJson = async () => {
         item["詳細参照先"]
       ],
     });
-  }
+  }*/
   return "ok";
 };
 
@@ -815,7 +793,7 @@ function getImageUrl(seidoType: string) {
   }
   return img_url;
 }
-
+/*
 // systemsdata.jsonから制度詳細をDBに追加する関数
 exports.updateDatafromJson = async (data) => {
   // UPDATE users SET favorite=$1 WHERE line_id=$2;
@@ -994,3 +972,4 @@ exports.updateDatafromJson = async (data) => {
   }
   return "ok";
 };
+*/
