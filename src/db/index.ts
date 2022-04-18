@@ -225,6 +225,7 @@ exports.queryServices = async (
   seido: string
 ) => {
   const resultId: string = uuidv4();
+  console.log('queryServices', systemIds, lineId, seido);
 
   const resultSaveData: resultSaveData = {
     result: [],
@@ -269,7 +270,6 @@ exports.queryServices = async (
     },
   });
   return [resultId,othersType,imgUrl];
-
 };
 
 exports.getQueryResult = async (resultId: string) => {

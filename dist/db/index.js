@@ -188,6 +188,7 @@ exports.isLoggedIn = async (lineId) => {
 };
 exports.queryServices = async (systemIds, lineId, seido) => {
     const resultId = uuidv4();
+    console.log('queryServices', systemIds, lineId, seido);
     const resultSaveData = {
         result: [],
         resultId: resultId,

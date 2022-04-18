@@ -195,6 +195,7 @@ module.exports = async (event) => {
                                     })[0];
                                 });
                                 const systemsCount = results.length;
+                                console.log(db);
                                 const [resultId, othersType, imgUrl] = await db.queryServices(cs.getSystems(), event.source.userId, cs.getSeido());
                                 returnMessage = [
                                     {

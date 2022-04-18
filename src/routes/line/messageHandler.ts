@@ -193,6 +193,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   })[0];
                 });
                 const systemsCount = results.length;
+                console.log(db)
                 const [resultId, othersType, imgUrl] = await db.queryServices(
                   cs.getSystems(),
                   event.source.userId,

@@ -144,7 +144,7 @@ model results {
   result_body String
   line_id     String
   src_table   String
-  created_at  String
+  created_at  DateTime
 }
 
 model seido_use_count {
