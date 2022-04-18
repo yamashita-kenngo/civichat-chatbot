@@ -49,13 +49,14 @@ pg.connect()
   .catch((e: string) => console.log("pr err\n"+e));*/
 exports.getServiceDetail = async (serviceId) => {
     const tableName = serviceId.split("-")[0];
-    const res = await prisma.$queryRawUnsafe(`SELECT * FROM ${tableName} WHERE id="${String(serviceId)}"`);
+    const query = `SELECT * FROM ${tableName} WHERE service_id='${String(serviceId)}';`;
+    const res = await prisma.$queryRawUnsafe(query);
     if (!res) {
         throw new Error("Not found");
     }
     const seidoType = serviceId.split("-")[0];
     const img_url = getImageUrl(seidoType);
-    const service = res;
+    const service = res[0];
     return {
         ...service,
         image_url: img_url,
@@ -105,7 +106,7 @@ exports.updateUserCount = async (lineId, selected) => {
 };
 //制度の利用数ログ
 exports.updateUseCount = async (serviceId) => {
-    const res = await prisma.seido_use_counts.findUnique({
+    const res = await prisma.seido_use_count.findUnique({
         where: { service_id: serviceId },
     });
     if (res) {
@@ -210,10 +211,11 @@ exports.queryServices = async (systemIds, lineId, seido) => {
         imgUrl = "https://static.civichat.jp/thumbnail-image/savings.png";
     }
     for (const systemId of systemIds) {
-        const res = await prisma.$queryRawUnsafe(`SELECT * FROM ${seido} WHERE service_id="${String(systemId)}"`);
+        const query = `SELECT * FROM ${seido} WHERE service_id='${String(systemId)}';`;
+        const res = await prisma.$queryRawUnsafe(query);
         //検索結果を配列に格納
         resultSaveData.result.push({
-            ...res,
+            ...res[0],
             othersType: othersType,
         });
     }
@@ -534,173 +536,7 @@ exports.saveInitialDatafromJson = async () => {
       text: `ALTER TABLE "related_system"
     ADD FOREIGN KEY ("object_service_id") REFERENCES "shibuya_parenting" ("service_id");`
   })*/
-    /*const systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
-    for (const item of systemsDataShibuya.systemsData) {
-      await prisma.shibuya_parenting.create({
-        data: {
-          service_id: item["サービスID"],
-          service_number: item["制度番号"],
-          origin_id: item["元制度番号"],
-          alteration_flag: item["制度変更区分"],
-          provider: item["制度所管組織"],
-          prefecture_id: item["都道府県"],
-          city_id: item["市町村"],
-          name: item["タイトル（制度名）"],
-          abstract: item["概要"],
-          provisions: item["支援内容"],
-          target: item["対象者"],
-          how_to_apply: item["利用・申請方法"],
-          application_start_date: item["受付開始日"],
-          application_close_date: item["受付終了日"],
-          contact: item["お問い合わせ先"],
-          information_release_date: item["公開日"],
-          tags: item["タグ"],
-          theme: item["テーマ"],
-          category: item["タグ（カテゴリー）"],
-          person_type: item["タグ（事業者分類）"],
-          entity_type: item["タグ（事業者分類）"],
-          keyword_type: item["タグ（キーワード）"],
-          issue_type: item["タグ（テーマ）"],
-          detail_url: item["詳細参照先"]
-        }
-      });
-      await pg.query({
-        text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
-        values: [
-          item["サービスID"],
-          item["制度番号"],
-          item["元制度番号"],
-          item["制度変更区分"],
-          item["制度所管組織"],
-          item["都道府県"],
-          item["市町村"],
-          item["タイトル（制度名）"],
-          item["概要"],
-          item["支援内容"],
-          item["対象者"],
-          item["利用・申請方法"],
-          item["受付開始日"],
-          item["受付終了日"],
-          item["お問い合わせ先"],
-          item["公開日"],
-          item["タグ"],
-          item["テーマ"],
-          item["タグ（カテゴリー）"],
-          item["タグ（事業者分類）"],
-          item["タグ（事業者分類）"],
-          item["タグ（キーワード）"],
-          item["タグ（テーマ）"],
-          item["詳細参照先"]
-        ],
-      });
-    }
-  
-    const systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
-    for (const item of systemsDataKumamoto.systemsData) {
-      await pg.query({
-        text: "INSERT INTO kumamoto_earthquake (service_id,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
-        values: [
-          item["サービスID"],
-          item["制度管理番号"],
-          item["制度名"],
-          item["対象者"],
-          item["サブタイトル"],
-          item["表示優先度"],
-          item["公開日程"],
-          item["申請期限（公開終了日）"],
-          item["公開・非公開（チェックで公開）"],
-          item["制度概要"],
-          item["制度所管組織"],
-          item["親制度"],
-          item["親制度との関係性"],
-          item["条件"],
-          item["用途・対象物"],
-          item["対象地域"],
-          item["支援内容"],
-          item["留意事項"],
-          item["手続き等"],
-          item["必要なもの"],
-          item["必要書類のURL"],
-          item["申請窓口"],
-          item["受付可能日時（受付日）"],
-          item["受付可能日時（受付時間）"],
-          item["申請可能URL"],
-          item["受付開始日"],
-          item["受付終了日"],
-          item["お問い合わせ先"],
-          item["詳細参照先"],
-          item["行政サービス分類"],
-          item["ライフステージ分類"],
-          item["お困りごと分類"]
-        ],
-      });
-    }
-  
-    const systemsDataShibuyaKindergarten = require("../../static_data/shibuyaPreschool/systemsdata.json");
-    for (const item of systemsDataShibuyaKindergarten.systemsData) {
-      await pg.query({
-        text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location,thisyear_admission_rate_for_0,thisyear_admission_rate_for_1,thisyear_admission_rate_for_2,thisyear_admission_rate_for_3,thisyear_admission_rate_for_4,thisyear_admission_rate_for_5,thisyear_admission_point_for_0,thisyear_admission_point_for_1,thisyear_admission_point_for_2,thisyear_admission_point_for_3,thisyear_admission_point_for_4,thisyear_admission_point_for_5,lastyear_admission_rate_for_0,lastyear_admission_rate_for_1,lastyear_admission_rate_for_2,lastyear_admission_rate_for_3,lastyear_admission_rate_for_4,lastyear_admission_rate_for_5,lastyear_admission_point_for_0,lastyear_admission_point_for_1,lastyear_admission_point_for_2,lastyear_admission_point_for_3,lastyear_admission_point_for_4,lastyear_admission_point_for_5,security,baby_buggy,ibservation_detail,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56 ) ;",
-        values: [
-          item["サービスID"],
-          item["都道府県"],
-          item["市町村"],
-          item["エリア"],
-          item["幼稚園•保育園のタイトル"],
-          item["対象年齢"],
-          item["施設のカテゴリ"],
-          item["施設の運営者"],
-          item["休園日"],
-          item["園庭"],
-          item["タオルの持ち込み"],
-          item["オムツの持ち帰り"],
-          item["駐輪場"],
-          item["給食・離乳食"],
-          item["見学"],
-          item["延長保育の対応時間"],
-          item["アレルギー対応"],
-          item["入園可能"],
-          item["申し込み受付先"],
-          item["お問い合わせ先"],
-          item["公開日"],
-          item["保育施設の空き状況（0さい）"],
-          item["保育施設の空き状況（1さい）"],
-          item["保育施設の空き状況（2さい）"],
-          item["保育施設の空き状況（3さい）"],
-          item["保育施設の空き状況（4さい）"],
-          item["保育施設の空き状況（5さい）"],
-          item["住所"],
-          item["今年の保育所利用の倍率（0さい）"],
-          item["今年の保育所利用の倍率（1さい）"],
-          item["今年の保育所利用の倍率（2さい）"],
-          item["今年の保育所利用の倍率（3さい）"],
-          item["今年の保育所利用の倍率（4さい）"],
-          item["今年の保育所利用の倍率（5さい）"],
-          item["今年の保育所利用の指数・ポイント（0さい）"],
-          item["今年の保育所利用の指数・ポイント（1さい）"],
-          item["今年の保育所利用の指数・ポイント（2さい）"],
-          item["今年の保育所利用の指数・ポイント（3さい）"],
-          item["今年の保育所利用の指数・ポイント（4さい）"],
-          item["今年の保育所利用の指数・ポイント（5さい）"],
-          item["去年の保育所利用の倍率（0さい）"],
-          item["去年の保育所利用の倍率（1さい）"],
-          item["去年の保育所利用の倍率（2さい）"],
-          item["去年の保育所利用の倍率（3さい）"],
-          item["去年の保育所利用の倍率（4さい）"],
-          item["去年の保育所利用の倍率（5さい）"],
-          item["去年の保育所利用の指数・ポイント（0さい）"],
-          item["去年の保育所利用の指数・ポイント（1さい）"],
-          item["去年の保育所利用の指数・ポイント（2さい）"],
-          item["去年の保育所利用の指数・ポイント（3さい）"],
-          item["去年の保育所利用の指数・ポイント（4さい）"],
-          item["去年の保育所利用の指数・ポイント（5さい）"],
-          item["保育施設のセキュリティ"],
-          item["ベビーバギー置き場"],
-          item["見学詳細"],
-          item["詳細参照先"]
-        ],
-      });
-    }
-  
+    /*
     const systemsDataJapan = require("../../static_data/japan/systemsdata.json");
     for (const item of systemsDataJapan.systemsData) {
       await pg.query({
@@ -749,184 +585,4 @@ function getImageUrl(seidoType) {
     }
     return img_url;
 }
-/*
-// systemsdata.jsonから制度詳細をDBに追加する関数
-exports.updateDatafromJson = async (data) => {
-  // UPDATE users SET favorite=$1 WHERE line_id=$2;
-  if(data === "shibuya_parenting"){
-    const systemsDataShibuya = require("../../static_data/shibuyaParenting/systemsdata.json");
-    for (const item of systemsDataShibuya.systemsData) {
-      await pg.query({
-        text: "INSERT INTO shibuya_parenting (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
-        values: [
-          item["サービスID"],
-          item["制度番号"],
-          item["元制度番号"],
-          item["制度変更区分"],
-          item["制度所管組織"],
-          item["都道府県"],
-          item["市町村"],
-          item["タイトル（制度名）"],
-          item["概要"],
-          item["支援内容"],
-          item["対象者"],
-          item["利用・申請方法"],
-          item["受付開始日"],
-          item["受付終了日"],
-          item["お問い合わせ先"],
-          item["公開日"],
-          item["タグ"],
-          item["テーマ"],
-          item["タグ（カテゴリー）"],
-          item["タグ（事業者分類）"],
-          item["タグ（事業者分類）"],
-          item["タグ（キーワード）"],
-          item["タグ（テーマ）"],
-          item["詳細参照先"]
-        ],
-      });
-    }
-  }else if(data === "kumamoto_earthquake"){
-    const systemsDataKumamoto = require("../../static_data/kumamotoEarthquake/systemsdata.json");
-    for (const item of systemsDataKumamoto.systemsData) {
-      await pg.query({
-        text: "INSERT INTO kumamoto_earthquake (service_id,management_id,name,target,sub_title,priority,start_release_date,end_release_date,is_release,overview,organization,parent_system,relationship_parent_system,qualification,purpose,area,support_content,note,how_to_use,needs,documents_url,postal_address,acceptable_dates,acceptable_times,apply_url,start_application_date,end_application_date,contact,detail_url,administrative_service_category,lifestage_category,problem_category                                                                                                                                                                     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32) ;",
-        values: [
-          item["サービスID"],
-          item["制度管理番号"],
-          item["制度名"],
-          item["対象者"],
-          item["サブタイトル"],
-          item["表示優先度"],
-          item["公開日程"],
-          item["申請期限（公開終了日）"],
-          item["公開・非公開（チェックで公開）"],
-          item["制度概要"],
-          item["制度所管組織"],
-          item["親制度"],
-          item["親制度との関係性"],
-          item["条件"],
-          item["用途・対象物"],
-          item["対象地域"],
-          item["支援内容"],
-          item["留意事項"],
-          item["手続き等"],
-          item["必要なもの"],
-          item["必要書類のURL"],
-          item["申請窓口"],
-          item["受付可能日時（受付日）"],
-          item["受付可能日時（受付時間）"],
-          item["申請可能URL"],
-          item["受付開始日"],
-          item["受付終了日"],
-          item["お問い合わせ先"],
-          item["詳細参照先"],
-          item["行政サービス分類"],
-          item["ライフステージ分類"],
-          item["お困りごと分類"]
-        ],
-      });
-    }
-  }else if(data === "shibuya_preschool"){
-    const systemsDataShibuyaKindergarten = require("../../static_data/shibuyaPreschool/systemsdata.json");
-    for (const item of systemsDataShibuyaKindergarten.systemsData) {
-      await pg.query({
-        text: "INSERT INTO shibuya_preschool (service_id,prefecture_id,city_id,area,name,target_age,type_nursery_school,administrator,closed_days,playground,bringing_your_own_towel,take_out_diapers,parking,lunch,ibservation,extended_hours_childcare,allergy_friendly,admission_available,apply,contact,information_release_date,availability_of_childcare_facilities_for_0,availability_of_childcare_facilities_for_1,availability_of_childcare_facilities_for_2,availability_of_childcare_facilities_for_3,availability_of_childcare_facilities_for_4,availability_of_childcare_facilities_for_5,location,thisyear_admission_rate_for_0,thisyear_admission_rate_for_1,thisyear_admission_rate_for_2,thisyear_admission_rate_for_3,thisyear_admission_rate_for_4,thisyear_admission_rate_for_5,thisyear_admission_point_for_0,thisyear_admission_point_for_1,thisyear_admission_point_for_2,thisyear_admission_point_for_3,thisyear_admission_point_for_4,thisyear_admission_point_for_5,lastyear_admission_rate_for_0,lastyear_admission_rate_for_1,lastyear_admission_rate_for_2,lastyear_admission_rate_for_3,lastyear_admission_rate_for_4,lastyear_admission_rate_for_5,lastyear_admission_point_for_0,lastyear_admission_point_for_1,lastyear_admission_point_for_2,lastyear_admission_point_for_3,lastyear_admission_point_for_4,lastyear_admission_point_for_5,security,baby_buggy,ibservation_detail,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56 ) ;",
-        values: [
-          item["サービスID"],
-          item["都道府県"],
-          item["市町村"],
-          item["エリア"],
-          item["幼稚園•保育園のタイトル"],
-          item["対象年齢"],
-          item["施設のカテゴリ"],
-          item["施設の運営者"],
-          item["休園日"],
-          item["園庭"],
-          item["タオルの持ち込み"],
-          item["オムツの持ち帰り"],
-          item["駐輪場"],
-          item["給食・離乳食"],
-          item["見学"],
-          item["延長保育の対応時間"],
-          item["アレルギー対応"],
-          item["入園可能"],
-          item["申し込み受付先"],
-          item["お問い合わせ先"],
-          item["公開日"],
-          item["保育施設の空き状況（0さい）"],
-          item["保育施設の空き状況（1さい）"],
-          item["保育施設の空き状況（2さい）"],
-          item["保育施設の空き状況（3さい）"],
-          item["保育施設の空き状況（4さい）"],
-          item["保育施設の空き状況（5さい）"],
-          item["住所"],
-          item["今年の保育所利用の倍率（0さい）"],
-          item["今年の保育所利用の倍率（1さい）"],
-          item["今年の保育所利用の倍率（2さい）"],
-          item["今年の保育所利用の倍率（3さい）"],
-          item["今年の保育所利用の倍率（4さい）"],
-          item["今年の保育所利用の倍率（5さい）"],
-          item["今年の保育所利用の指数・ポイント（0さい）"],
-          item["今年の保育所利用の指数・ポイント（1さい）"],
-          item["今年の保育所利用の指数・ポイント（2さい）"],
-          item["今年の保育所利用の指数・ポイント（3さい）"],
-          item["今年の保育所利用の指数・ポイント（4さい）"],
-          item["今年の保育所利用の指数・ポイント（5さい）"],
-          item["去年の保育所利用の倍率（0さい）"],
-          item["去年の保育所利用の倍率（1さい）"],
-          item["去年の保育所利用の倍率（2さい）"],
-          item["去年の保育所利用の倍率（3さい）"],
-          item["去年の保育所利用の倍率（4さい）"],
-          item["去年の保育所利用の倍率（5さい）"],
-          item["去年の保育所利用の指数・ポイント（0さい）"],
-          item["去年の保育所利用の指数・ポイント（1さい）"],
-          item["去年の保育所利用の指数・ポイント（2さい）"],
-          item["去年の保育所利用の指数・ポイント（3さい）"],
-          item["去年の保育所利用の指数・ポイント（4さい）"],
-          item["去年の保育所利用の指数・ポイント（5さい）"],
-          item["保育施設のセキュリティ"],
-          item["ベビーバギー置き場"],
-          item["見学詳細"],
-          item["詳細参照先"]
-        ],
-      });
-    }
-  }else if(data === "japan"){
-    const systemsDataJapan = require("../../static_data/japan/systemsdata.json");
-    for (const item of systemsDataJapan.systemsData) {
-      await pg.query({
-        text: "INSERT INTO japan (service_id,service_number,origin_id,alteration_flag,provider,prefecture_id,city_id,name,abstract,provisions,target,how_to_apply,application_start_date,application_close_date,contact,information_release_date,tags,theme,category,person_type,entity_type,keyword_type,issue_type,detail_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24) ;",
-        values: [
-          item["サービスID"],
-          item["制度番号"],
-          item["元制度番号"],
-          item["制度変更区分"],
-          item["制度所管組織"],
-          item["都道府県"],
-          item["市町村"],
-          item["タイトル（制度名）"],
-          item["概要"],
-          item["支援内容"],
-          item["対象者"],
-          item["利用・申請方法"],
-          item["受付開始日"],
-          item["受付終了日"],
-          item["お問い合わせ先"],
-          item["公開日"],
-          item["タグ"],
-          item["テーマ"],
-          item["タグ（カテゴリー）"],
-          item["タグ（事業者分類）"],
-          item["タグ（事業者分類）"],
-          item["タグ（キーワード）"],
-          item["タグ（テーマ）"],
-          item["詳細参照先"]
-        ],
-      });
-    }
-  }
-  return "ok";
-};
-*/ 
 //# sourceMappingURL=index.js.map
