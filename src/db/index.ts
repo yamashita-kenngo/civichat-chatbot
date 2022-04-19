@@ -2,9 +2,9 @@
 
 
 // TODO: //とりあえずpg直で叩いてるけどPrismaとかORM入れたい
-const { Client } = require("pg");
-const { v4: uuidv4 } = require('uuid');
-const pgParse = require('pg-connection-string').parse;
+//const { Client } = require("pg");
+import { v4 as uuidv4 } from 'uuid';
+//const pgParse = require('pg-connection-string').parse;
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
@@ -63,7 +63,7 @@ pg.connect()
   .then(() => console.log("pg Connected successfuly"))
   .catch((e: string) => console.log("pr err\n"+e));*/
 
-exports.getServiceDetail = async (serviceId: string) => {
+export const getServiceDetail = async (serviceId: string) => {
   const tableName = serviceId.split("-")[0];
   const query = `SELECT * FROM ${tableName} WHERE service_id='${String(serviceId)}';`;
   const res = await prisma.$queryRawUnsafe(query);
@@ -84,7 +84,7 @@ exports.getServiceDetail = async (serviceId: string) => {
   };
 };
 
-exports.saveUser = async (lineId: string) => {
+export const saveUser = async (lineId: string) => {
   const res = await prisma.users.findUnique({
     where: { line_id: lineId },
   });
@@ -104,7 +104,7 @@ exports.saveUser = async (lineId: string) => {
   }
 };
 
-exports.updateUserCount = async (lineId: string, selected: string) => {
+export const updateUserCount = async (lineId: string, selected: string) => {
   const res = await prisma.users.findUnique({
     where: { line_id: lineId },
   });
@@ -129,7 +129,7 @@ exports.updateUserCount = async (lineId: string, selected: string) => {
 }
 
 //制度の利用数ログ
-exports.updateUseCount = async (serviceId: string) => {
+export const updateUseCount = async (serviceId: string) => {
   const res = await prisma.seido_use_count.findUnique({
     where: { service_id: serviceId },
   });
@@ -152,7 +152,7 @@ exports.updateUseCount = async (serviceId: string) => {
 };
 //制度の利用数
 
-/*exports.userFavorite = async (lineId: string, seidoId: string) => {
+/*export const userFavorite = async (lineId: string, seidoId: string) => {
   const res = await pg.query({
     text: "SELECT * FROM users WHERE line_id=$1",
     values: [lineId],
@@ -183,7 +183,7 @@ exports.updateUseCount = async (serviceId: string) => {
   }
 };
 
-exports.getUserFavorite = async (lineId: string) => {
+export const getUserFavorite = async (lineId: string) => {
   const res = await pg.query({
     text: "SELECT * FROM users WHERE line_id=$1",
     values: [lineId],
@@ -202,7 +202,7 @@ exports.getUserFavorite = async (lineId: string) => {
   }
 };*/
 
-exports.isLoggedIn = async (lineId: string) => {
+export const isLoggedIn = async (lineId: string) => {
   // lineIdがすでにDBに乗ってたらtrue,そうでなければFalse
   const res = await prisma.users.findUnique({
     where: { line_id: lineId },
@@ -219,7 +219,7 @@ export type resultSaveData = {
   resultId: string;
 };
 
-exports.queryServices = async (
+export const queryServices = async (
   systemIds: Array<string>,
   lineId: string,
   seido: string
@@ -272,7 +272,7 @@ exports.queryServices = async (
   return [resultId,othersType,imgUrl];
 };
 
-exports.getQueryResult = async (resultId: string) => {
+export const getQueryResult = async (resultId: string) => {
   const res = await prisma.results.findUnique({
     where: { result_id: resultId },
   });
@@ -292,7 +292,7 @@ exports.getQueryResult = async (resultId: string) => {
 };
 
 // systemsdata.jsonから制度詳細をDBに追加する関数
-exports.saveInitialDatafromJson = async () => {
+export const saveInitialDatafromJson = async () => {
   /*await pg.query({
     text: `
     CREATE TABLE "apply_locations" (

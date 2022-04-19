@@ -12,7 +12,7 @@ import {
   syst,
 } from "../../classes";
 
-const db = require("../../db/index");
+import { queryServices, saveUser, updateUserCount } from '../../db/index';
 
 const config: line.ClientConfig = {
   channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
@@ -193,8 +193,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   })[0];
                 });
                 const systemsCount = results.length;
-                console.log(db)
-                const [resultId, othersType, imgUrl] = await db.queryServices(
+                const [resultId, othersType, imgUrl] = await queryServices(
                   cs.getSystems(),
                   event.source.userId,
                   cs.getSeido()
@@ -220,7 +219,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   })[0];
                 });
                 const systemsCount = results.length;
-                const [resultId, othersType, imgUrl] = await db.queryServices(
+                const [resultId, othersType, imgUrl] = await queryServices(
                   cs.getSystems(),
                   event.source.userId,
                   cs.getSeido()
@@ -239,7 +238,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                   ),
                 ];
               }
-              await db.updateUserCount(event.source.userId, cs.getSeido());
+              await updateUserCount(event.source.userId, cs.getSeido());
             } else {
               sessions = {
                 ...sessions,
@@ -271,7 +270,7 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
       }
       break;
     case "follow":
-      await db.saveUser(event.source.userId);
+      await saveUser(event.source.userId);
       returnMessage = [
         {
           type: "text",

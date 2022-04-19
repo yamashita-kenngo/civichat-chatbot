@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "esbuild --bundle --outfile=dist/index.js --platform=node --charset=utf8 src/index.ts",
+    "build": "esbuild --bundle --minify --outfile=dist/index.js --platform=node --charset=utf8 src/index.ts",
     "build:dev": "npm run build -- --watch",
     "start": "node dist/index.js"
   },
