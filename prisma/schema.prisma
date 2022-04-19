@@ -182,6 +182,8 @@ model shibuya_parenting {
   documents                                                           documents[]
   related_system_related_system_object_service_idToshibuya_parenting  related_system[]       @relation("related_system_object_service_idToshibuya_parenting")
   related_system_related_system_subject_service_idToshibuya_parenting related_system[]       @relation("related_system_subject_service_idToshibuya_parenting")
+  civichat_price                                                      Int?
+  civichat_price_url                                                  String?
 }
 
 model shibuya_preschool {
