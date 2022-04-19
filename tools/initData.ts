@@ -65,6 +65,7 @@ const prisma = new PrismaClient();
           name: item["タイトル（制度名）"],
           abstract: item["概要"],
           provisions: item["支援内容"],
+          amount: item["金額"],
           target: item["対象者"],
           how_to_apply: item["利用・申請方法"],
           application_start_date: item["受付開始日"],

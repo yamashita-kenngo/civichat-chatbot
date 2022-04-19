@@ -12,7 +12,7 @@ import {
   syst,
 } from "../../classes";
 
-import { queryServices, saveUser, updateUserCount } from '../../db/index';
+import { getServiceDetail, queryServices, saveUser, updateUserCount } from '../../db/index';
 
 const config: line.ClientConfig = {
   channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
@@ -158,18 +158,8 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
         } else {
           // ユーザーのセッション取得
           const userSession: Session = sessions[event.source.userId];
-          let systemsData;
           if (userSession) {
             const cs = userSession.getState();
-            if (cs.getSeido() === "kumamoto_earthquake") {
-              systemsData = require("../../../static_data/kumamotoEarthquake/systemsdata.json");
-            } else if (cs.getSeido() === "shibuya_parenting") {
-              systemsData = require("../../../static_data/shibuyaParenting/systemsdata.json");
-            } else if (cs.getSeido() === "shibuya_preschool") {
-              systemsData = require("../../../static_data/shibuyaPreschool/systemsdata.json");
-            } else if (cs.getSeido() === "japan") {
-              systemsData = require("../../../static_data/japan/systemsdata.json");
-            }
             cs.selectAnswerByText(
               userSession.getBeforeQuestionId(),
               event.message.text
@@ -187,11 +177,11 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
               }
               //カルーセルが8枚より上
               else if (cs.getSystems().length > 8) {
-                const results = cs.getSystems().map((system: string) => {
-                  return systemsData["systemsData"].filter((systemD) => {
-                    return systemD["サービスID"] === system;
-                  })[0];
-                });
+                let results = [];
+                for(const system of cs.getSystems()) {
+                  const serviceDetail = await getServiceDetail(system);
+                  results.push(serviceDetail);
+                }
                 const systemsCount = results.length;
                 const [resultId, othersType, imgUrl] = await queryServices(
                   cs.getSystems(),
@@ -213,11 +203,11 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
                 ];
               } else {
                 // 8枚以下
-                const results = cs.getSystems().map((system: string) => {
-                  return systemsData["systemsData"].filter((systemD) => {
-                    return systemD["サービスID"] === system;
-                  })[0];
-                });
+                const results = [];
+                for(const system of cs.getSystems()) {
+                  const serviceDetail = await getServiceDetail(system);
+                  results.push(serviceDetail);
+                }
                 const systemsCount = results.length;
                 const [resultId, othersType, imgUrl] = await queryServices(
                   cs.getSystems(),

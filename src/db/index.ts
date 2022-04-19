@@ -225,7 +225,6 @@ export const queryServices = async (
   seido: string
 ) => {
   const resultId: string = uuidv4();
-  console.log('queryServices', systemIds, lineId, seido);
 
   const resultSaveData: resultSaveData = {
     result: [],

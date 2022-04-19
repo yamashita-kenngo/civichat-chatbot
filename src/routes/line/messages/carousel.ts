@@ -66,9 +66,7 @@ module.exports = function carouselTemplate(
           {
             type: "text",
             text:
-              item["タイトル（制度名）"] ||
-              item["制度名"] ||
-              item["幼稚園•保育園のタイトル"] ||
+              item.name ||
               "タイトル",
             color: "#000000",
             weight: "bold",
@@ -93,7 +91,7 @@ module.exports = function carouselTemplate(
             action: {
               type: "uri",
               label: "詳しく見る",
-              uri: `${process.env.LIFF_URL}/services/${item["サービスID"]}`,
+              uri: `${process.env.LIFF_URL}/services/${item.service_id}`,
             },
             contents: [],
           },
@@ -103,10 +101,10 @@ module.exports = function carouselTemplate(
         ],
       },
     };
-    if (item["概要"] || item["制度概要"]) {
+    if (item.abstract || item.overview) {
       content.body.contents.push({
         type: "text",
-        text: item["概要"] || item["制度概要"],
+        text: item.abstract || item.overview,
         color: "#000000",
         weight: "bold",
         margin: "md",
@@ -114,8 +112,8 @@ module.exports = function carouselTemplate(
         wrap: true,
       });
     }
-    if (item["住所"]) {
-      const encodeAddress = encodeURI(item["住所"]);
+    if (item.location) {
+      const encodeAddress = encodeURI(item.location);
       content.body.contents.push({
         type: "box",
         layout: "vertical",
@@ -133,7 +131,7 @@ module.exports = function carouselTemplate(
               },
               {
                 type: "text",
-                text: item["住所"],
+                text: item.location,
                 color: "#000000",
                 wrap: true,
                 action: {
@@ -148,7 +146,7 @@ module.exports = function carouselTemplate(
         ],
       });
     }
-    if (item["見学"]) {
+    if (item.ibservation) {
       content.body.contents.push({
         type: "box",
         layout: "vertical",
@@ -166,7 +164,7 @@ module.exports = function carouselTemplate(
               },
               {
                 type: "text",
-                text: item["見学"],
+                text: item.ibservation,
                 color: "#000000",
                 wrap: true,
                 contents: [],
@@ -209,7 +207,7 @@ module.exports = function carouselTemplate(
     //     ],
     //   });
     // }
-    if (item["対象者"]) {
+    if (item.target) {
       content.body.contents.push({
         type: "box",
         layout: "vertical",
@@ -227,7 +225,7 @@ module.exports = function carouselTemplate(
               },
               {
                 type: "text",
-                text: item["対象者"],
+                text: item.target,
                 color: "#000000",
                 wrap: true,
                 contents: [],
@@ -237,7 +235,35 @@ module.exports = function carouselTemplate(
         ],
       });
     }
-    if (item["行政サービス分類"]) {
+    if( item.amount ){
+      content.body.contents.push({
+        type: "box",
+        layout: "vertical",
+        margin: "md",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "text",
+                text: "支援額（想定）",
+                color: "#6A6A6A",
+                contents: [],
+              },
+              {
+                type: "text",
+                text: item.amount,
+                color: "#000000",
+                wrap: true,
+                contents: [],
+              },
+            ],
+          },
+        ],
+      });
+    }
+    if (item.administrative_service_category) {
       content.body.contents.push({
         type: "box",
         layout: "vertical",
@@ -255,7 +281,7 @@ module.exports = function carouselTemplate(
               },
               {
                 type: "text",
-                text: item["行政サービス分類"],
+                text: item.administrative_service_category,
                 color: "#000000",
                 wrap: true,
                 contents: [],
@@ -266,8 +292,8 @@ module.exports = function carouselTemplate(
       });
     }
     if (
-      item["去年の保育所利用の倍率（0さい）"] ||
-      item["去年の保育所利用の指数・ポイント（0さい）"]
+      item.lastyear_admission_rate_for_0 ||
+      item.lastyear_admission_point_for_0
     ) {
       content.body.contents.push(
         {
@@ -315,12 +341,12 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: `${
-                item["去年の保育所利用の倍率（0さい）"] != null
-                  ? item["去年の保育所利用の倍率（0さい）"]
+                item. lastyear_admission_rate_for_0 != null
+                  ? item. lastyear_admission_rate_for_0
                   : "-"
               }／${
-                item["去年の保育所利用の指数・ポイント（0さい）"] != null
-                  ? item["去年の保育所利用の指数・ポイント（0さい）"]
+                item.lastyear_admission_point_for_0 != null
+                  ? item.lastyear_admission_point_for_0
                   : `-`
               }`,
               color: "#000000",
@@ -345,13 +371,13 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: `${
-                item["去年の保育所利用の倍率（1さい）"] != null
-                  ? item["去年の保育所利用の倍率（1さい）"]
+                item.lastyear_admission_rate_for_1 != null
+                  ? item.lastyear_admission_rate_for_1
                   : "-"
               }／${
 
-                item["去年の保育所利用の指数・ポイント（1さい）"] != null
-                  ? item["去年の保育所利用の指数・ポイント（1さい）"]
+                item.lastyear_admission_point_for_1 != null
+                  ? item.lastyear_admission_point_for_1
                   : `-`
               }`,
               color: "#000000",
@@ -376,12 +402,12 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: `${
-                item["去年の保育所利用の倍率（2さい）"] != null
-                  ? item["去年の保育所利用の倍率（2さい）"]
+                item.lastyear_admission_rate_for_2 != null
+                  ? item.lastyear_admission_rate_for_2
                   : "-"
               }／${
-                item["去年の保育所利用の指数・ポイント（2さい）"] != null
-                  ? item["去年の保育所利用の指数・ポイント（2さい）"]
+                item.lastyear_admission_point_for_2 != null
+                  ? item.lastyear_admission_point_for_2
                   : `-`
               }`,
               color: "#000000",
@@ -406,12 +432,12 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: `${
-                item["去年の保育所利用の倍率（3さい）"] != null
-                  ? item["去年の保育所利用の倍率（3さい）"]
+                item.lastyear_admission_rate_for_3 != null
+                  ? item.lastyear_admission_rate_for_3
                   : "-"
               }／${
-                item["去年の保育所利用の指数・ポイント（3さい）"] != null
-                  ? item["去年の保育所利用の指数・ポイント（3さい）"]
+                item.lastyear_admission_point_for_3 != null
+                  ? item.lastyear_admission_point_for_3
                   : `-`
               }`,
               color: "#000000",
@@ -435,12 +461,12 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: `${
-                item["去年の保育所利用の倍率（4さい）"] != null
-                  ? item["去年の保育所利用の倍率（4さい）"]
+                item.lastyear_admission_rate_for_4 != null
+                  ? item.lastyear_admission_rate_for_4
                   : "-"
               }／${
-                item["去年の保育所利用の指数・ポイント（4さい）"] != null
-                  ? item["去年の保育所利用の指数・ポイント（4さい）"]
+                item.lastyear_admission_point_for_4 != null
+                  ? item.lastyear_admission_point_for_4
                   : `-`
               }`,
               color: "#000000",
@@ -465,12 +491,12 @@ module.exports = function carouselTemplate(
             {
               type: "text",
               text: `${
-                item["去年の保育所利用の倍率（5さい）"] != null
-                  ? item["去年の保育所利用の倍率（5さい）"]
+                item.lastyear_admission_rate_for_5 != null
+                  ? item.lastyear_admission_rate_for_5
                   : "-"
               }／${
-                item["去年の保育所利用の指数・ポイント（5さい）"] != null
-                  ? item["去年の保育所利用の指数・ポイント（5さい）"]
+                item.lastyear_admission_point_for_5 != null
+                  ? item.lastyear_admission_point_for_5
                   : `-`
               }`,
               color: "#000000",
