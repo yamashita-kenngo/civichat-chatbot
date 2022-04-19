@@ -163,6 +163,7 @@ model shibuya_parenting {
   name                                                                String?
   abstract                                                            String?
   provisions                                                          String?
+  amount                                                              String?
   target                                                              String?
   how_to_apply                                                        String?
   application_start_date                                              String?
