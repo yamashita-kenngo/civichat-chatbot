@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 
-const getQueryResult = require("../../db/index.js").getQueryResult;
+import { getQueryResult } from "../../db/index";
 
 module.exports = async (req: Request, res: Response) => {
   const resultId = req.query.resultId || "";
