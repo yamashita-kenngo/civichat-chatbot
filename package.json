@@ -7,10 +7,6 @@
     "db:migrate": "npx prisma migrate dev --preview-feature"
   },
   "main": "dist/main.js",
-  "engines": {
-    "node": "15.4.x",
-    "npm": "7.21.x"
-  },
   "dependencies": {
     "@line/bot-sdk": "^7.3.0",
     "@prisma/client": "^3.12.0",
