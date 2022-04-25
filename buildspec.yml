@@ -2,13 +2,13 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14.x
+      nodejs: 16.x
     commands:
       - 'npm install -g typescript'
       - 'npm install'
   build:
     commands:
-      - 'tsc'
+      - 'npm run build'
   post_build:
     commands:
       - 'npm run db:generate'
