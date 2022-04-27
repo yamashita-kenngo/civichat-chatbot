@@ -1,12 +1,11 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("HEROKU_POSTGRESQL_PINK_URL")
-  shadowDatabaseUrl = env("HEROKU_POSTGRESQL_ROSE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
 }
 
 model apply_locations {
@@ -52,7 +51,7 @@ model documents {
 }
 
 model japan {
-  service_id               String  @unique @id
+  service_id               String  @id @unique
   service_number           String?
   origin_id                String?
   alteration_flag          String?
@@ -79,7 +78,7 @@ model japan {
 }
 
 model kumamoto_earthquake {
-  service_id                                                            String                 @unique @id
+  service_id                                                            String                 @id @unique
   management_id                                                         String?
   name                                                                  String?
   target                                                                String?
@@ -141,7 +140,7 @@ model related_system {
 }
 
 model results {
-  result_id   String @unique @id
+  result_id   String   @id @unique
   result_body String
   line_id     String
   src_table   String
@@ -149,12 +148,12 @@ model results {
 }
 
 model seido_use_count {
-  service_id String @unique @id
+  service_id String @id @unique
   count      Int
 }
 
 model shibuya_parenting {
-  service_id                                                          String                 @unique @id
+  service_id                                                          String                 @id @unique
   service_number                                                      String?
   origin_id                                                           String?
   alteration_flag                                                     String?
@@ -164,7 +163,6 @@ model shibuya_parenting {
   name                                                                String?
   abstract                                                            String?
   provisions                                                          String?
-  amount                                                              String?
   target                                                              String?
   how_to_apply                                                        String?
   application_start_date                                              String?
@@ -179,17 +177,18 @@ model shibuya_parenting {
   entity_type                                                         String?
   keyword_type                                                        String?
   issue_type                                                          String?
+  civichat_price                                                      Int?
+  civichat_price_url                                                  String?
+  amount                                                              String?
   apply_locations                                                     apply_locations[]
   apply_postal_address                                                apply_postal_address[]
   documents                                                           documents[]
   related_system_related_system_object_service_idToshibuya_parenting  related_system[]       @relation("related_system_object_service_idToshibuya_parenting")
   related_system_related_system_subject_service_idToshibuya_parenting related_system[]       @relation("related_system_subject_service_idToshibuya_parenting")
-  civichat_price                                                      Int?
-  civichat_price_url                                                  String?
 }
 
 model shibuya_preschool {
-  service_id                                 String  @unique @id
+  service_id                                 String  @id @unique
   prefecture_id                              String?
   city_id                                    String?
   area                                       String?
@@ -249,7 +248,7 @@ model shibuya_preschool {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model users {
-  line_id             String @unique @id
+  line_id             String   @id @unique
   created_at          DateTime
   shibuya_preschool   Int?
   shibuya_parenting   Int?
