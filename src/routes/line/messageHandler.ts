@@ -261,13 +261,14 @@ module.exports = async (event: line.ReplyableEvent & line.WebhookEvent) => {
       break;
     case "follow":
       await saveUser(event.source.userId);
-      returnMessage = [
+      /*returnMessage = [
         {
           type: "text",
           text: "友だち登録ありがとうございます！\n\n「Civichat（シビチャット）」はあなたにぴったりの行政サービスをかんたんに探せるサービスです 🤳🏛　\n\n現在は渋谷区の子育て系の制度・保育施設に加え、熊本市の災害支援制度を探すことができます📱\n\n※スマホ版LINEアプリのみの対応となります。（パソコンからのご利用はできません。）\n※質問への回答を修正したい場合は、初めからやり直してください。",
         },
       ];
-      break;
+      break;*/
+      return;
     case "postback":
       if (
         event.postback.data === "start-kumamoto_earthquake" ||
