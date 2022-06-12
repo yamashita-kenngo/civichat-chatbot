@@ -33,7 +33,7 @@
 ## 技術スタック
 
 - TypeScript
-- AWS Elastic Beanstalk
+- AWS AppRunner
 - PostgreSQL
 
 ### 必要なもの
@@ -78,14 +78,3 @@ docker-compose up
 
 - ngrokを実行して表示されたURLに`/line`をパスに追加してLINE Developer Consoleで登録してください。
   - この際にWebhookも有効にしてください。
-
-## AWS環境構築
-
-基本的に、Elastic Beanstalkを利用します。
-[この記事](https://hacknote.jp/archives/57416/)を参考に、CI/CDの構築をしておくと便利です。
-
-Beanstalkで新しい環境を作成します
-1. ウェブサーバー環境
-2. プラットフォーム`Node.js 14 running on 64bit Amazon Linux 2/5.4.9`を利用してください。
-3. 一旦CI/CDの設定をせずに`コードのアップロード`を行ってください。
-4. BeanstalkのDBの環境に合わせて.envの編集をしてください。
