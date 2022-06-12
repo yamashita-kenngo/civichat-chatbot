@@ -26,13 +26,6 @@ const app = express();
 app.post("/line", line.middleware(config), async function (req, res) {
   const linePost = require("./routes/line/post");
   linePost(req, res);
-  // @ts-ignore
-  await axios({
-    method: "POST",
-    url: process.env.CHANNEL_IO_API,
-    headers: req.headers,
-    data: req.body,
-  })
 });
 
 app.post("/user", function (req, res) {
